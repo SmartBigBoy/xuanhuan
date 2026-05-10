@@ -41,7 +41,7 @@ export const novels: Novel[] = [
     id: 'zhu-xian',
     title: '诛仙',
     author: '萧鼎',
-    cover: '/covers/zhuxian.jpg',
+    cover: '/novels/zhuxian.jpg',
     category: '仙侠玄幻',
     description:
       '天地不仁，以万物为刍狗。少年张小凡偶然获得天书，在正魔两道的夹缝中行走，历经爱恨情仇，最终揭开青云门千年之谜。',
@@ -54,7 +54,7 @@ export const novels: Novel[] = [
     id: 'bi-luo',
     title: '遮天',
     author: '辰东',
-    cover: '/covers/zhetian.jpg',
+    cover: '/novels/zhetian.jpg',
     category: '仙侠玄幻',
     description:
       '九龙拉棺的震撼开篇，叶凡误入星空古路，横渡星域，逆天证道，从荒古走到当世，开创万古盛世。',
@@ -63,11 +63,26 @@ export const novels: Novel[] = [
     mapCount: 7,
     popularity: 10,
   },
+
+{
+    id: 'bi-luo',
+    title: '完美世界',
+    author: '辰东',
+    cover: '/novels/wmsj.jpg',
+    category: '仙侠玄幻',
+    description:
+      '九龙拉棺的震撼开篇，叶凡误入星空古路，横渡星域，逆天证道，从荒古走到当世，开创万古盛世。',
+    tags: ['星空', '证道', '大帝', '禁区'],
+    realmCount: 11,
+    mapCount: 8,
+    popularity: 10,
+  },
+  
   {
     id: 'xi-zhen',
     title: '仙逆',
     author: '耳根',
-    cover: '/covers/xianni.jpg',
+    cover: '/novels/xianni.jpg',
     category: '经典修仙',
     description:
       '顺为凡，逆为仙，一念之间。王林资质平庸却悟性惊人，以杀证道，走出了与前人截然不同的逆仙之路。',
@@ -80,7 +95,7 @@ export const novels: Novel[] = [
     id: 'da-zhu-zai',
     title: '大主宰',
     author: '天蚕土豆',
-    cover: '/covers/dazhuzai.jpg',
+    cover: '/novels/dazhuzai.jpg',
     category: '异界大陆',
     description:
       '大千世界，位面交汇，万族林立。少年牧尘从北灵境而出，踏上了大千世界的巅峰之路，最终成为大主宰。',
@@ -93,7 +108,7 @@ export const novels: Novel[] = [
     id: 'tun-shi',
     title: '吞噬星空',
     author: '我吃西红柿',
-    cover: '/covers/tunshi.jpg',
+    cover: '/novels/tunshi.jpg',
     category: '都市修仙',
     description:
       '地球经历大涅槃时期，罗峰从一个普通的高中生，逐步觉醒成为武者，踏入宇宙，吞噬星空，最终成为宇宙之主。',
@@ -106,7 +121,7 @@ export const novels: Novel[] = [
     id: 'shen-yin',
     title: '神印王座',
     author: '唐家三少',
-    cover: '/covers/shenyin.jpg',
+    cover: '/novels/shenyin.jpg',
     category: '仙侠玄幻',
     description:
       '骑士圣殿出身的龙皓晨，从一名普通骑士成长为守护人类的神印骑士，最终登上永恒与创造之神印王座。',
@@ -119,7 +134,7 @@ export const novels: Novel[] = [
     id: 'jian-lai',
     title: '剑来',
     author: '烽火戏诸侯',
-    cover: '/covers/jianlai.jpg',
+    cover: '/novels/jianlai.jpg',
     category: '仙侠玄幻',
     description:
       '少年陈平安行走江湖，以剑道证长生。浩然天下、蛮荒天下、青冥天下三界风云，一剑递出，天下皆惊。',
@@ -132,7 +147,7 @@ export const novels: Novel[] = [
     id: 'yi-nian',
     title: '一念永恒',
     author: '耳根',
-    cover: '/covers/yinian.jpg',
+    cover: '/novels/yinian.jpg',
     category: '经典修仙',
     description:
       '一念成沧海，一念化桑田。白小纯从灵溪宗走出，凭借独特的修炼方式和无尽的际遇，一步步踏上巅峰。',
@@ -145,7 +160,7 @@ export const novels: Novel[] = [
     id: 'huang-dao',
     title: '洪荒之永恒道主',
     author: '道主',
-    cover: '/covers/honghuang.jpg',
+    cover: '/novels/honghuang.jpg',
     category: '洪荒封神',
     description:
       '盘古开天，洪荒初定。以洪荒为背景，讲述从混沌初开到封神之战的恢弘史诗，六圣证道，天道轮回。',
