@@ -43,22 +43,97 @@ export default async function RealmDetailPage({ params }: Props) {
 
   if (!realmSystem) {
     return (
-      <div className="xian-bg-pattern min-h-[50vh] flex items-center justify-center">
-        <Card className="xian-card bg-card/80 max-w-md">
-          <CardContent className="p-8 text-center">
-            <BookOpen className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <h2 className="text-xl font-semibold mb-2">境界体系整理中</h2>
-            <p className="text-muted-foreground mb-4">
-              {novel.title}的境界体系正在整理中，敬请期待。
-            </p>
-            <Link href="/realms">
-              <Button variant="outline">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                返回境界大全
-              </Button>
+      <div className="xian-bg-pattern min-h-screen">
+        {/* 页头 */}
+        <div className="relative bg-xian-deep/80 border-b border-xian-gold/10">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+            <Link href="/realms" className="inline-flex items-center text-sm text-muted-foreground hover:text-xian-gold mb-6">
+              <ArrowLeft className="mr-1 h-4 w-4" />
+              返回境界大全
             </Link>
-          </CardContent>
-        </Card>
+            <div className="flex flex-col md:flex-row gap-6 items-start">
+              <div className="flex-shrink-0">
+                {novel.cover ? (
+                  <img src={novel.cover} alt={novel.title} className="w-36 h-48 rounded-lg object-cover border-2 border-xian-gold/20 shadow-lg" />
+                ) : (
+                  <div className="w-36 h-48 rounded-lg bg-gradient-to-br from-xian-gold/20 to-xian-purple/20 border-2 border-xian-gold/20 flex items-center justify-center">
+                    <BookOpen className="h-12 w-12 text-xian-gold/50" />
+                  </div>
+                )}
+              </div>
+              <div className="flex-1">
+                <h1 className="text-3xl font-serif font-bold text-xian-gold mb-2">{novel.title}</h1>
+                <p className="text-muted-foreground mb-3">{novel.author} · {novel.category}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {novel.tags.map((tag) => (
+                    <span key={tag} className="px-2 py-0.5 text-xs rounded-full border border-xian-cyan/20 text-xian-cyan bg-xian-cyan/5">{tag}</span>
+                  ))}
+                </div>
+                <Card className="bg-xian-deep/50 border-xian-amber/10 inline-block">
+                  <CardContent className="p-3 text-center">
+                    <BookOpen className="h-6 w-6 text-xian-amber mx-auto mb-1" />
+                    <p className="text-xs text-muted-foreground">境界体系整理中</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 故事概述 */}
+        {novel.summary && (
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+            <section>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-xian-gold/10 border border-xian-gold/20">
+                  <BookOpen className="h-4 w-4 text-xian-gold" />
+                </div>
+                <h2 className="text-xl font-serif font-bold text-xian-gold">故事概述与阅读评价</h2>
+              </div>
+              <Card className="xian-card bg-card/80">
+                <CardContent className="p-6 space-y-4">
+                  {novel.summary.split('\n\n').map((paragraph, idx) => {
+                    if (paragraph.startsWith('【阅读评价】')) {
+                      return (
+                        <div key={idx} className="pt-4 border-t border-xian-gold/10">
+                          <div className="flex items-center gap-2 mb-3">
+                            <Star className="h-4 w-4 text-xian-gold" />
+                            <span className="font-serif font-semibold text-xian-gold text-sm">阅读评价</span>
+                          </div>
+                          <div className="text-sm text-muted-foreground leading-relaxed space-y-1.5">
+                            {paragraph.replace('【阅读评价】', '').split('。').filter((s: string) => s.trim()).map((sentence: string, sIdx: number) => (
+                              <p key={sIdx} className="flex items-start gap-2">
+                                <span className="inline-block w-1.5 h-1.5 rounded-full bg-xian-gold/40 mt-2 flex-shrink-0" />
+                                <span>{sentence.trim()}。</span>
+                              </p>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    }
+                    return (
+                      <p key={idx} className="text-sm text-foreground/80 leading-relaxed">{paragraph}</p>
+                    );
+                  })}
+                </CardContent>
+              </Card>
+            </section>
+          </div>
+        )}
+
+        {/* 免责提示 */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12">
+          <Card className="bg-xian-deep/50 border-xian-amber/10">
+            <CardContent className="p-4">
+              <div className="flex items-start gap-2">
+                <Info className="h-4 w-4 text-xian-amber mt-0.5 flex-shrink-0" />
+                <p className="text-xs text-muted-foreground">
+                  以上内容为基于原著的原创整理，仅供学习交流之用。原著版权归作者{novel.author}及出版社所有。
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     );
   }
@@ -285,6 +360,51 @@ export default async function RealmDetailPage({ params }: Props) {
             </p>
           </section>
         </>
+      )}
+
+      {/* 故事概述与阅读评价 */}
+      {novel.summary && (
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-6">
+          <section>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-xian-gold/10 border border-xian-gold/20">
+                <BookOpen className="h-4 w-4 text-xian-gold" />
+              </div>
+              <h2 className="text-xl font-serif font-bold text-xian-gold">
+                故事概述与阅读评价
+              </h2>
+            </div>
+            <Card className="xian-card bg-card/80">
+              <CardContent className="p-6 space-y-4">
+                {novel.summary.split('\n\n').map((paragraph, idx) => {
+                  if (paragraph.startsWith('【阅读评价】')) {
+                    return (
+                      <div key={idx} className="pt-4 border-t border-xian-gold/10">
+                        <div className="flex items-center gap-2 mb-3">
+                          <Star className="h-4 w-4 text-xian-gold" />
+                          <span className="font-serif font-semibold text-xian-gold text-sm">阅读评价</span>
+                        </div>
+                        <div className="text-sm text-muted-foreground leading-relaxed space-y-1.5">
+                          {paragraph.replace('【阅读评价】', '').split('。').filter((s: string) => s.trim()).map((sentence: string, sIdx: number) => (
+                            <p key={sIdx} className="flex items-start gap-2">
+                              <span className="inline-block w-1.5 h-1.5 rounded-full bg-xian-gold/40 mt-2 flex-shrink-0" />
+                              <span>{sentence.trim()}。</span>
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  }
+                  return (
+                    <p key={idx} className="text-sm text-foreground/80 leading-relaxed">
+                      {paragraph}
+                    </p>
+                  );
+                })}
+              </CardContent>
+            </Card>
+          </section>
+        </div>
       )}
 
       {/* 免责提示 */}
