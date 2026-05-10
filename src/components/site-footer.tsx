@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Mail } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 
 export function SiteFooter() {
@@ -42,12 +42,19 @@ export function SiteFooter() {
             </div>
           </div>
 
-          {/* 免责声明 */}
+          {/* 免责声明与联系方式 */}
           <div className="space-y-3">
-            <h4 className="text-sm font-semibold text-xian-gold">版权与免责</h4>
+            <h4 className="text-sm font-semibold text-xian-gold">版权与联系方式</h4>
             <p className="text-xs text-muted-foreground leading-relaxed">
               {siteConfig.disclaimer}
             </p>
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <Mail className="h-3.5 w-3.5 text-xian-gold" />
+              <span>资料收集 & 侵权反馈：</span>
+              <a href={`mailto:${siteConfig.contactEmail}`} className="text-xian-cyan hover:underline">
+                {siteConfig.contactEmail}
+              </a>
+            </div>
           </div>
         </div>
 

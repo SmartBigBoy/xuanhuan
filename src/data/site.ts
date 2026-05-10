@@ -58,6 +58,7 @@ export interface SiteConfig {
   description: string;
   footerText: string;
   disclaimer: string;
+  contactEmail: string;
 }
 
 export const siteConfig: SiteConfig = {
@@ -68,5 +69,6 @@ export const siteConfig: SiteConfig = {
   footerText:
     '诸天图鉴阁 — 修仙玄幻小说资料站 | 纯公益 | 非商业',
   disclaimer:
-    '本站所有内容均为原创整理或合规同人素材，仅供学习交流之用。小说原著版权归各作者及出版社所有，本站不持有任何原著版权。如涉及版权问题，请联系我们及时处理。',
+    '本站所有内容均为原创整理或合规同人素材，仅供学习交流之用。小说原著版权归各作者及出版社所有，本站不持有任何原著版权。如涉及版权问题，请联系 tanggao@coze.email 及时处理。',
+  contactEmail: 'tanggao@coze.email',
 };
