@@ -32,25 +32,7 @@ export const mapTypes: MapType[] = [
 ];
 
 export const worldMaps: WorldMap[] = [
-  {
-    id: 'rmjz-quanjing',
-    title: '凡人修仙传 - 修仙界全景地图',
-    novelId: 'rmjz',
-    novelTitle: '凡人修仙传',
-    type: '全景地图',
-    description: '涵盖天南、乱星海、大晋三大区域的完整修仙界全景地图，标注主要宗门、城市、秘境位置。',
-    previewUrl: '/maps/rmjz-quanjing-preview.jpg',
-    downloadUrl: '#',
-    fileSize: '12.5 MB',
-    resolution: '6000×4000',
-    format: 'PNG',
-    author: '修仙资料站整理',
-    source: '原创整理，参考原著描述',
-    tags: ['天南', '乱星海', '大晋', '宗门', '全景'],
-    detail: '本地图根据凡人修仙传原著中对各地地理位置的描述精心整理绘制。天南地区以越国为中心，辐射周边七派联盟；乱星海区域标注了星宫、内海群岛、外海妖族领地；大晋地区则详细标注了各大顶级宗门与上古遗迹。地图采用古风水墨画风格，配合标注说明，方便读者对照小说情节理解故事地理脉络。',
-    uploadDate: '2024-12-15',
-    downloads: 3280,
-  },
+
   {
     id: 'rmjz-tiannan',
     title: '凡人修仙传 - 天南舆图',
@@ -127,25 +109,7 @@ export const worldMaps: WorldMap[] = [
     uploadDate: '2026-05-10',
     downloads: 0,
   },
-  {
-    id: 'rmjz-shili',
-    title: '凡人修仙传 - 乱星海势力分布图',
-    novelId: 'rmjz',
-    novelTitle: '凡人修仙传',
-    type: '势力分布',
-    description: '乱星海区域各势力分布详图，含星宫、妙音门、逆星盟等主要势力控制区域。',
-    previewUrl: '/maps/rmjz-shili-preview.jpg',
-    downloadUrl: '#',
-    fileSize: '8.2 MB',
-    resolution: '4500×3000',
-    format: 'PNG',
-    author: '修仙资料站整理',
-    source: '原创整理，参考原著描述',
-    tags: ['乱星海', '星宫', '逆星盟', '势力'],
-    detail: '乱星海是凡人修仙传中最具特色的区域之一，本地图详细标注了星宫总部、内海各大岛屿、外海妖族势力范围、以及逆星盟的秘密据点。色彩上采用蓝色系为主，内海外海以深浅蓝色区分，势力范围以不同色块标注，清晰直观。',
-    uploadDate: '2024-12-10',
-    downloads: 2150,
-  },
+
   {
     id: 'zhetian-xingkong',
     title: '遮天 - 星空古路全图',
