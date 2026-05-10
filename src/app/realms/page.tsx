@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { BookOpen, Star, ChevronRight, Layers, Map } from 'lucide-react';
+import { BookOpen, Star, ChevronRight, Layers, MapIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { novels, categories } from '@/data/novels';
@@ -103,7 +103,7 @@ export default function RealmsPage() {
                                     variant="secondary"
                                     className="text-[11px] bg-xian-cyan/10 text-xian-cyan border-xian-cyan/20"
                                   >
-                                    <Map className="h-3 w-3 mr-1" />
+                                    <MapIcon className="h-3 w-3 mr-1" />
                                     {novel.mapCount} 图
                                   </Badge>
                                   {realmData?.crossComparison && (

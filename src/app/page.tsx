@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import {
   Sparkles,
-  Map,
   BookOpen,
   MessageSquarePlus,
   ChevronRight,
@@ -12,6 +11,7 @@ import {
   Clock,
   ArrowRight,
   Scroll,
+  MapIcon,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -22,6 +22,7 @@ import { realmSystems } from '@/data/realms';
 import { worldMaps } from '@/data/maps';
 import { articles } from '@/data/articles';
 import { announcements, siteConfig } from '@/data/site';
+import { MapCardImage } from '@/components/map-card-image';
 
 export default function HomePage() {
   const popularNovels = getPopularNovels(6);
@@ -87,7 +88,7 @@ export default function HomePage() {
             </Link>
             <Link href="/maps">
               <Button variant="outline" className="border-xian-gold/30 text-xian-gold hover:bg-xian-gold/10">
-                <Map className="mr-2 h-4 w-4" />
+                <MapIcon className="mr-2 h-4 w-4" />
                 下载世界地图
               </Button>
             </Link>
@@ -119,7 +120,7 @@ export default function HomePage() {
             <Card className="xian-card h-full bg-card/80 hover:bg-accent/50 transition-all duration-300 hover:-translate-y-1">
               <CardContent className="p-6 flex flex-col items-center text-center gap-3">
                 <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-xian-cyan/20 to-xian-purple/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Map className="h-7 w-7 text-xian-cyan" />
+                  <MapIcon className="h-7 w-7 text-xian-cyan" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground">世界地图下载</h3>
                 <p className="text-sm text-muted-foreground">
@@ -245,15 +246,8 @@ export default function HomePage() {
                   <Card className="xian-card bg-card/80 hover:bg-accent/50 transition-all duration-300 hover:-translate-y-0.5">
                     <CardContent className="p-4">
                       {/* 预览图 */}
-                      <div className="aspect-video rounded-md bg-gradient-to-br from-xian-deep to-xian-purple/20 flex items-center justify-center mb-3 overflow-hidden relative">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={map.previewUrl}
-                          alt={map.title}
-                          className="absolute inset-0 w-full h-full object-cover rounded-md"
-                          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                        />
-                        <Map className="h-10 w-10 text-xian-cyan/30 map-placeholder-icon" />
+                      <div className="mb-3">
+                        <MapCardImage src={map.previewUrl} alt={map.title} variant="compact" />
                       </div>
                       <h4 className="text-sm font-semibold text-foreground mb-1 line-clamp-1">
                         {map.title}

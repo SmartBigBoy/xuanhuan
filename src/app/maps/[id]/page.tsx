@@ -2,10 +2,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
   ArrowLeft,
-  Map,
+  MapIcon,
   Download,
   Info,
-  Eye,
   HardDrive,
   Maximize,
   FileImage,
@@ -18,6 +17,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { getMapById } from '@/data/maps';
+import { MapPreviewImage } from '@/components/map-preview-image';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -77,27 +77,7 @@ export default async function MapDetailPage({ params }: Props) {
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
         <Card className="xian-card bg-card/80 overflow-hidden">
           <CardContent className="p-4">
-            <div className="aspect-[16/10] rounded-md bg-gradient-to-br from-xian-deep via-xian-purple/10 to-xian-cyan/10 flex items-center justify-center relative overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={mapData.previewUrl}
-                alt={mapData.title}
-                className="absolute inset-0 w-full h-full object-contain rounded-md"
-                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-              />
-              <Map className="h-20 w-20 text-xian-cyan/15 map-placeholder-icon" />
-              <div className="absolute bottom-4 right-4">
-                <Badge className="bg-black/60 text-white border-none text-xs">
-                  <Eye className="h-3 w-3 mr-1" />
-                  地图预览
-                </Badge>
-              </div>
-              <div className="absolute top-4 left-4">
-                <Badge className="bg-black/60 text-white border-none text-xs">
-                  {mapData.resolution}
-                </Badge>
-              </div>
-            </div>
+            <MapPreviewImage src={mapData.previewUrl} alt={mapData.title} resolution={mapData.resolution} />
           </CardContent>
         </Card>
       </section>
@@ -206,7 +186,7 @@ export default async function MapDetailPage({ params }: Props) {
         <Card className="xian-card bg-card/80">
           <CardHeader>
             <CardTitle className="text-lg font-serif text-xian-gold flex items-center gap-2">
-              <Map className="h-5 w-5" />
+              <MapIcon className="h-5 w-5" />
               补充解析
             </CardTitle>
           </CardHeader>

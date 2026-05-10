@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import { useState, useMemo } from 'react';
-import { Map, Download, Filter, ChevronRight, Eye } from 'lucide-react';
+import { Download, Filter, ChevronRight, Eye, MapIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { worldMaps, mapTypes } from '@/data/maps';
 import { novels } from '@/data/novels';
+import { MapCardImage } from '@/components/map-card-image';
 
 export default function MapsPage() {
   const [selectedNovel, setSelectedNovel] = useState<string>('all');
@@ -37,7 +38,7 @@ export default function MapsPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-xian-cyan/8 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-xian-cyan/20 bg-xian-cyan/5 mb-4">
-            <Map className="h-4 w-4 text-xian-cyan" />
+            <MapIcon className="h-4 w-4 text-xian-cyan" />
             <span className="text-sm text-xian-cyan">地图资源</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold font-serif text-xian-gold xian-text-glow mb-3">
@@ -139,7 +140,7 @@ export default function MapsPage() {
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
         {filteredMaps.length === 0 ? (
           <div className="text-center py-16">
-            <Map className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+            <MapIcon className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
             <p className="text-muted-foreground">暂无符合条件的地图资源</p>
           </div>
         ) : (
@@ -149,21 +150,8 @@ export default function MapsPage() {
                 <Card className="xian-card h-full bg-card/80 hover:bg-accent/50 transition-all duration-300 hover:-translate-y-0.5">
                   <CardContent className="p-4">
                     {/* 预览图 */}
-                    <div className="aspect-video rounded-md bg-gradient-to-br from-xian-deep to-xian-cyan/10 flex items-center justify-center mb-3 overflow-hidden relative">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={map.previewUrl}
-                        alt={map.title}
-                        className="absolute inset-0 w-full h-full object-cover rounded-md"
-                        onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                      />
-                      <Map className="h-10 w-10 text-xian-cyan/20 map-placeholder-icon" />
-                      <div className="absolute bottom-2 right-2">
-                        <Badge className="text-[10px] bg-black/50 text-white border-none">
-                          <Eye className="h-3 w-3 mr-1" />
-                          预览
-                        </Badge>
-                      </div>
+                    <div className="mb-3">
+                      <MapCardImage src={map.previewUrl} alt={map.title} />
                     </div>
 
                     <h4 className="text-sm font-semibold text-foreground mb-1 line-clamp-2 min-h-[2.5rem]">
