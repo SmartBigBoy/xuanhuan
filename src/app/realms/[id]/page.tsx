@@ -79,11 +79,13 @@ export default async function RealmDetailPage({ params }: Props) {
           <div className="flex items-start gap-6">
             {/* 封面 */}
             <div className="hidden sm:flex h-32 w-20 rounded-lg overflow-hidden flex-shrink-0 bg-gradient-to-br from-xian-purple/30 to-xian-gold/20">
-              <img
-                src={novel.cover}
-                alt={novel.title}
-                className="h-full w-full object-cover"
-              />
+              {novel.cover ? (
+                <img src={novel.cover} alt={novel.title} className="h-full w-full object-cover" />
+              ) : (
+                <div className="h-full w-full flex items-center justify-center">
+                  <BookOpen className="h-10 w-10 text-xian-gold/40" />
+                </div>
+              )}
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-2">

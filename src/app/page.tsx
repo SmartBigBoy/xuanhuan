@@ -189,12 +189,13 @@ export default function HomePage() {
                     <div className="flex items-start gap-4">
                       {/* 封面 */}
                       <div className="h-20 w-14 rounded-md overflow-hidden flex-shrink-0 bg-gradient-to-br from-xian-purple/30 to-xian-gold/20">
-                        <img
-                          src={novel.cover}
-                          alt={novel.title}
-                          className="h-full w-full object-cover"
-                          loading="lazy"
-                        />
+                        {novel.cover ? (
+                          <img src={novel.cover} alt={novel.title} className="h-full w-full object-cover" loading="lazy" />
+                        ) : (
+                          <div className="h-full w-full flex items-center justify-center">
+                            <BookOpen className="h-6 w-6 text-xian-gold/40" />
+                          </div>
+                        )}
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
