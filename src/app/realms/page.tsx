@@ -72,8 +72,13 @@ export default function RealmsPage() {
                           <CardContent className="p-5">
                             <div className="flex items-start gap-4">
                               {/* 封面 */}
-                              <div className="h-24 w-16 rounded-md bg-gradient-to-br from-xian-purple/30 to-xian-gold/20 flex items-center justify-center flex-shrink-0">
-                                <BookOpen className="h-7 w-7 text-xian-gold/50" />
+                              <div className="h-24 w-16 rounded-md overflow-hidden flex-shrink-0 bg-gradient-to-br from-xian-purple/30 to-xian-gold/20">
+                                <img
+                                  src={novel.cover}
+                                  alt={novel.title}
+                                  className="h-full w-full object-cover"
+                                  loading="lazy"
+                                />
                               </div>
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-1">

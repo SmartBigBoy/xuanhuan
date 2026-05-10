@@ -28,7 +28,7 @@ export const novels: Novel[] = [
     id: 'rmjz',
     title: '凡人修仙传',
     author: '忘语',
-    cover: '/covers/fanren.jpg',
+    cover: '/novels/rmjz-cover.png',
     category: '经典修仙',
     description:
       '一个普通山村少年韩立，偶然间进入当地江湖小门派，成为了一名记名弟子。凭借自身努力和合理运用各种际遇，逐步走上仙途，在修仙世界中艰苦修炼，最终得道成仙。',

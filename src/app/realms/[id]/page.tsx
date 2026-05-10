@@ -77,9 +77,13 @@ export default async function RealmDetailPage({ params }: Props) {
             返回境界大全
           </Link>
           <div className="flex items-start gap-6">
-            {/* 封面占位 */}
-            <div className="hidden sm:flex h-32 w-20 rounded-lg bg-gradient-to-br from-xian-purple/30 to-xian-gold/20 flex-shrink-0 items-center justify-center">
-              <BookOpen className="h-10 w-10 text-xian-gold/40" />
+            {/* 封面 */}
+            <div className="hidden sm:flex h-32 w-20 rounded-lg overflow-hidden flex-shrink-0 bg-gradient-to-br from-xian-purple/30 to-xian-gold/20">
+              <img
+                src={novel.cover}
+                alt={novel.title}
+                className="h-full w-full object-cover"
+              />
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-2">
