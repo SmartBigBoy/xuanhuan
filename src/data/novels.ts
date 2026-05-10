@@ -72,7 +72,7 @@ export const novels: Novel[] = [
     id: 'xiuxian-bantu',
     title: '修仙狂徒',
     author: '王小蛮',
-    cover: '',
+    cover: "/novels/xiuxian-bantu.jpg",
     category: '经典修仙',
     description:
       '街头混混穿越修仙界，以市井智慧闯荡仙途，一步步从底层爬向巅峰，成为令诸天颤抖的修仙狂徒。',
@@ -86,7 +86,7 @@ export const novels: Novel[] = [
     id: 'qiangshang-xiannv',
     title: '百炼成仙',
     author: '幻雨',
-    cover: '',
+    cover: "/novels/qiangshang-xiannv.jpg",
     category: '经典修仙',
     description:
       '少年林轩没有显赫的身世，没有惊人的天赋，唯有百炼之心。从散修起步，一步一个脚印，百炼终成仙。',
@@ -100,7 +100,7 @@ export const novels: Novel[] = [
     id: 'modao',
     title: '魔天记',
     author: '忘语',
-    cover: '',
+    cover: "/novels/modao.jpg",
     category: '经典修仙',
     description:
       '凶岛上成长的少年柳鸣，被卷入正魔两道的纷争，在九死一生中不断突破，最终揭开身世之谜与惊天阴谋。',
@@ -114,7 +114,7 @@ export const novels: Novel[] = [
     id: 'zhuxian-jue',
     title: '紫府仙缘',
     author: '百里玺',
-    cover: '',
+    cover: "/novels/zhuxian-jue.jpg",
     category: '经典修仙',
     description:
       '少年叶秦从采药学徒起步，意外获得紫府空间，踏入修仙世界，在种种险境中不断成长，追寻仙道真谛。',
@@ -128,7 +128,7 @@ export const novels: Novel[] = [
     id: 'xiandao-qiu',
     title: '仙道求索',
     author: '虫豸',
-    cover: '',
+    cover: "/novels/xiandao-qiu.svg",
     category: '经典修仙',
     description:
       '在仙道崩坏的世界中，一个少年执着求索，寻找失落的仙道传承，在残破的修仙体系中开辟新的道路。',
@@ -142,7 +142,7 @@ export const novels: Novel[] = [
     id: 'xiuxian-wenlu',
     title: '修真聊天群',
     author: '圣骑士的传说',
-    cover: '',
+    cover: "/novels/xiuxian-wenlu.svg",
     category: '经典修仙',
     description:
       '宋书航意外加入一个修真者聊天群，从此走上修仙之路。轻松搞笑的修仙日常，一群可爱道友的奇遇故事。',
@@ -156,7 +156,7 @@ export const novels: Novel[] = [
     id: 'tian-yun',
     title: '天运',
     author: '叨狼',
-    cover: '',
+    cover: "/novels/tian-yun.svg",
     category: '经典修仙',
     description:
       '天地有运势，修仙争天命。少年得天运之助，在修仙大世中崛起，争渡仙途彼岸。',
@@ -170,7 +170,7 @@ export const novels: Novel[] = [
     id: 'zuo-you',
     title: '坐忘长生',
     author: '小坐',
-    cover: '',
+    cover: "/novels/zuo-you.svg",
     category: '经典修仙',
     description:
       '一个体弱多病的少年，偶得坐忘功法，在乱世中修行，从凡俗走向长生，体悟坐忘之道。',
@@ -184,7 +184,7 @@ export const novels: Novel[] = [
     id: 'ta-gu-xiuxian',
     title: '踏古修仙',
     author: '无极',
-    cover: '',
+    cover: "/novels/ta-gu-xiuxian.svg",
     category: '经典修仙',
     description:
       '踏遍古迹，追寻上古修仙者的足迹，在一个个远古遗迹中获得传承，走出一条独特的修仙之路。',
@@ -198,7 +198,7 @@ export const novels: Novel[] = [
     id: 'lingyu-xiuxian',
     title: '灵域',
     author: '逆苍天',
-    cover: '',
+    cover: "/novels/lingyu-xiuxian.svg",
     category: '经典修仙',
     description:
       '凌尘自小被逐出家族，带着神秘血脉踏上修炼之路，在灵域大陆上寻找身世真相，最终重振家族荣光。',
@@ -212,7 +212,7 @@ export const novels: Novel[] = [
     id: 'da-sheng',
     title: '大道争锋',
     author: '误道者',
-    cover: '',
+    cover: "/novels/da-sheng.svg",
     category: '经典修仙',
     description:
       '张衍出身寒微，凭借一卷残缺剑经入赘玄门，在争与不争之间悟道，以剑鸣之资争锋大道。',
@@ -226,7 +226,7 @@ export const novels: Novel[] = [
     id: 'yongye',
     title: '永夜君王',
     author: '烟雨江南',
-    cover: '',
+    cover: "/novels/yongye.svg",
     category: '经典修仙',
     description:
       '千夜自永夜中走出，身怀黎明与黑暗双重血脉，在帝国与黑暗种族的夹缝中崛起，书写永夜传奇。',
@@ -240,7 +240,7 @@ export const novels: Novel[] = [
     id: 'yuan-heng',
     title: '元衡',
     author: '静夜寄思',
-    cover: '',
+    cover: "/novels/yuan-heng.svg",
     category: '经典修仙',
     description:
       '从一介凡人到万界至尊，李元衡以坚韧意志与超凡悟性，在修仙世界中不断突破，成就元衡大道。',
@@ -254,7 +254,7 @@ export const novels: Novel[] = [
     id: 'moye',
     title: '魔狱',
     author: '造化斋主',
-    cover: '',
+    cover: "/novels/moye.svg",
     category: '经典修仙',
     description:
       '一狱镇万魔。少年误入魔狱，获得上古魔尊传承，在正道与魔道之间游走，最终成为魔狱之主。',
@@ -268,7 +268,7 @@ export const novels: Novel[] = [
     id: 'tai-gu',
     title: '太古神帝',
     author: '随风',
-    cover: '',
+    cover: "/novels/tai-gu.svg",
     category: '经典修仙',
     description:
       '太古时代，诸神争霸。少年重生归来，以太古神帝之姿，重走登天之路，再临诸天之巅。',
@@ -282,7 +282,7 @@ export const novels: Novel[] = [
     id: 'xu-ming',
     title: '虚天鼎',
     author: '中二少年',
-    cover: '',
+    cover: "/novels/xu-ming.svg",
     category: '经典修仙',
     description:
       '一座虚天鼎，容纳天地造化。少年偶得此宝，从中获得无穷机缘，踏上了通往天界的修仙之路。',
@@ -296,7 +296,7 @@ export const novels: Novel[] = [
     id: 'jiuxiao',
     title: '九霄神王',
     author: '风轻扬',
-    cover: '',
+    cover: "/novels/jiuxiao.svg",
     category: '经典修仙',
     description:
       '九霄之上，神王降临。少年自微末中崛起，踏破九重天阙，成就万古不朽的神王之位。',
@@ -382,7 +382,7 @@ export const novels: Novel[] = [
     id: 'shen-mu',
     title: '神墓',
     author: '辰东',
-    cover: '',
+    cover: "/novels/shen-mu.svg",
     category: '仙侠玄幻',
     description:
       '一个死去万年的青年从神墓中复活，追寻前世的记忆与爱人，揭开一个又一个惊天之秘，独战诸天神魔。',
@@ -396,7 +396,7 @@ export const novels: Novel[] = [
     id: 'chang-sheng-jie',
     title: '长生界',
     author: '辰东',
-    cover: '',
+    cover: "/novels/chang-sheng-jie.svg",
     category: '仙侠玄幻',
     description:
       '世间可有长生？萧晨误入长生界，在这里诸天万界交汇，远古神魔并存，他寻找着长生不死的真相。',
@@ -410,7 +410,7 @@ export const novels: Novel[] = [
     id: 'qiu-tian',
     title: '求魔',
     author: '耳根',
-    cover: '',
+    cover: "/novels/qiu-tian.svg",
     category: '仙侠玄幻',
     description:
       '魔前一叩三千年，回首凡尘不做仙。苏铭以蛮族之身踏上修仙路，在命运的捉弄中求索魔之真谛。',
@@ -424,7 +424,7 @@ export const novels: Novel[] = [
     id: 'wo-yu-feng-tian',
     title: '我欲封天',
     author: '耳根',
-    cover: '',
+    cover: "/novels/wo-yu-feng-tian.svg",
     category: '仙侠玄幻',
     description:
       '我若要有，天不可无；我若要无，天不可有。孟浩从书生踏上修仙路，以封天之志证道苍穹。',
@@ -438,7 +438,7 @@ export const novels: Novel[] = [
     id: 'san-cun-ren-jian',
     title: '三寸人间',
     author: '耳根',
-    cover: '',
+    cover: "/novels/san-cun-ren-jian.svg",
     category: '仙侠玄幻',
     description:
       '星空之下，三寸人间。王宝乐从底层修炼者做起，在浩瀚星空中追逐不朽，体悟修仙与人生的真谛。',
@@ -452,7 +452,7 @@ export const novels: Novel[] = [
     id: 'tian-guan-ci-fu',
     title: '天官赐福',
     author: '墨香铜臭',
-    cover: '',
+    cover: "/novels/tian-guan-ci-fu.svg",
     category: '仙侠玄幻',
     description:
       '仙乐太子谢怜三度飞升，八百年的沉浮让他看尽神界百态。花城八百年的等待，终换来与殿下的重逢。',
@@ -466,7 +466,7 @@ export const novels: Novel[] = [
     id: 'mo-dao-zu-shi',
     title: '魔道祖师',
     author: '墨香铜臭',
-    cover: '',
+    cover: "/novels/mo-dao-zu-shi.svg",
     category: '仙侠玄幻',
     description:
       '前世的夷陵老祖魏无羡，万人唾骂，声名狼藉。重生归来，与含光君蓝忘机携手，揭开一桩桩谜案。',
@@ -480,7 +480,7 @@ export const novels: Novel[] = [
     id: 'dou-luo-da-lu',
     title: '斗罗大陆',
     author: '唐家三少',
-    cover: '',
+    cover: "/novels/dou-luo-da-lu.svg",
     category: '仙侠玄幻',
     description:
       '唐三穿越到斗罗大陆，从圣魂村出发，一步步修炼武魂，最终成就海神与修罗双神之位，建立唐门。',
@@ -494,7 +494,7 @@ export const novels: Novel[] = [
     id: 'dou-luo-da-lu-2',
     title: '斗罗大陆II绝世唐门',
     author: '唐家三少',
-    cover: '',
+    cover: "/novels/dou-luo-da-lu-2.svg",
     category: '仙侠玄幻',
     description:
       '万年后的斗罗大陆，唐门式微。霍雨浩从星斗大森林走出，以灵眼武魂崛起，重振唐门辉煌。',
@@ -508,7 +508,7 @@ export const novels: Novel[] = [
     id: 'dou-luo-3',
     title: '斗罗大陆III龙王传说',
     author: '唐家三少',
-    cover: '',
+    cover: "/novels/dou-luo-3.svg",
     category: '仙侠玄幻',
     description:
       '斗罗大陆万年后，魂导科技高度发达。唐舞麟从锻造学徒起步，觉醒蓝银皇武魂，守护大陆和平。',
@@ -522,7 +522,7 @@ export const novels: Novel[] = [
     id: 'tian-dou',
     title: '天斗',
     author: '战神宇哥',
-    cover: '',
+    cover: "/novels/tian-dou.svg",
     category: '仙侠玄幻',
     description:
       '少年自微末崛起，以不屈意志在天穹之下争锋，一步步走向天斗之巅，俯瞰万界苍生。',
@@ -536,7 +536,7 @@ export const novels: Novel[] = [
     id: 'tai-chu',
     title: '太初',
     author: '高楼大厦',
-    cover: '',
+    cover: "/novels/tai-chu.svg",
     category: '仙侠玄幻',
     description:
       '天地初开，万物太初。少年从一个边陲小镇出发，在广袤的修炼世界中寻找太初之秘。',
@@ -550,7 +550,7 @@ export const novels: Novel[] = [
     id: 'di-guo',
     title: '帝尊',
     author: '宅猪',
-    cover: '',
+    cover: "/novels/di-guo.svg",
     category: '仙侠玄幻',
     description:
       '少年江南误入仙人遗迹，获得帝尊传承，从微末中崛起，一步步证道帝尊，君临天下。',
@@ -564,7 +564,7 @@ export const novels: Novel[] = [
     id: 'ren-huang',
     title: '人皇',
     author: '十步行',
-    cover: '',
+    cover: "/novels/ren-huang.svg",
     category: '仙侠玄幻',
     description:
       '人族式微，百族虎视。少年萧易以人族之身崛起于微末，扛起人族大旗，最终登临人皇之位。',
@@ -578,7 +578,7 @@ export const novels: Novel[] = [
     id: 'mo-zun',
     title: '魔尊',
     author: '九当',
-    cover: '',
+    cover: "/novels/mo-zun.svg",
     category: '仙侠玄幻',
     description:
       '正道伪善，魔道真性。少年以魔入道，从最底层的魔修做起，一步步走上魔尊之位，颠覆正魔秩序。',
@@ -592,7 +592,7 @@ export const novels: Novel[] = [
     id: 'xian-mu',
     title: '仙牧',
     author: '野合',
-    cover: '',
+    cover: "/novels/xian-mu.svg",
     category: '仙侠玄幻',
     description:
       '以牧道入仙途，少年从放牧灵兽开始，开创独特的牧仙之路，在仙侠世界中走出一条别样修行道。',
@@ -606,7 +606,7 @@ export const novels: Novel[] = [
     id: 'dao-zun',
     title: '道尊',
     author: '唐三',
-    cover: '',
+    cover: "/novels/dao-zun.svg",
     category: '仙侠玄幻',
     description:
       '道之至尊，万法归一。少年悟性超凡，以道入修，在诸天万界中证道成尊，开创道法新时代。',
@@ -620,7 +620,7 @@ export const novels: Novel[] = [
     id: 'xiandai-xiuxian',
     title: '修仙传',
     author: '归隐',
-    cover: '',
+    cover: "/novels/xiandai-xiuxian.svg",
     category: '仙侠玄幻',
     description:
       '上古修仙界的兴衰史，从混沌初开到仙界崩塌，一部恢弘的修仙史诗，记录修仙文明的起落。',
@@ -634,7 +634,7 @@ export const novels: Novel[] = [
     id: 'tian-chen',
     title: '天辰',
     author: '火星引力',
-    cover: '',
+    cover: "/novels/tian-chen.svg",
     category: '仙侠玄幻',
     description:
       '天辰大陆，诸强并立。少年叶天辰身怀绝脉，却以惊天悟性逆天改命，踏上天辰之巅。',
@@ -648,7 +648,7 @@ export const novels: Novel[] = [
     id: 'cang-qiong',
     title: '苍穹榜',
     author: '天蚕土豆',
-    cover: '',
+    cover: "/novels/cang-qiong.svg",
     category: '仙侠玄幻',
     description:
       '大千世界苍穹之上，有一榜定乾坤。牧尘从北灵境走出，踏上苍穹之巅，留名苍穹榜。',
@@ -662,7 +662,7 @@ export const novels: Novel[] = [
     id: 'xue-hong',
     title: '血红',
     author: '升龙道',
-    cover: '',
+    cover: "/novels/xue-hong.svg",
     category: '仙侠玄幻',
     description:
       '以血为引，以道为修。少年在血与火中成长，走出一条血色修仙路，令诸天颤栗。',
@@ -676,7 +676,7 @@ export const novels: Novel[] = [
     id: 'ling-jian-zun',
     title: '灵剑尊',
     author: '云天空',
-    cover: '',
+    cover: "/novels/ling-jian-zun.svg",
     category: '仙侠玄幻',
     description:
       '少年楚行云前世遭人暗算，重生归来以灵剑为道，在万千剑道中走出独属于自己的至尊剑路。',
@@ -690,7 +690,7 @@ export const novels: Novel[] = [
     id: 'xian-wang',
     title: '仙王',
     author: '凤初',
-    cover: '',
+    cover: "/novels/xian-wang.svg",
     category: '仙侠玄幻',
     description:
       '修仙之路，逆天而行。少年自废墟中崛起，以无上修为震慑诸天，成就仙王之位。',
@@ -704,7 +704,7 @@ export const novels: Novel[] = [
     id: 'yu-zun',
     title: '玉尊',
     author: '翎羽',
-    cover: '',
+    cover: "/novels/yu-zun.svg",
     category: '仙侠玄幻',
     description:
       '玉石之中蕴含天地法则，少年以玉入道，开辟玉修一脉，从凡俗走向至尊。',
@@ -718,7 +718,7 @@ export const novels: Novel[] = [
     id: 'qian-gu',
     title: '千古',
     author: '梦入神机',
-    cover: '',
+    cover: "/novels/qian-gu.svg",
     category: '仙侠玄幻',
     description:
       '千古风流，万世争锋。少年在千古长河中逆流而上，寻找失落的道统，重塑万古秩序。',
@@ -748,7 +748,7 @@ export const novels: Novel[] = [
     id: 'chao-shen',
     title: '超神机械师',
     author: '齐佩甲',
-    cover: '',
+    cover: "/novels/chao-shen.svg",
     category: '都市修仙',
     description:
       '韩萧穿越到星际游戏世界成为NPC，以机械师的身份在星海中崛起，从棋子变成棋手，掌控宇宙格局。',
@@ -762,7 +762,7 @@ export const novels: Novel[] = [
     id: 'zui-qiang',
     title: '最强反套路系统',
     author: '太上布衣',
-    cover: '',
+    cover: "/novels/zui-qiang.svg",
     category: '都市修仙',
     description:
       '徐缺带着系统穿越异界，以最强反套路闯荡修仙世界，各种骚操作令人捧腹，却总能化险为夷。',
@@ -776,7 +776,7 @@ export const novels: Novel[] = [
     id: 'zhong-sheng',
     title: '重生之都市修仙',
     author: '十里剑神',
-    cover: '',
+    cover: "/novels/zhong-sheng.svg",
     category: '都市修仙',
     description:
       '修仙大能重生回都市少年时代，以仙人之姿横扫都市，重新踏上巅峰之路。',
@@ -790,7 +790,7 @@ export const novels: Novel[] = [
     id: 'xiuxian-gao-shou',
     title: '修真高手的.lifecycle',
     author: '小彭同学',
-    cover: '',
+    cover: "/novels/xiuxian-gao-shou.svg",
     category: '都市修仙',
     description:
       '都市中的修真高手，在凡俗世界中修行，以修真者的能力处理都市中的种种危机。',
@@ -804,7 +804,7 @@ export const novels: Novel[] = [
     id: 'guo-shi',
     title: '国士',
     author: '并州来人',
-    cover: '',
+    cover: "/novels/guo-shi.svg",
     category: '都市修仙',
     description:
       '修仙者在现代都市中隐匿修行，当国家危难之际，他挺身而出，以修仙之力守护家国。',
@@ -818,7 +818,7 @@ export const novels: Novel[] = [
     id: 'long-wang',
     title: '龙王殿',
     author: '大烟缸',
-    cover: '',
+    cover: "/novels/long-wang.svg",
     category: '都市修仙',
     description:
       '修仙者叶辰隐姓埋名入赘为婿，却遭丈母娘百般刁难。龙王殿主现身都市，一怒令天下变色。',
@@ -832,7 +832,7 @@ export const novels: Novel[] = [
     id: 'xian-di',
     title: '仙帝归来',
     author: '风轻扬',
-    cover: '',
+    cover: "/novels/xian-di.svg",
     category: '都市修仙',
     description:
       '仙帝陨落重生回到都市，带着前世记忆与修为，从都市重新崛起，弥补前世遗憾。',
@@ -846,7 +846,7 @@ export const novels: Novel[] = [
     id: 'zhi-zun',
     title: '都市之至尊',
     author: '未知',
-    cover: '',
+    cover: "/novels/zhi-zun.svg",
     category: '都市修仙',
     description:
       '至尊强者回归都市，在都市中建立属于自己的势力，以无敌之姿横扫一切阻碍。',
@@ -860,7 +860,7 @@ export const novels: Novel[] = [
     id: 'chuan-yue-xiuxian',
     title: '我有一座恐怖屋',
     author: '我会修空调',
-    cover: '',
+    cover: "/novels/chuan-yue-xiuxian.svg",
     category: '都市修仙',
     description:
       '陈歌继承了父母留下的恐怖屋，在手机app的指引下，走入一个个恐怖场景，收集鬼怪员工。',
@@ -874,7 +874,7 @@ export const novels: Novel[] = [
     id: 'yi-nian-jiu-tian',
     title: '一剑独尊',
     author: '青鸾峰上',
-    cover: '',
+    cover: "/novels/yi-nian-jiu-tian.svg",
     category: '都市修仙',
     description:
       '叶玄以剑道崛起于微末，一路披荆斩棘，剑压诸天，以一剑之力独尊万界。',
@@ -888,7 +888,7 @@ export const novels: Novel[] = [
     id: 'wo-de-shifu',
     title: '我的师父万界最强',
     author: '一叶苍天',
-    cover: '',
+    cover: "/novels/wo-de-shifu.svg",
     category: '都市修仙',
     description:
       '少年偶然间获得万界最强系统，师从诸天大能，在万界中修行，成长为最强存在。',
@@ -902,7 +902,7 @@ export const novels: Novel[] = [
     id: 'dushi-zhiwang',
     title: '都市之王',
     author: '空神',
-    cover: '',
+    cover: "/novels/dushi-zhiwang.svg",
     category: '都市修仙',
     description:
       '隐世修仙者出山入都市，在凡俗中建立商业帝国，同时突破修行瓶颈，成就都市之王。',
@@ -916,7 +916,7 @@ export const novels: Novel[] = [
     id: 'xiuxian-xuesheng',
     title: '修仙归来当学霸',
     author: '三寸寒光',
-    cover: '',
+    cover: "/novels/xiuxian-xuesheng.svg",
     category: '都市修仙',
     description:
       '修仙界归来，却发现自己是学渣。以修仙者的能力逆袭学业，在校园中开启另类修仙路。',
@@ -930,7 +930,7 @@ export const novels: Novel[] = [
     id: 'quandan-xiuxian',
     title: '全球高武',
     author: '老鹰吃小鸡',
-    cover: '',
+    cover: "/novels/quandan-xiuxian.svg",
     category: '都市修仙',
     description:
       '全球进入高武时代，方平从普通高三学生起步，在全民修炼的浪潮中崛起，守护地球文明。',
@@ -944,7 +944,7 @@ export const novels: Novel[] = [
     id: 'ta-xing',
     title: '踏星',
     author: '随散飘风',
-    cover: '',
+    cover: "/novels/ta-xing.svg",
     category: '都市修仙',
     description:
       '少年陆隐从地球出发，踏入星际时代，在宇宙各大势力间纵横捭阖，踏上星空之巅。',
@@ -958,7 +958,7 @@ export const novels: Novel[] = [
     id: 'xianjie-lair',
     title: '仙界归来',
     author: '莫默',
-    cover: '',
+    cover: "/novels/xianjie-lair.svg",
     category: '都市修仙',
     description:
       '仙界千年修炼归来，发现人间只过了数年。带着仙界记忆和修为，重新融入都市生活。',
@@ -972,7 +972,7 @@ export const novels: Novel[] = [
     id: 'dushi-xianzun',
     title: '都市仙尊',
     author: '洛书',
-    cover: '',
+    cover: "/novels/dushi-xianzun.svg",
     category: '都市修仙',
     description:
       '仙尊重生回到都市少年时代，前世被退婚、被欺辱，这一世以仙尊之威改写命运。',
@@ -986,7 +986,7 @@ export const novels: Novel[] = [
     id: 'chuanyue-xiuxian2',
     title: '最强修真学生',
     author: '天际的云',
-    cover: '',
+    cover: "/novels/chuanyue-xiuxian2.svg",
     category: '都市修仙',
     description:
       '修真者重生成为高中生，在校园中修炼，在都市中崛起，以修真之术横扫一切不服。',
@@ -1000,7 +1000,7 @@ export const novels: Novel[] = [
     id: 'xingchen-bian',
     title: '星辰变',
     author: '我吃西红柿',
-    cover: '',
+    cover: "/novels/xingchen-bian.svg",
     category: '都市修仙',
     description:
       '秦羽因丹田先天不足无法修炼内功，却意外获得流星泪，从此走上星辰变之路，从凡人走向鸿蒙掌控者。',
@@ -1030,7 +1030,7 @@ export const novels: Novel[] = [
     id: 'fo-ben',
     title: '佛本是道',
     author: '梦入神机',
-    cover: '',
+    cover: "/novels/fo-ben.svg",
     category: '洪荒封神',
     description:
       '洪荒流开山之作。天数为定，大道无常。截教、阐教、人教三教封神，一棋定天下。',
@@ -1044,7 +1044,7 @@ export const novels: Novel[] = [
     id: 'yang-shen',
     title: '阳神',
     author: '梦入神机',
-    cover: '',
+    cover: "/novels/yang-shen.svg",
     category: '洪荒封神',
     description:
       '武道与神魂双修的世界，洪易以庶子之身崛起，修阳神之道，最终成就至高造化。',
@@ -1058,7 +1058,7 @@ export const novels: Novel[] = [
     id: 'xing-ji',
     title: '星河大帝',
     author: '梦入神机',
-    cover: '',
+    cover: "/novels/xing-ji.svg",
     category: '洪荒封神',
     description:
       '宇宙洪荒，星河万界。江离以人族之身踏入修行，在星河中证道，开创人族新时代。',
@@ -1072,7 +1072,7 @@ export const novels: Novel[] = [
     id: 'yong-sheng',
     title: '永生',
     author: '梦入神机',
-    cover: '',
+    cover: "/novels/yong-sheng.svg",
     category: '洪荒封神',
     description:
       '方寒从卑微的奴仆起步，在天道大势中求永生，一步步从凡人走向永生之门。',
@@ -1086,7 +1086,7 @@ export const novels: Novel[] = [
     id: 'sheng-ji',
     title: '圣迹',
     author: '漫漫步归',
-    cover: '',
+    cover: "/novels/sheng-ji.svg",
     category: '洪荒封神',
     description:
       '洪荒初开，圣位未定。少年在洪荒乱世中崛起，争夺圣人位阶，重塑天地秩序。',
@@ -1100,7 +1100,7 @@ export const novels: Novel[] = [
     id: 'hong-huang-xiuxian',
     title: '洪荒之我是妖皇',
     author: '楚子',
-    cover: '',
+    cover: "/novels/hong-huang-xiuxian.svg",
     category: '洪荒封神',
     description:
       '穿越洪荒成为妖皇帝俊，在巫妖大战的洪流中逆天改命，改写巫妖结局，建立妖族天庭。',
@@ -1114,7 +1114,7 @@ export const novels: Novel[] = [
     id: 'xian-dao-hong-huang',
     title: '洪荒道命',
     author: '云墨月',
-    cover: '',
+    cover: "/novels/xian-dao-hong-huang.svg",
     category: '洪荒封神',
     description:
       '天道轮转，命由谁定？少年在洪荒大劫中逆天改命，探寻天道真相，走出一条道命之路。',
@@ -1128,7 +1128,7 @@ export const novels: Novel[] = [
     id: 'feng-shen-zhi-lu',
     title: '封神之我是纣王',
     author: '暮山紫',
-    cover: '',
+    cover: "/novels/feng-shen-zhi-lu.svg",
     category: '洪荒封神',
     description:
       '穿越成为纣王帝辛，在封神大劫中纵横捭阖，以人皇之威对抗圣人，改写封神结局。',
@@ -1142,7 +1142,7 @@ export const novels: Novel[] = [
     id: 'hong-huang-da-neng',
     title: '洪荒大能',
     author: '易挂',
-    cover: '',
+    cover: "/novels/hong-huang-da-neng.svg",
     category: '洪荒封神',
     description:
       '重生洪荒成为先天大能，在紫霄宫讲道之前布局，争夺鸿蒙紫气，走上成圣之路。',
@@ -1156,7 +1156,7 @@ export const novels: Novel[] = [
     id: 'wu-shang',
     title: '无上',
     author: '雾外江山',
-    cover: '',
+    cover: "/novels/wu-shang.svg",
     category: '洪荒封神',
     description:
       '洪荒万年，大劫将至。少年以无上之资横空出世，在劫难中证道，成就无上至尊。',
@@ -1170,7 +1170,7 @@ export const novels: Novel[] = [
     id: 'xian-yi',
     title: '仙逆洪荒',
     author: '无名',
-    cover: '',
+    cover: "/novels/xian-yi.svg",
     category: '洪荒封神',
     description:
       '在洪荒世界中逆天而行，不拜圣人，不求天道，以逆仙之姿打破洪荒格局，走出一条独属于自己的道。',
@@ -1184,7 +1184,7 @@ export const novels: Novel[] = [
     id: 'tai-shang',
     title: '太上执符',
     author: '吾为清风',
-    cover: '',
+    cover: "/novels/tai-shang.svg",
     category: '洪荒封神',
     description:
       '重生成太上老子的师弟，在洪荒中以符道证道，凭借前世记忆纵横紫霄宫，执掌天地符诏。',
@@ -1198,7 +1198,7 @@ export const novels: Novel[] = [
     id: 'hong-huang-zhi-zun',
     title: '洪荒之至尊',
     author: '龙行',
-    cover: '',
+    cover: "/novels/hong-huang-zhi-zun.svg",
     category: '洪荒封神',
     description:
       '洪荒之初，万族争锋。少年以先天灵根之身降世，在万族大战中崛起，成就洪荒至尊。',
@@ -1212,7 +1212,7 @@ export const novels: Novel[] = [
     id: 'dao-zu',
     title: '道祖',
     author: '烟雨道人',
-    cover: '',
+    cover: "/novels/dao-zu.svg",
     category: '洪荒封神',
     description:
       '鸿钧之后，谁可为道祖？少年在洪荒末劫中悟道成祖，开辟新的道统，成为新一代道祖。',
@@ -1242,7 +1242,7 @@ export const novels: Novel[] = [
     id: 'dou-po',
     title: '斗破苍穹',
     author: '天蚕土豆',
-    cover: '',
+    cover: "/novels/dou-po.svg",
     category: '异界大陆',
     description:
       '三十年河东三十年河西，莫欺少年穷！萧炎从天才跌落为废柴，却在药老的帮助下重新崛起，焚尽苍穹。',
@@ -1256,7 +1256,7 @@ export const novels: Novel[] = [
     id: 'wu-dong',
     title: '武动乾坤',
     author: '天蚕土豆',
-    cover: '',
+    cover: "/novels/wu-dong.svg",
     category: '异界大陆',
     description:
       '林动从青阳镇走出，以祖符之力踏上修炼之途，在异魔与天玄大陆的纷争中武动乾坤。',
@@ -1270,7 +1270,7 @@ export const novels: Novel[] = [
     id: 'pan-long',
     title: '盘龙',
     author: '我吃西红柿',
-    cover: '',
+    cover: "/novels/pan-long.svg",
     category: '异界大陆',
     description:
       '盘龙大陆上，少年林雷在祖屋中找到盘龙戒指，获得大魔导士德林柯沃特的指导，踏上巅峰之路。',
@@ -1284,7 +1284,7 @@ export const novels: Novel[] = [
     id: 'jiu-xing',
     title: '九星霸体诀',
     author: '平凡魔术师',
-    cover: '',
+    cover: "/novels/jiu-xing.svg",
     category: '异界大陆',
     description:
       '龙尘身怀九星霸体诀，从废柴逆袭为天才，在修仙世界中一步步崛起，横扫同辈无敌手。',
@@ -1298,7 +1298,7 @@ export const novels: Novel[] = [
     id: 'xian-wu',
     title: '仙武同修',
     author: '战神宇哥',
-    cover: '',
+    cover: "/novels/xian-wu.svg",
     category: '异界大陆',
     description:
       '少年萧晨以武入道，以武证仙，在仙武双修的道路上走出了前人未曾走过的巅峰之路。',
@@ -1312,7 +1312,7 @@ export const novels: Novel[] = [
     id: 'tian-mang',
     title: '天芒',
     author: '辰东',
-    cover: '',
+    cover: "/novels/tian-mang.svg",
     category: '异界大陆',
     description:
       '天芒大陆，万族争锋。少年自小部族崛起，在天芒大路上逆天修行，最终踏上万族之巅。',
@@ -1326,7 +1326,7 @@ export const novels: Novel[] = [
     id: 'xue-se',
     title: '血色大陆',
     author: '一叶苍天',
-    cover: '',
+    cover: "/novels/xue-se.svg",
     category: '异界大陆',
     description:
       '血色笼罩的大陆，强者为尊。少年从血海中走出，以血色修为称霸大陆，开创血色纪元。',
@@ -1340,7 +1340,7 @@ export const novels: Novel[] = [
     id: 'mo-tian',
     title: '魔天',
     author: '苍天白鹤',
-    cover: '',
+    cover: "/novels/mo-tian.svg",
     category: '异界大陆',
     description:
       '少年秦尘在天魔大陆上崛起，以武道通神，一步步从底层走向巅峰，成为魔天之下第一人。',
@@ -1354,7 +1354,7 @@ export const novels: Novel[] = [
     id: 'jiu-you',
     title: '九幽天帝',
     author: '天岩',
-    cover: '',
+    cover: "/novels/jiu-you.svg",
     category: '异界大陆',
     description:
       '九幽大陆，天帝为尊。少年被族人所害，却意外获得天帝传承，从九幽深处归来，一雪前耻。',
@@ -1368,7 +1368,7 @@ export const novels: Novel[] = [
     id: 'wu-shen',
     title: '武神',
     author: '苍天白鹤',
-    cover: '',
+    cover: "/novels/wu-shen.svg",
     category: '异界大陆',
     description:
       '武道极致，可封神。贺一鸣从边陲小镇出发，以绝世武道天赋崛起，成就武神之名。',
@@ -1382,7 +1382,7 @@ export const novels: Novel[] = [
     id: 'wan-gu',
     title: '万古神帝',
     author: '飞天鱼',
-    cover: '',
+    cover: "/novels/wan-gu.svg",
     category: '异界大陆',
     description:
       '张若尘前世被未婚妻杀害，重生八百年后，以明帝之子的身份重新崛起，追寻万古真相。',
@@ -1396,7 +1396,7 @@ export const novels: Novel[] = [
     id: 'tai-gu-shen-xiang',
     title: '太古神象诀',
     author: '风轻扬',
-    cover: '',
+    cover: "/novels/tai-gu-shen-xiang.svg",
     category: '异界大陆',
     description:
       '少年觉醒太古神象血脉，修炼太古神象诀，以神象之威镇压诸天，成就太古至尊。',
@@ -1410,7 +1410,7 @@ export const novels: Novel[] = [
     id: 'tian-shen',
     title: '天神诀',
     author: '梦入神机',
-    cover: '',
+    cover: "/novels/tian-shen.svg",
     category: '异界大陆',
     description:
       '天神之诀，掌控天地。少年获天神传承，在大陆上纵横无敌，以天神之力重塑秩序。',
@@ -1424,7 +1424,7 @@ export const novels: Novel[] = [
     id: 'hun-jie',
     title: '魂帝觉醒',
     author: '拓跋流云',
-    cover: '',
+    cover: "/novels/hun-jie.svg",
     category: '异界大陆',
     description:
       '少年武魂被夺，却意外觉醒魂帝之力，从此踏上复仇与崛起之路，成就魂帝之名。',
