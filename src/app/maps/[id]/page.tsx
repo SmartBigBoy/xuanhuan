@@ -77,8 +77,15 @@ export default async function MapDetailPage({ params }: Props) {
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
         <Card className="xian-card bg-card/80 overflow-hidden">
           <CardContent className="p-4">
-            <div className="aspect-[16/10] rounded-md bg-gradient-to-br from-xian-deep via-xian-purple/10 to-xian-cyan/10 flex items-center justify-center relative">
-              <Map className="h-20 w-20 text-xian-cyan/15" />
+            <div className="aspect-[16/10] rounded-md bg-gradient-to-br from-xian-deep via-xian-purple/10 to-xian-cyan/10 flex items-center justify-center relative overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={mapData.previewUrl}
+                alt={mapData.title}
+                className="absolute inset-0 w-full h-full object-contain rounded-md"
+                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+              />
+              <Map className="h-20 w-20 text-xian-cyan/15 map-placeholder-icon" />
               <div className="absolute bottom-4 right-4">
                 <Badge className="bg-black/60 text-white border-none text-xs">
                   <Eye className="h-3 w-3 mr-1" />

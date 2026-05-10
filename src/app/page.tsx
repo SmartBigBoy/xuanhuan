@@ -244,9 +244,16 @@ export default function HomePage() {
                 <Link key={map.id} href={`/maps/${map.id}`}>
                   <Card className="xian-card bg-card/80 hover:bg-accent/50 transition-all duration-300 hover:-translate-y-0.5">
                     <CardContent className="p-4">
-                      {/* 预览占位 */}
-                      <div className="aspect-video rounded-md bg-gradient-to-br from-xian-deep to-xian-purple/20 flex items-center justify-center mb-3 overflow-hidden">
-                        <Map className="h-10 w-10 text-xian-cyan/30" />
+                      {/* 预览图 */}
+                      <div className="aspect-video rounded-md bg-gradient-to-br from-xian-deep to-xian-purple/20 flex items-center justify-center mb-3 overflow-hidden relative">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={map.previewUrl}
+                          alt={map.title}
+                          className="absolute inset-0 w-full h-full object-cover rounded-md"
+                          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                        />
+                        <Map className="h-10 w-10 text-xian-cyan/30 map-placeholder-icon" />
                       </div>
                       <h4 className="text-sm font-semibold text-foreground mb-1 line-clamp-1">
                         {map.title}

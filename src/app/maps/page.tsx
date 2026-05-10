@@ -148,9 +148,16 @@ export default function MapsPage() {
               <Link key={map.id} href={`/maps/${map.id}`}>
                 <Card className="xian-card h-full bg-card/80 hover:bg-accent/50 transition-all duration-300 hover:-translate-y-0.5">
                   <CardContent className="p-4">
-                    {/* 预览图占位 */}
+                    {/* 预览图 */}
                     <div className="aspect-video rounded-md bg-gradient-to-br from-xian-deep to-xian-cyan/10 flex items-center justify-center mb-3 overflow-hidden relative">
-                      <Map className="h-10 w-10 text-xian-cyan/20" />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={map.previewUrl}
+                        alt={map.title}
+                        className="absolute inset-0 w-full h-full object-cover rounded-md"
+                        onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                      />
+                      <Map className="h-10 w-10 text-xian-cyan/20 map-placeholder-icon" />
                       <div className="absolute bottom-2 right-2">
                         <Badge className="text-[10px] bg-black/50 text-white border-none">
                           <Eye className="h-3 w-3 mr-1" />
