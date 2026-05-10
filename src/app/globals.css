@@ -3,6 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ===================== Tailwind theme tokens ===================== */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -59,7 +60,9 @@
     'Times New Roman', Times, serif;
 }
 
-:root {
+/* ===================== 夜晚主题（默认） ===================== */
+:root,
+[data-theme='night'] {
   --radius: 0.625rem;
   --background: oklch(0.13 0.02 280);
   --foreground: oklch(0.95 0.01 80);
@@ -97,14 +100,101 @@
   --xian-purple: oklch(0.55 0.25 300);
   --xian-deep: oklch(0.20 0.06 280);
   --xian-cyan: oklch(0.72 0.12 200);
+  color-scheme: dark;
 }
 
+/* ===================== 白天主题 ===================== */
+[data-theme='day'] {
+  --radius: 0.625rem;
+  --background: oklch(0.98 0.005 280);
+  --foreground: oklch(0.18 0.03 280);
+  --card: oklch(1.0 0.003 280);
+  --card-foreground: oklch(0.18 0.03 280);
+  --popover: oklch(1.0 0.003 280);
+  --popover-foreground: oklch(0.18 0.03 280);
+  --primary: oklch(0.55 0.2 280);
+  --primary-foreground: oklch(0.98 0.005 280);
+  --secondary: oklch(0.94 0.01 280);
+  --secondary-foreground: oklch(0.22 0.03 280);
+  --muted: oklch(0.94 0.01 280);
+  --muted-foreground: oklch(0.48 0.03 280);
+  --accent: oklch(0.92 0.015 280);
+  --accent-foreground: oklch(0.18 0.03 280);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.88 0.015 280);
+  --input: oklch(0.90 0.015 280);
+  --ring: oklch(0.55 0.2 280);
+  --chart-1: oklch(0.55 0.2 280);
+  --chart-2: oklch(0.50 0.22 300);
+  --chart-3: oklch(0.55 0.15 200);
+  --chart-4: oklch(0.60 0.12 150);
+  --chart-5: oklch(0.65 0.10 50);
+  --sidebar: oklch(0.96 0.008 280);
+  --sidebar-foreground: oklch(0.18 0.03 280);
+  --sidebar-primary: oklch(0.55 0.2 280);
+  --sidebar-primary-foreground: oklch(0.98 0.005 280);
+  --sidebar-accent: oklch(0.92 0.015 280);
+  --sidebar-accent-foreground: oklch(0.18 0.03 280);
+  --sidebar-border: oklch(0.88 0.015 280);
+  --sidebar-ring: oklch(0.55 0.2 280);
+  --xian-gold: oklch(0.52 0.18 55);
+  --xian-amber: oklch(0.50 0.16 45);
+  --xian-purple: oklch(0.45 0.22 300);
+  --xian-deep: oklch(0.93 0.01 280);
+  --xian-cyan: oklch(0.45 0.14 220);
+  color-scheme: light;
+}
+
+/* ===================== 护眼主题 ===================== */
+[data-theme='eye-care'] {
+  --radius: 0.625rem;
+  --background: oklch(0.92 0.02 100);
+  --foreground: oklch(0.22 0.03 80);
+  --card: oklch(0.94 0.018 100);
+  --card-foreground: oklch(0.22 0.03 80);
+  --popover: oklch(0.94 0.018 100);
+  --popover-foreground: oklch(0.22 0.03 80);
+  --primary: oklch(0.50 0.14 60);
+  --primary-foreground: oklch(0.96 0.01 80);
+  --secondary: oklch(0.86 0.025 100);
+  --secondary-foreground: oklch(0.25 0.03 80);
+  --muted: oklch(0.86 0.025 100);
+  --muted-foreground: oklch(0.42 0.03 80);
+  --accent: oklch(0.84 0.03 100);
+  --accent-foreground: oklch(0.22 0.03 80);
+  --destructive: oklch(0.55 0.2 25);
+  --border: oklch(0.80 0.03 100);
+  --input: oklch(0.82 0.03 100);
+  --ring: oklch(0.50 0.14 60);
+  --chart-1: oklch(0.50 0.14 60);
+  --chart-2: oklch(0.45 0.16 35);
+  --chart-3: oklch(0.48 0.10 160);
+  --chart-4: oklch(0.52 0.08 120);
+  --chart-5: oklch(0.55 0.06 50);
+  --sidebar: oklch(0.90 0.02 100);
+  --sidebar-foreground: oklch(0.22 0.03 80);
+  --sidebar-primary: oklch(0.50 0.14 60);
+  --sidebar-primary-foreground: oklch(0.96 0.01 80);
+  --sidebar-accent: oklch(0.86 0.025 100);
+  --sidebar-accent-foreground: oklch(0.22 0.03 80);
+  --sidebar-border: oklch(0.80 0.03 100);
+  --sidebar-ring: oklch(0.50 0.14 60);
+  --xian-gold: oklch(0.48 0.16 55);
+  --xian-amber: oklch(0.45 0.14 40);
+  --xian-purple: oklch(0.42 0.18 300);
+  --xian-deep: oklch(0.88 0.02 100);
+  --xian-cyan: oklch(0.42 0.12 190);
+  color-scheme: light;
+}
+
+/* ===================== Base ===================== */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
 
@@ -112,7 +202,7 @@ body {
   @apply font-sans;
 }
 
-/* 修仙主题装饰 */
+/* ===================== 修仙主题装饰 ===================== */
 .xian-divider {
   height: 1px;
   background: linear-gradient(
@@ -131,9 +221,27 @@ body {
     0 0 40px oklch(0.78 0.15 75 / 0.05);
 }
 
+[data-theme='day'] .xian-glow {
+  box-shadow: 0 0 15px oklch(0.55 0.2 280 / 0.08),
+    0 0 30px oklch(0.55 0.2 280 / 0.04);
+}
+
+[data-theme='eye-care'] .xian-glow {
+  box-shadow: 0 0 15px oklch(0.50 0.14 60 / 0.1),
+    0 0 30px oklch(0.50 0.14 60 / 0.05);
+}
+
 .xian-text-glow {
   text-shadow: 0 0 10px oklch(0.78 0.15 75 / 0.4),
     0 0 20px oklch(0.78 0.15 75 / 0.2);
+}
+
+[data-theme='day'] .xian-text-glow {
+  text-shadow: none;
+}
+
+[data-theme='eye-care'] .xian-text-glow {
+  text-shadow: none;
 }
 
 .xian-card {
@@ -149,9 +257,9 @@ body {
   padding: 1px;
   background: linear-gradient(
     135deg,
-    oklch(0.78 0.15 75 / 0.3),
+    var(--xian-gold) / 0.3,
     transparent 50%,
-    oklch(0.55 0.25 300 / 0.3)
+    var(--xian-purple) / 0.3
   );
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
@@ -160,48 +268,48 @@ body {
 
 .xian-bg-pattern {
   background-image: radial-gradient(
-      oklch(0.78 0.15 75 / 0.03) 1px,
+      var(--xian-gold) / 0.03 1px,
       transparent 1px
     ),
-    radial-gradient(oklch(0.55 0.25 300 / 0.02) 1px, transparent 1px);
+    radial-gradient(var(--xian-purple) / 0.02 1px, transparent 1px);
   background-size: 30px 30px, 50px 50px;
   background-position: 0 0, 25px 25px;
 }
 
-/* 表格样式 */
+/* ===================== 表格 ===================== */
 .xian-table th {
-  background: oklch(0.20 0.04 280);
+  background: var(--muted);
   color: var(--xian-gold);
   font-weight: 600;
 }
 
 .xian-table tr:nth-child(even) {
-  background: oklch(0.16 0.025 280);
+  background: var(--muted) / 0.5;
 }
 
 .xian-table tr:hover {
-  background: oklch(0.22 0.04 280);
+  background: var(--accent);
 }
 
-/* 滚动条样式 */
+/* ===================== 滚动条 ===================== */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: oklch(0.15 0.02 280);
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.35 0.05 280);
+  background: var(--muted-foreground) / 0.3;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.45 0.06 280);
+  background: var(--muted-foreground) / 0.5;
 }
 
-/* Markdown 内容排版 */
+/* ===================== Markdown 排版 ===================== */
 .prose-xian h1,
 .prose-xian h2,
 .prose-xian h3 {
@@ -210,7 +318,7 @@ body {
 }
 
 .prose-xian h2 {
-  border-bottom: 1px solid oklch(0.78 0.15 75 / 0.2);
+  border-bottom: 1px solid var(--xian-gold) / 0.2;
   padding-bottom: 0.5rem;
   margin-top: 2rem;
 }
@@ -232,12 +340,12 @@ body {
 }
 
 .prose-xian th {
-  background: oklch(0.20 0.04 280);
+  background: var(--muted);
   color: var(--xian-gold);
 }
 
 .prose-xian tr:nth-child(even) {
-  background: oklch(0.16 0.025 280);
+  background: var(--muted) / 0.5;
 }
 
 .prose-xian blockquote {
@@ -250,14 +358,192 @@ body {
 .prose-xian hr {
   border: none;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    oklch(0.78 0.15 75 / 0.3),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--xian-gold) / 0.3, transparent);
 }
 
 .prose-xian em {
-  color: oklch(0.75 0.08 80);
+  color: var(--xian-amber);
+}
+
+/* ===================== Hero 仙气动画 ===================== */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+}
+
+.hero-mist {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-mist-layer {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0;
+  animation: mist-drift 8s ease-in-out infinite;
+}
+
+.hero-mist-layer:nth-child(1) {
+  width: 320px;
+  height: 320px;
+  background: var(--xian-gold) / 0.08;
+  top: -40px;
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 10s;
+}
+
+.hero-mist-layer:nth-child(2) {
+  width: 260px;
+  height: 260px;
+  background: var(--xian-purple) / 0.1;
+  top: 30px;
+  right: 15%;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.hero-mist-layer:nth-child(3) {
+  width: 200px;
+  height: 200px;
+  background: var(--xian-amber) / 0.07;
+  bottom: 20px;
+  left: 25%;
+  animation-delay: 4s;
+  animation-duration: 9s;
+}
+
+.hero-mist-layer:nth-child(4) {
+  width: 280px;
+  height: 280px;
+  background: var(--xian-cyan) / 0.06;
+  top: 60px;
+  left: 55%;
+  animation-delay: 1s;
+  animation-duration: 11s;
+}
+
+.hero-mist-layer:nth-child(5) {
+  width: 180px;
+  height: 180px;
+  background: var(--xian-gold) / 0.06;
+  bottom: 40px;
+  right: 5%;
+  animation-delay: 3s;
+  animation-duration: 13s;
+}
+
+.hero-mist-layer:nth-child(6) {
+  width: 240px;
+  height: 240px;
+  background: var(--xian-purple) / 0.05;
+  top: -20px;
+  left: 40%;
+  animation-delay: 5s;
+  animation-duration: 14s;
+}
+
+@keyframes mist-drift {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.8);
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(40px, -20px) scale(1.2);
+  }
+}
+
+/* 漂浮粒子 */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--xian-gold);
+  opacity: 0;
+  animation: particle-float 6s ease-in-out infinite;
+}
+
+.hero-particle:nth-child(1) { left: 8%; animation-delay: 0s; animation-duration: 7s; }
+.hero-particle:nth-child(2) { left: 18%; animation-delay: 1.2s; animation-duration: 5.5s; }
+.hero-particle:nth-child(3) { left: 28%; animation-delay: 2.5s; animation-duration: 8s; }
+.hero-particle:nth-child(4) { left: 38%; animation-delay: 0.8s; animation-duration: 6.5s; }
+.hero-particle:nth-child(5) { left: 48%; animation-delay: 3s; animation-duration: 7.5s; }
+.hero-particle:nth-child(6) { left: 58%; animation-delay: 1.8s; animation-duration: 5s; }
+.hero-particle:nth-child(7) { left: 68%; animation-delay: 4s; animation-duration: 9s; }
+.hero-particle:nth-child(8) { left: 78%; animation-delay: 2.2s; animation-duration: 6s; }
+.hero-particle:nth-child(9) { left: 88%; animation-delay: 3.5s; animation-duration: 7s; }
+.hero-particle:nth-child(10) { left: 95%; animation-delay: 0.5s; animation-duration: 8.5s; }
+.hero-particle:nth-child(11) { left: 13%; animation-delay: 4.5s; animation-duration: 6.8s; }
+.hero-particle:nth-child(12) { left: 53%; animation-delay: 1s; animation-duration: 5.8s; }
+.hero-particle:nth-child(13) { left: 73%; animation-delay: 3.2s; animation-duration: 7.2s; }
+.hero-particle:nth-child(14) { left: 33%; animation-delay: 5s; animation-duration: 6.2s; }
+.hero-particle:nth-child(15) { left: 83%; animation-delay: 2.8s; animation-duration: 8.2s; }
+
+@keyframes particle-float {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) scale(1);
+  }
+}
+
+/* 缓慢旋转的光环 */
+.hero-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--xian-gold) / 0.08;
+  pointer-events: none;
+  animation: ring-rotate 30s linear infinite;
+}
+
+.hero-ring:nth-child(1) {
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  margin-top: -200px;
+  margin-left: -200px;
+}
+
+.hero-ring:nth-child(2) {
+  width: 520px;
+  height: 520px;
+  top: 50%;
+  left: 50%;
+  margin-top: -260px;
+  margin-left: -260px;
+  animation-direction: reverse;
+  animation-duration: 40s;
+  border-color: var(--xian-purple) / 0.06;
+}
+
+@keyframes ring-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

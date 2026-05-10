@@ -3,6 +3,7 @@ import { Inspector } from 'react-dev-inspector';
 import './globals.css';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
+import { XianThemeProvider } from '@/components/xian-theme-provider';
 
 export const metadata: Metadata = {
   title: {
@@ -48,12 +49,14 @@ export default function RootLayout({
   const isDev = process.env.COZE_PROJECT_ENV === 'DEV';
 
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" suppressHydrationWarning>
       <body className="antialiased min-h-screen flex flex-col">
-        {isDev && <Inspector />}
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <XianThemeProvider>
+          {isDev && <Inspector />}
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </XianThemeProvider>
       </body>
     </html>
   );

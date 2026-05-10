@@ -34,14 +34,33 @@ export default function HomePage() {
 
   return (
     <div className="xian-bg-pattern">
-      {/* ========== Hero Banner ========== */}
-      <section className="relative overflow-hidden">
-        {/* 背景装饰 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-xian-purple/10 via-transparent to-transparent" />
-        <div className="absolute top-20 left-1/4 w-64 h-64 bg-xian-gold/5 rounded-full blur-3xl" />
-        <div className="absolute top-10 right-1/4 w-48 h-48 bg-xian-purple/8 rounded-full blur-3xl" />
+      {/* ========== Hero Banner with celestial animation ========== */}
+      <section className="hero-section">
+        {/* 旋转光环 */}
+        <div className="hero-ring" />
+        <div className="hero-ring" />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
+        {/* 仙气缭绕 */}
+        <div className="hero-mist">
+          <div className="hero-mist-layer" />
+          <div className="hero-mist-layer" />
+          <div className="hero-mist-layer" />
+          <div className="hero-mist-layer" />
+          <div className="hero-mist-layer" />
+          <div className="hero-mist-layer" />
+        </div>
+
+        {/* 漂浮灵气粒子 */}
+        <div className="hero-particles">
+          {Array.from({ length: 15 }, (_, i) => (
+            <div key={i} className="hero-particle" style={{ top: `${30 + (i * 7) % 60}%` }} />
+          ))}
+        </div>
+
+        {/* 底部渐变遮罩 */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
           {/* 标志 */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-xian-gold/20 bg-xian-gold/5 mb-6">
             <Sparkles className="h-4 w-4 text-xian-gold" />
