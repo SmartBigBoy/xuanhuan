@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { getMapById } from '@/data/maps';
 import { MapPreviewImage } from '@/components/map-preview-image';
+import { MapDownloadButton } from '@/components/map-download-button';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -77,7 +78,13 @@ export default async function MapDetailPage({ params }: Props) {
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
         <Card className="xian-card bg-card/80 overflow-hidden">
           <CardContent className="p-4">
-            <MapPreviewImage src={mapData.previewUrl} alt={mapData.title} resolution={mapData.resolution} />
+            <MapPreviewImage
+              src={mapData.previewUrl}
+              alt={mapData.title}
+              resolution={mapData.resolution}
+              downloadUrl={mapData.downloadUrl}
+              fileName={`${mapData.title}.${mapData.format.toLowerCase()}`}
+            />
           </CardContent>
         </Card>
       </section>
@@ -167,10 +174,10 @@ export default async function MapDetailPage({ params }: Props) {
                   {mapData.format} · {mapData.fileSize} · {mapData.resolution}
                 </p>
               </div>
-              <Button className="w-full bg-gradient-to-r from-xian-cyan to-xian-gold text-xian-deep hover:opacity-90 font-semibold">
-                <Download className="mr-2 h-4 w-4" />
-                免费下载
-              </Button>
+              <MapDownloadButton
+                downloadUrl={mapData.downloadUrl}
+                fileName={`${mapData.title}.${mapData.format.toLowerCase()}`}
+              />
               <div className="text-[10px] text-muted-foreground space-y-1 text-left w-full">
                 <p>· 本资源为免费共享，仅供个人学习</p>
                 <p>· 请勿用于商业用途</p>
