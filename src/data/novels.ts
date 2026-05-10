@@ -142,7 +142,7 @@ export const novels: Novel[] = [
     id: 'xiuxian-wenlu',
     title: '修真聊天群',
     author: '圣骑士的传说',
-    cover: "/novels/xiuxian-wenlu.png",
+    cover: "/novels/xiuxian-wenlu.jpg",
     category: '经典修仙',
     description:
       '宋书航意外加入一个修真者聊天群，从此走上修仙之路。轻松搞笑的修仙日常，一群可爱道友的奇遇故事。',
@@ -156,7 +156,7 @@ export const novels: Novel[] = [
     id: 'tian-yun',
     title: '天运',
     author: '叨狼',
-    cover: "/novels/tian-yun.png",
+    cover: "/novels/tian-yun.jpg",
     category: '经典修仙',
     description:
       '天地有运势，修仙争天命。少年得天运之助，在修仙大世中崛起，争渡仙途彼岸。',
@@ -170,7 +170,7 @@ export const novels: Novel[] = [
     id: 'zuo-you',
     title: '坐忘长生',
     author: '小坐',
-    cover: "/novels/zuo-you.png",
+    cover: "/novels/zuo-you.jpg",
     category: '经典修仙',
     description:
       '一个体弱多病的少年，偶得坐忘功法，在乱世中修行，从凡俗走向长生，体悟坐忘之道。',
@@ -184,7 +184,7 @@ export const novels: Novel[] = [
     id: 'ta-gu-xiuxian',
     title: '踏古修仙',
     author: '无极',
-    cover: "/novels/ta-gu-xiuxian.png",
+    cover: "/novels/ta-gu-xiuxian.jpg",
     category: '经典修仙',
     description:
       '踏遍古迹，追寻上古修仙者的足迹，在一个个远古遗迹中获得传承，走出一条独特的修仙之路。',
@@ -212,7 +212,7 @@ export const novels: Novel[] = [
     id: 'da-sheng',
     title: '大道争锋',
     author: '误道者',
-    cover: "/novels/da-sheng.png",
+    cover: "/novels/da-sheng.jpg",
     category: '经典修仙',
     description:
       '张衍出身寒微，凭借一卷残缺剑经入赘玄门，在争与不争之间悟道，以剑鸣之资争锋大道。',
@@ -226,7 +226,7 @@ export const novels: Novel[] = [
     id: 'yongye',
     title: '永夜君王',
     author: '烟雨江南',
-    cover: "/novels/yongye.png",
+    cover: "/novels/yongye.jpg",
     category: '经典修仙',
     description:
       '千夜自永夜中走出，身怀黎明与黑暗双重血脉，在帝国与黑暗种族的夹缝中崛起，书写永夜传奇。',
@@ -240,7 +240,7 @@ export const novels: Novel[] = [
     id: 'yuan-heng',
     title: '元衡',
     author: '静夜寄思',
-    cover: "/novels/yuan-heng.png",
+    cover: "/novels/yuan-heng.jpg",
     category: '经典修仙',
     description:
       '从一介凡人到万界至尊，李元衡以坚韧意志与超凡悟性，在修仙世界中不断突破，成就元衡大道。',
@@ -326,7 +326,7 @@ export const novels: Novel[] = [
     id: 'bi-luo',
     title: '遮天',
     author: '辰东',
-    cover: '/novels/zhetian.jpg',
+    cover: '/novels/zhetian.png',
     category: '仙侠玄幻',
     description:
       '九龙拉棺的震撼开篇，叶凡误入星空古路，横渡星域，逆天证道，从荒古走到当世，开创万古盛世。',
