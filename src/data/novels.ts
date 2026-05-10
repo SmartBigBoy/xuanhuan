@@ -65,7 +65,7 @@ export const novels: Novel[] = [
   },
 
 {
-    id: 'bi-luo',
+    id: 'wan-mei',
     title: '完美世界',
     author: '辰东',
     cover: '/novels/wmsj.jpg',
