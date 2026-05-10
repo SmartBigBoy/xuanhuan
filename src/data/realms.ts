@@ -322,6 +322,125 @@ export const realmSystems: RealmSystem[] = [
     ],
   },
   {
+    novelId: 'wan-mei',
+    novelTitle: '完美世界',
+    overview:
+      '完美世界的修炼体系以"骨文"为根基，修士通过烙印骨文、开辟体内秘境来提升实力。从搬血境到仙帝，横跨下界八域与上界三千道州，最终征战异域与界海彼岸，体系恢弘壮阔。',
+    feature:
+      '骨文修炼为核心，每一境都需在体内开辟秘境或烙印骨文。独有"道火""天命""仙王"等高阶境界设定，修炼之路与天地大道紧密相连，后期涉及纪元轮回与仙帝之争。',
+    levels: [
+      { order: 1, name: '搬血境', description: '修炼起点，以气血搬动体内宝藏，淬炼肉身。需引天地精华入体，激发血脉之力。', lifespan: '百岁', keyAbilities: ['气血激发', '肉身淬炼', '力量暴涨'], subdivisions: ['初期', '中期', '后期', '圆满'] },
+      { order: 2, name: '洞天境', description: '在体内开辟洞天福地，吞吐天地精华。每开辟一座洞天，实力便大幅跃升。', lifespan: '数百岁', keyAbilities: ['洞天开辟', '精华吞吐', '空间雏形'], subdivisions: ['一洞天', '二洞天', '三洞天', '四洞天', '五洞天', '六洞天', '七洞天', '八洞天', '九洞天', '十洞天'] },
+      { order: 3, name: '化道境', description: '洞天化为大道，体内秘境与天地法则共鸣。修士开始感悟天地法则之力。', lifespan: '千岁', keyAbilities: ['法则感悟', '道火点燃', '化道之力'] },
+      { order: 4, name: '尊者境', description: '称尊一方，修士在此境可开辟领地，威震一方。实力远超化道境。', lifespan: '数千岁', keyAbilities: ['领域开辟', '法则运用', '尊者之威'] },
+      { order: 5, name: '神火境', description: '点燃神火，战力发生质变。体内法则凝聚为神火，可焚天煮海。', lifespan: '万岁', keyAbilities: ['神火点燃', '法则凝聚', '天神之威'], subdivisions: ['点燃神火', '神火旺盛', '神火圆满'] },
+      { order: 6, name: '真一境', description: '神火燃尽归一，修为达到另一个巅峰。真一者，唯一不二，战力惊人。', lifespan: '数万岁', keyAbilities: ['真一之力', '法则归一', '神通大盛'] },
+      { order: 7, name: '天神境', description: '超凡入圣，成为天神。天神可横渡虚空，掌控一方天地法则。', lifespan: '数十万岁', keyAbilities: ['虚空横渡', '法则掌控', '天神之域'] },
+      { order: 8, name: '虚道境', description: '触摸大道本源，修炼至道与法合一。介于天神与斩道之间。', lifespan: '百万岁', keyAbilities: ['道法合一', '大道触摸', '虚空造化'] },
+      { order: 9, name: '斩道境', description: '斩断大道束缚，走出自己的路。斩道者是真正的强者，可开辟自己的大道。', lifespan: '数百万岁', keyAbilities: ['斩道之力', '自我大道', '道则切割'] },
+      { order: 10, name: '遁一境', description: '万道归一，超脱法则束缚。遁一境是至尊之下最强境界。', lifespan: '千万岁', keyAbilities: ['万道归一', '法则超脱', '遁一之力'] },
+      { order: 11, name: '至尊境', description: '世间至尊，可在界内称尊。至尊是下界与上界公认的最强层次。', lifespan: '千万岁以上', keyAbilities: ['至尊之威', '界内称尊', '法则圆满'] },
+      { order: 12, name: '仙王境', description: '踏入仙道领域，仙王不朽不灭，一念可毁灭星域。是仙道领域的强大存在。', lifespan: '永生', keyAbilities: ['仙道法则', '不朽不灭', '星域毁灭', '仙王之威'] },
+      { order: 13, name: '仙帝', description: '完美世界至高境界，仙帝执掌纪元，可逆天改命，重塑天地。千古以来仅有数位仙帝。', lifespan: '永生不灭', keyAbilities: ['纪元掌控', '天地重塑', '逆天改命', '万法之源'], breakthroughCondition: '需在界海彼岸证道，经历纪元轮回' },
+    ],
+    crossComparison: {
+      title: '完美世界 vs 遮天 境界对比',
+      description:
+        '完美世界是遮天的前传，世界观一脉相承但修炼体系各有侧重。',
+      mappings: [
+        { level: '搬血境', equivalent: '轮海秘境' },
+        { level: '洞天境', equivalent: '道宫秘境' },
+        { level: '化道境', equivalent: '四极秘境' },
+        { level: '尊者境', equivalent: '龙化秘境' },
+        { level: '神火境', equivalent: '仙台(圣人)' },
+        { level: '真一境', equivalent: '仙台(大圣)' },
+        { level: '天神境', equivalent: '仙台(准帝)' },
+        { level: '仙王境', equivalent: '大帝' },
+        { level: '仙帝', equivalent: '红尘仙' },
+      ],
+    },
+  },
+  {
+    novelId: 'shen-yin',
+    novelTitle: '神印王座',
+    overview:
+      '神印王座的修炼体系以"灵力"为核心，分为战士与骑士两大主路线。骑士是人类的守护者，以守护苍生为信念，修炼至高可获神印王座认可。六大圣殿代表了人类文明的最后堡垒。',
+    feature:
+      '骑士修行的独特设定，以守护信念驱动灵力修炼。灵力从光明属性到至高神力逐级升华，神印王座是骑士的至高荣耀。六大圣殿体系构建了完整的人类防线。',
+    levels: [
+      { order: 1, name: '预备骑士', description: '骑士之路的起点，修炼基础灵力与体术。需通过考核方可成为正式骑士侍从。', lifespan: '略超凡人', keyAbilities: ['灵力觉醒', '基础体术', '灵力外放'], subdivisions: ['一阶', '二阶', '三阶', '四阶', '五阶'] },
+      { order: 2, name: '骑士侍从', description: '正式踏上骑士修行，灵力开始凝实。可使用灵力武器进行战斗。', lifespan: '百余岁', keyAbilities: ['灵力凝实', '灵力武器', '守护术入门'] },
+      { order: 3, name: '正式骑士', description: '获得骑士封号，灵力质变为光明灵力。是六大圣殿的中坚力量。', lifespan: '两百余岁', keyAbilities: ['光明灵力', '守护术', '灵力坐骑', '圣殿之盾'] },
+      { order: 4, name: '大骑士', description: '骑士中的强者，灵力深厚，可施展高级守护术。一人可守护一方。', lifespan: '三百余岁', keyAbilities: ['高级守护术', '灵力领域', '光明审判'] },
+      { order: 5, name: '圣骑士', description: '灵力升华至圣光层次，战力极其强大。是六大圣殿的核心战力。', lifespan: '五百余岁', keyAbilities: ['圣光灵力', '神圣守护', '圣光审判', '领域展开'] },
+      { order: 6, name: '神殿骑士', description: '六大圣殿的顶尖战力，灵力接近神力。每一位神殿骑士都是一方支柱。', lifespan: '千岁', keyAbilities: ['半神之力', '神圣领域', '神术初窥', '圣殿守护'] },
+      { order: 7, name: '圣殿骑士长', description: '执掌圣殿的至强者，灵力已达神力层次。可驱动神器级装备。', lifespan: '数千岁', keyAbilities: ['神力驱动', '神器操控', '领域大成', '圣殿之主'] },
+      { order: 8, name: '神印骑士', description: '获神印王座认可的至高骑士，拥有神印之力。是人类的终极守护者。', lifespan: '近乎永生', keyAbilities: ['神印之力', '王座之威', '天地守护', '至高神力'], breakthroughCondition: '获神印王座认可，承受神印传承' },
+    ],
+  },
+  {
+    novelId: 'jian-lai',
+    novelTitle: '剑来',
+    overview:
+      '剑来的修炼体系以"境界"与"拳理"并重，武夫与修士各有进阶之路。从三境武夫到十五境飞升，修炼体系兼具武道与仙道双轨。剑修更是其中最锋锐的存在，一剑可开天辟地。',
+    feature:
+      '武道与仙道双轨并行的独特设定，"拳理""剑意""道法"三路齐修。境界以数字命名（一境至十五境），简洁而层次分明。剑修可越境杀敌，是战力天花板。',
+    levels: [
+      { order: 1, name: '一境·泥瓶境', description: '修炼起点，炼体固本，泥瓶刻字。肉身与灵力初步结合。', lifespan: '百岁', keyAbilities: ['炼体', '灵力入体', '基础武技'] },
+      { order: 2, name: '二境·木簪境', description: '灵力运转全身，木簪束发，修为小成。可使用简单法术与武技。', lifespan: '百余岁', keyAbilities: ['灵力运转', '法术入门', '武技精进'] },
+      { order: 3, name: '三境·无炬境', description: '灵力凝实，可暗夜视物如白昼，故称无炬。是正式踏入修行的标志。', lifespan: '两百余岁', keyAbilities: ['灵力凝实', '夜视', '中阶法术'] },
+      { order: 4, name: '四境·洞微境', description: '洞察入微，感知天地灵气变化。修行者开始领悟天地法则。', lifespan: '三百余岁', keyAbilities: ['法则感知', '洞察入微', '高阶武技'] },
+      { order: 5, name: '五境·龙宫境', description: '体内开辟龙宫秘境，灵力如海。战力大增，可独当一面。', lifespan: '五百余岁', keyAbilities: ['龙宫开辟', '灵力如海', '秘境之力'] },
+      { order: 6, name: '六境·玉璞境', description: '璞玉浑成，返璞归真。修为深厚，灵力质变。是中流砥柱的存在。', lifespan: '千岁', keyAbilities: ['返璞归真', '灵力质变', '领域初成'] },
+      { order: 7, name: '七境·金丹境', description: '金丹大道，灵力凝为金丹。修士战力飞跃，可御剑飞行。', lifespan: '两千岁', keyAbilities: ['金丹凝聚', '御剑飞行', '道法运用'] },
+      { order: 8, name: '八境·元婴境', description: '金丹化婴，拥有第二生命。是修士中的强者。', lifespan: '五千岁', keyAbilities: ['元婴出窍', '分身之术', '搜魂之力'] },
+      { order: 9, name: '九境·化神境', description: '元婴化神，掌控天地法则。可开辟洞天福地。', lifespan: '万岁', keyAbilities: ['法则掌控', '洞天开辟', '化神之力'] },
+      { order: 10, name: '十境·上五境', description: '踏入上五境，超脱凡俗。每升一境都是质的飞跃，是世间的顶尖战力。', lifespan: '数万岁', keyAbilities: ['超脱凡俗', '天地共鸣', '大道感悟'] },
+      { order: 11, name: '十一境至十四境', description: '仙人层次，从天仙到金仙到大罗金仙，每一境都意味着与天道的进一步融合。', lifespan: '近乎永生', keyAbilities: ['仙道法则', '天人合一', '大道之威'], subdivisions: ['十一境(天仙)', '十二境(金仙)', '十三境(大罗)', '十四境(合道)'] },
+      { order: 12, name: '十五境·飞升', description: '剑来体系的至高境界，飞升而去，超脱此方天地。千古以来能达此境者屈指可数。', lifespan: '永生', keyAbilities: ['超脱天地', '飞升之力', '万法归一', '开天辟地'], breakthroughCondition: '道法圆满，天地认可，方可飞升' },
+    ],
+  },
+  {
+    novelId: 'yi-nian',
+    novelTitle: '一念永恒',
+    overview:
+      '一念永恒的修炼体系以"灵力"与"寿元"为核心，修炼不仅是提升战力，更是为了延长寿元、追求永生。从凝气到天尊，每一步都是与天道争寿的修行。白小纯的修仙之路充满欢笑与热血。',
+    feature:
+      '"争寿"是核心主题，每提升一个境界便能大幅延长寿命。独有"天人""天尊"等高阶境界设定，后期涉及宇宙本源与永恒之门。修炼风格兼具搞笑与热血。',
+    levels: [
+      { order: 1, name: '凝气期', description: '凝聚天地灵气，踏入修仙。共十层，是修仙之路的起点。', lifespan: '百岁', keyAbilities: ['灵气凝聚', '初级法术', '灵力运转'], subdivisions: ['一层至十层'] },
+      { order: 2, name: '筑基期', description: '灵力凝实构建根基，是正式踏入修仙的标志。', lifespan: '两百余岁', keyAbilities: ['根基构建', '中阶法术', '御器初步'] },
+      { order: 3, name: '结丹期', description: '灵力结为金丹，战力质变。可御空飞行，法力深厚。', lifespan: '五百岁', keyAbilities: ['金丹凝聚', '御空飞行', '法宝御使'] },
+      { order: 4, name: '元婴期', description: '金丹化婴，拥有元婴出窍之能。是修仙界的中坚力量。', lifespan: '千岁', keyAbilities: ['元婴出窍', '搜魂之术', '分身之能'] },
+      { order: 5, name: '化神期', description: '元婴化神，与天地法则共鸣。可掌控一方天地之力。', lifespan: '两千岁', keyAbilities: ['法则共鸣', '天地借力', '领域初成'] },
+      { order: 6, name: '天人境', description: '天人合一，灵力蜕变为天人灵力。是修仙界的顶尖战力。', lifespan: '万岁', keyAbilities: ['天人合一', '灵力蜕变', '领域展开', '天人法相'] },
+      { order: 7, name: '地尊境', description: '掌控大地法则，实力深不可测。是通天世界的上层强者。', lifespan: '数万岁', keyAbilities: ['大地法则', '空间掌控', '造物之力'] },
+      { order: 8, name: '天尊境', description: '一念永恒的至高境界，掌控天道法则，一念可定生死。天尊是通天世界最强的存在。', lifespan: '近乎永生', keyAbilities: ['天道法则', '一念定生死', '宇宙掌控', '永恒之力'], breakthroughCondition: '参悟永恒之道，打开永恒之门' },
+    ],
+  },
+  {
+    novelId: 'huang-dao',
+    novelTitle: '洪荒之永恒道主',
+    overview:
+      '洪荒之永恒道主以中国神话洪荒体系为背景，修炼体系源自先天生灵对大道的感悟。从地仙到道祖，修士在洪荒天地间争夺气运、证道成圣，最终追求永恒不灭的超脱之路。',
+    feature:
+      '以洪荒六圣与道祖体系为核心，修炼与"气运""功德""天道"紧密关联。独有的"斩三尸""功德成圣""以力证道"等证道方式，构建了完整的洪荒修炼哲学。',
+    levels: [
+      { order: 1, name: '地仙', description: '修炼起点，脱离轮回，长生不死。地仙虽为最低仙阶，却已超脱凡俗。', lifespan: '永生（不受轮回）', keyAbilities: ['超脱轮回', '长生久视', '仙法入门'] },
+      { order: 2, name: '天仙', description: '天仙之道，与天地同寿。灵力深厚，可腾云驾雾，施展仙法。', lifespan: '与天地同寿', keyAbilities: ['腾云驾雾', '仙法大成', '天仙之体'] },
+      { order: 3, name: '真仙', description: '真仙证道，道心通明。修士对大道有了真正的领悟，法力通玄。', lifespan: '与天地同寿', keyAbilities: ['道心通明', '法力通玄', '真仙法相'] },
+      { order: 4, name: '玄仙', description: '玄之又玄，众妙之门。玄仙对天地法则有了深入理解，可操控法则之力。', lifespan: '与天地同寿', keyAbilities: ['法则操控', '玄妙之力', '洞天开辟'] },
+      { order: 5, name: '金仙', description: '金仙不朽，肉身与灵魂皆达不朽之境。是洪荒中的重要战力。', lifespan: '万劫不灭', keyAbilities: ['金仙不朽', '万劫不灭', '法则大成'] },
+      { order: 6, name: '太乙金仙', description: '金仙之上的强者，太乙之道非同小可。可开辟大千世界。', lifespan: '万劫不灭', keyAbilities: ['太乙道果', '世界开辟', '大千之力'] },
+      { order: 7, name: '大罗金仙', description: '洪荒顶尖战力，大罗之道涵盖万法。大罗金仙可纵横洪荒，鲜有敌手。', lifespan: '万劫不灭', keyAbilities: ['大罗道果', '万法归一', '时空掌控'] },
+      { order: 8, name: '准圣', description: '斩三尸证道，准圣已触及圣人门槛。斩去善、恶、自我三尸，是成圣前的最后一步。', lifespan: '永恒不灭', keyAbilities: ['斩三尸', '准圣之威', '圣人门槛', '气运操控'], subdivisions: ['准圣初期', '准圣中期', '准圣后期', '准圣圆满'] },
+      { order: 9, name: '圣人', description: '洪荒六圣级别，证道成圣后与天地同在，不死不灭。圣人一出，万法臣服。', lifespan: '与天道同在', keyAbilities: ['圣人法力', '天道认可', '不死不灭', '万法臣服'], breakthroughCondition: '功德成圣/斩三尸成圣/以力证道' },
+      { order: 10, name: '天道', description: '掌控洪荒天道之力，是洪荒天地的主宰。可制定天道规则，执掌天地运转。', lifespan: '永恒', keyAbilities: ['天道掌控', '规则制定', '天地运转', '天罚之力'] },
+      { order: 11, name: '大道', description: '超越天道，触及大道本源。大道是洪荒宇宙的终极法则，大道之主可超脱洪荒。', lifespan: '永恒超脱', keyAbilities: ['大道本源', '超脱洪荒', '创世之力', '万道之源'] },
+      { order: 12, name: '永恒道主', description: '洪荒之永恒道主的至高境界，超脱一切法则与天道，成为永恒不灭的道之主宰。千古以来无人达此境。', lifespan: '永恒不灭', keyAbilities: ['永恒之力', '超脱一切', '道之主宰', '创世与灭世'], breakthroughCondition: '超脱大道，证永恒道果' },
+    ],
+  },
+  {
     novelId: 'tun-shi',
     novelTitle: '吞噬星空',
     overview:

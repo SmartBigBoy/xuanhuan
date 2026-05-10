@@ -46,7 +46,7 @@ export const novels: Novel[] = [
     description:
       '天地不仁，以万物为刍狗。少年张小凡偶然获得天书，在正魔两道的夹缝中行走，历经爱恨情仇，最终揭开青云门千年之谜。',
     tags: ['经典', '正魔对立', '天书', '青云门'],
-    realmCount: 9,
+    realmCount: 4,
     mapCount: 3,
     popularity: 10,
   },
@@ -59,7 +59,7 @@ export const novels: Novel[] = [
     description:
       '九龙拉棺的震撼开篇，叶凡误入星空古路，横渡星域，逆天证道，从荒古走到当世，开创万古盛世。',
     tags: ['星空', '证道', '大帝', '禁区'],
-    realmCount: 11,
+    realmCount: 7,
     mapCount: 7,
     popularity: 10,
   },
@@ -71,9 +71,9 @@ export const novels: Novel[] = [
     cover: '/novels/wmsj.jpg',
     category: '仙侠玄幻',
     description:
-      '九龙拉棺的震撼开篇，叶凡误入星空古路，横渡星域，逆天证道，从荒古走到当世，开创万古盛世。',
-    tags: ['星空', '证道', '大帝', '禁区'],
-    realmCount: 11,
+      '一粒尘可填海，一根草斩尽日月星辰。少年石昊从石村走出，横推九天十地，独断万古，开创完美世界。',
+    tags: ['荒', '独断万古', '仙帝', '界海'],
+    realmCount: 13,
     mapCount: 8,
     popularity: 10,
   },
@@ -126,7 +126,7 @@ export const novels: Novel[] = [
     description:
       '骑士圣殿出身的龙皓晨，从一名普通骑士成长为守护人类的神印骑士，最终登上永恒与创造之神印王座。',
     tags: ['骑士', '光明', '圣殿', '魔族'],
-    realmCount: 7,
+    realmCount: 8,
     mapCount: 3,
     popularity: 8,
   },
@@ -139,7 +139,7 @@ export const novels: Novel[] = [
     description:
       '少年陈平安行走江湖，以剑道证长生。浩然天下、蛮荒天下、青冥天下三界风云，一剑递出，天下皆惊。',
     tags: ['剑修', '江湖', '三界', '规矩'],
-    realmCount: 10,
+    realmCount: 12,
     mapCount: 5,
     popularity: 8,
   },
@@ -152,7 +152,7 @@ export const novels: Novel[] = [
     description:
       '一念成沧海，一念化桑田。白小纯从灵溪宗走出，凭借独特的修炼方式和无尽的际遇，一步步踏上巅峰。',
     tags: ['永恒', '炼灵', '星空', '道域'],
-    realmCount: 9,
+    realmCount: 8,
     mapCount: 4,
     popularity: 8,
   },
@@ -165,7 +165,7 @@ export const novels: Novel[] = [
     description:
       '盘古开天，洪荒初定。以洪荒为背景，讲述从混沌初开到封神之战的恢弘史诗，六圣证道，天道轮回。',
     tags: ['洪荒', '六圣', '封神', '天道'],
-    realmCount: 8,
+    realmCount: 12,
     mapCount: 4,
     popularity: 7,
   },
