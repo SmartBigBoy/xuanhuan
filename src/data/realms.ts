@@ -2756,7 +2756,7 @@ export const realmSystems: RealmSystem[] = [
   },
   {
     novelId: 'xiandai-xiuxian',
-    novelTitle: '修仙传',
+    novelTitle: '现代修仙传',
     overview: '在现代社会中修仙，将传统修炼与现代生活结合。修炼体系融合古法与现代思维。',
     feature: '现代都市修仙',
     levels: [
@@ -2930,7 +2930,7 @@ export const realmSystems: RealmSystem[] = [
   },
   {
     novelId: 'xue-hong',
-    novelTitle: '血红',
+    novelTitle: '升龙道',
     overview: '血虹之力觉醒后踏上修仙之路，以血色之力为根基，开辟独特修行路径。',
     feature: '血虹之力修仙',
     levels: [
@@ -3390,7 +3390,7 @@ export const realmSystems: RealmSystem[] = [
   },
   {
     novelId: 'xiuxian-gao-shou',
-    novelTitle: '修真高手的.lifecycle',
+    novelTitle: '修真高手的田园生活',
     overview: '以系统辅助修仙，从一级到仙级，每一步都有系统指引。修炼效率极高但危机四伏。',
     feature: '修仙高手系统修炼',
     levels: [
@@ -3676,7 +3676,7 @@ export const realmSystems: RealmSystem[] = [
   },
   {
     novelId: 'chuan-yue-xiuxian',
-    novelTitle: '我有一座恐怖屋',
+    novelTitle: '穿越修仙传',
     overview: '穿越到修仙世界，以现代人的思维方式修行。利用现代知识突破传统修行瓶颈。',
     feature: '穿越修仙，现代思维',
     levels: [
@@ -3968,7 +3968,7 @@ export const realmSystems: RealmSystem[] = [
   },
   {
     novelId: 'quandan-xiuxian',
-    novelTitle: '全球高武',
+    novelTitle: '丹武至尊',
     overview: '以权谋入修仙之道，在修仙界中运筹帷幄。权谋与修炼双管齐下。',
     feature: '权谋与修仙并重',
     levels: [

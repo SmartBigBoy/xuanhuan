@@ -605,7 +605,7 @@ export const novels: Novel[] = [
   {
     id: 'dao-zun',
     title: '道尊',
-    author: '唐三',
+    author: '乘风御剑',
     cover: "/novels/dao-zun.svg",
     category: '仙侠玄幻',
     description:
@@ -618,7 +618,7 @@ export const novels: Novel[] = [
   },
   {
     id: 'xiandai-xiuxian',
-    title: '修仙传',
+    title: '现代修仙传',
     author: '归隐',
     cover: "/novels/xiandai-xiuxian.svg",
     category: '仙侠玄幻',
@@ -660,8 +660,8 @@ export const novels: Novel[] = [
   },
   {
     id: 'xue-hong',
-    title: '血红',
-    author: '升龙道',
+    title: '升龙道',
+    author: '血红',
     cover: "/novels/xue-hong.svg",
     category: '仙侠玄幻',
     description:
@@ -788,17 +788,17 @@ export const novels: Novel[] = [
   },
   {
     id: 'xiuxian-gao-shou',
-    title: '修真高手的.lifecycle',
-    author: '小彭同学',
+    title: '修真高手的田园生活',
+    author: '小学嗣业',
     cover: "/novels/xiuxian-gao-shou.svg",
     category: '都市修仙',
     description:
-      '都市中的修真高手，在凡俗世界中修行，以修真者的能力处理都市中的种种危机。',
-    tags: ['都市', '修真', '高手', '凡俗'],
+      '修真高手归隐田园，在乡间种田养花、炼丹制器，过着悠然自得的田园修仙生活，却不断被卷入纷争。',
+    tags: ['都市', '修真', '田园', '种田'],
     realmCount: 0,
     mapCount: 0,
     popularity: 6,
-    summary: "修仙高手回归都市，以碾压之势横扫一切。全书都市修仙结合自然，高手回归设定爽快。\n\n【阅读评价】适合喜欢高手回归、都市碾压的读者。推荐16岁以上年龄段。读后能获得回归碾压的快感，理解实力与低调的关系。",
+    summary: "修真高手归隐田园，在乡间种田养花、炼丹制器，过着悠然自得的田园修仙生活。看似平静的田园下暗流涌动，不断被卷入各种纷争。全书都市修仙与田园种田结合自然，高手归隐设定有趣。\n\n【阅读评价】适合喜欢田园种田、高手归隐修仙的读者。推荐16岁以上年龄段。读后能感受田园生活的悠闲与修仙世界的反差。",
   },
   {
     id: 'guo-shi',
@@ -845,7 +845,7 @@ export const novels: Novel[] = [
   {
     id: 'zhi-zun',
     title: '都市之至尊',
-    author: '未知',
+    author: '云中君',
     cover: "/novels/zhi-zun.svg",
     category: '都市修仙',
     description:
@@ -858,16 +858,16 @@ export const novels: Novel[] = [
   },
   {
     id: 'chuan-yue-xiuxian',
-    title: '我有一座恐怖屋',
-    author: '我会修空调',
+    title: '穿越修仙传',
+    author: '李清狂',
     cover: "/novels/chuan-yue-xiuxian.svg",
     category: '都市修仙',
     description:
-      '陈歌继承了父母留下的恐怖屋，在手机app的指引下，走入一个个恐怖场景，收集鬼怪员工。',
-    tags: ['恐怖', '都市', '鬼怪', '悬疑'],
+      '现代青年穿越到修仙世界，凭借现代知识和超凡悟性，在修仙界步步崛起，融合科技与修炼之道。',
+    tags: ['穿越', '修仙', '现代知识', '异界'],
     realmCount: 0,
     mapCount: 0,
-    popularity: 8,
+    popularity: 7,
     summary: "穿越到修仙世界，以现代知识在古代修仙。全书穿越设定新颖，现代知识与修炼结合有趣。\n\n【阅读评价】适合喜欢穿越修仙、现代知识优势的读者。推荐14岁以上年龄段。读后能感受现代思维在修仙世界的优势，理解知识跨界融合的价值。",
   },
   {
@@ -928,13 +928,13 @@ export const novels: Novel[] = [
   },
   {
     id: 'quandan-xiuxian',
-    title: '全球高武',
-    author: '老鹰吃小鸡',
+    title: '丹武至尊',
+    author: '战神宇哥',
     cover: "/novels/quandan-xiuxian.svg",
     category: '都市修仙',
     description:
-      '全球进入高武时代，方平从普通高三学生起步，在全民修炼的浪潮中崛起，守护地球文明。',
-    tags: ['高武', '全民修炼', '地球', '守护'],
+      '少年偶得一颗上古仙丹，踏上丹道修仙之路。以丹入道，炼丹制器，横扫修仙界，成就丹武至尊。',
+    tags: ['丹道', '炼丹', '修仙', '至尊'],
     realmCount: 0,
     mapCount: 0,
     popularity: 7,
