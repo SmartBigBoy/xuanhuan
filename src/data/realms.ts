@@ -465,12 +465,32 @@ export function getRealmSystemByNovelId(novelId: string): RealmSystem | undefine
   return realmSystems.find((r) => r.novelId === novelId);
 }
 
+export interface WikiItem {
+  name: string;
+  emoji: string;
+  description: string;
+  source?: string; // 出自哪部小说
+}
+
+export interface WikiSection {
+  title: string;
+  emoji: string;
+  color: string; // Tailwind 色彩类名
+  bgColor: string; // 背景色
+  borderColor: string; // 边框色
+  description?: string;
+  items: WikiItem[];
+}
+
 export interface WikiEntry {
   id: string;
   title: string;
+  titleEmoji: string;
   category: string;
+  categoryColor: string;
   summary: string;
-  content: string;
+  overview: string; // 概述文字
+  sections: WikiSection[];
   relatedNovels: string[];
 }
 
@@ -478,82 +498,630 @@ export const wikiEntries: WikiEntry[] = [
   {
     id: 'linggen',
     title: '灵根',
+    titleEmoji: '🌿',
     category: '修炼基础',
+    categoryColor: 'text-green-400',
     summary: '修仙者感应天地灵气的天赋根基，是决定修仙资质的核心因素。',
-    content:
-      '灵根是修仙者感应天地灵气、进行修炼的天赋根基。灵根按属性可分为金、木、水、火、土五行灵根，以及变异灵根如雷灵根、冰灵根等。灵根数量越少，修炼速度越快，天灵根（单一属性）为最佳。杂灵根（四五行属性）修炼极慢，多被视为废灵根。\n\n在凡人流小说中，灵根是进入修仙界的"入场券"。没有灵根的凡人，即便再努力也无法踏上修仙之路。灵根还决定了修仙者适合修炼的功法类型，以及突破瓶颈的难易程度。',
+    overview:
+      '灵根是修仙者感应天地灵气、进行修炼的天赋根基。灵根按属性可分为金、木、水、火、土五行灵根，以及变异灵根如雷灵根、冰灵根等。灵根数量越少，修炼速度越快，天灵根（单一属性）为最佳。杂灵根（四五行属性）修炼极慢，多被视为废灵根。在凡人流小说中，灵根是进入修仙界的"入场券"。',
+    sections: [
+      {
+        title: '五行灵根',
+        emoji: '🔥',
+        color: 'text-red-400',
+        bgColor: 'bg-red-500/10',
+        borderColor: 'border-red-500/30',
+        description: '最常见的灵根类型，按五行属性划分',
+        items: [
+          { name: '金灵根', emoji: '⚔️', description: '擅长锋锐攻击类法术，炼器天赋突出，庚金之力可斩万物', source: '凡人修仙传' },
+          { name: '木灵根', emoji: '🌱', description: '擅长生机恢复类法术，炼丹天赋优越，可催生灵药', source: '仙逆' },
+          { name: '水灵根', emoji: '💧', description: '擅长柔韧变化类法术，御水之术出神入化', source: '诛仙' },
+          { name: '火灵根', emoji: '🔥', description: '擅长毁灭攻击类法术，炼丹炼器皆宜，爆发力最强', source: '凡人修仙传' },
+          { name: '土灵根', emoji: '🏔️', description: '擅长防御守护类法术，阵法造诣深厚，根基最为稳固' },
+        ],
+      },
+      {
+        title: '变异灵根',
+        emoji: '⚡',
+        color: 'text-purple-400',
+        bgColor: 'bg-purple-500/10',
+        borderColor: 'border-purple-500/30',
+        description: '五行之外的特殊灵根，极为罕见',
+        items: [
+          { name: '雷灵根', emoji: '⚡', description: '天赋雷法，速度与攻击兼备，渡劫时天然优势', source: '凡人修仙传' },
+          { name: '冰灵根', emoji: '❄️', description: '天赋冰法，攻守兼备，可冻结万物生灵', source: '仙逆' },
+          { name: '风灵根', emoji: '🌀', description: '天赋风法，身法极速，攻击飘忽不定', source: '大主宰' },
+          { name: '暗灵根', emoji: '🌑', description: '天赋暗属性法术，隐匿暗杀之术，魔道常见', source: '仙逆' },
+        ],
+      },
+      {
+        title: '灵根评级',
+        emoji: '⭐',
+        color: 'text-amber-400',
+        bgColor: 'bg-amber-500/10',
+        borderColor: 'border-amber-500/30',
+        description: '按灵根数量和纯度划分的资质等级',
+        items: [
+          { name: '天灵根', emoji: '👑', description: '单一属性灵根，修炼速度极快，万中无一的绝顶天才' },
+          { name: '真灵根', emoji: '💎', description: '二至三种属性，修炼速度较快，各宗门争抢的对象' },
+          { name: '双灵根', emoji: '✨', description: '两种属性灵根，资质尚可，可修炼至中等境界' },
+          { name: '三灵根', emoji: '📘', description: '三种属性灵根，资质一般，需更多资源支撑' },
+          { name: '杂灵根', emoji: '💔', description: '四至五种属性，修炼极慢，被视为废灵根' },
+          { name: '无灵根', emoji: '🚫', description: '完全无法感应灵气，与修仙无缘，终生为凡人' },
+        ],
+      },
+      {
+        title: '特殊体质',
+        emoji: '🌟',
+        color: 'text-cyan-400',
+        bgColor: 'bg-cyan-500/10',
+        borderColor: 'border-cyan-500/30',
+        description: '超越灵根范畴的先天体质，拥有不可思议的天赋',
+        items: [
+          { name: '荒古圣体', emoji: '🛡️', description: '万古第一战体，肉身无敌，一旦大成可逆伐仙道', source: '遮天' },
+          { name: '苍天霸体', emoji: '👊', description: '与圣体齐名的战体，攻伐之力天下无双', source: '遮天' },
+          { name: '先天道体', emoji: '☯️', description: '天生亲近大道，悟性逆天，修炼速度远超同阶', source: '遮天' },
+          { name: '太阴之体', emoji: '🌙', description: '至阴之体，修炼阴属功法一日千里', source: '遮天' },
+          { name: '至尊骨', emoji: '🦴', description: '天生骨骼蕴含至强宝术，一旦觉醒战力惊人', source: '完美世界' },
+        ],
+      },
+    ],
     relatedNovels: ['rmjz', 'xi-zhen', 'yi-nian'],
   },
   {
     id: 'tiandao',
     title: '天道',
+    titleEmoji: '☯️',
     category: '核心概念',
+    categoryColor: 'text-blue-400',
     summary: '修仙世界的最高法则，掌控天地万物运行的根本规律。',
-    content:
-      '天道是修仙世界中的最高法则，掌控着天地万物的运行规律。修仙的过程本质上就是感悟天道、利用天道、最终超脱天道的过程。\n\n不同小说对天道的设定各异：凡人修仙传中天道是修炼者需要感悟的自然法则；仙逆中天道是需要"逆"的对象；遮天中的天心印记是大帝证道的标志。天劫是天道对修仙者的考验，也是维护天地平衡的机制。',
+    overview:
+      '天道是修仙世界中的最高法则，掌控着天地万物的运行规律。修仙的过程本质上就是感悟天道、利用天道、最终超脱天道的过程。不同小说对天道的设定各异，但核心都是对"天地至高法则"的探讨。',
+    sections: [
+      {
+        title: '天道法则',
+        emoji: '📜',
+        color: 'text-blue-400',
+        bgColor: 'bg-blue-500/10',
+        borderColor: 'border-blue-500/30',
+        description: '天道运行的底层法则体系',
+        items: [
+          { name: '因果法则', emoji: '🔗', description: '种什么因得什么果，修仙者的行为终将得到天道的回应' },
+          { name: '轮回法则', emoji: '♻️', description: '生老病死循环不息，跳出轮回方为永恒' },
+          { name: '平衡法则', emoji: '⚖️', description: '天道维持世间平衡，过度索取必遭天劫' },
+          { name: '命运法则', emoji: '🎲', description: '冥冥之中自有定数，逆天改命需付出代价' },
+          { name: '造化法则', emoji: '✨', description: '天地造化万物，灵气孕育生机，是修炼的根基' },
+        ],
+      },
+      {
+        title: '各派天道观',
+        emoji: '🏔️',
+        color: 'text-indigo-400',
+        bgColor: 'bg-indigo-500/10',
+        borderColor: 'border-indigo-500/30',
+        description: '不同小说中对天道的独特理解',
+        items: [
+          { name: '顺天之道', emoji: '🌅', description: '感悟自然法则、顺应天道，修炼至高境界需与天地共鸣', source: '凡人修仙传' },
+          { name: '逆天之道', emoji: '⛈️', description: '天道不仁，以万物为刍狗，唯有逆天方得超脱', source: '仙逆' },
+          { name: '天心印记', emoji: '💠', description: '大帝证道的标志，与天道融合获得至高权柄', source: '遮天' },
+          { name: '天道轮回', emoji: '🔄', description: '六道轮回为天道根本，掌控轮回即掌控天道一角', source: '诛仙' },
+          { name: '以力证道', emoji: '💪', description: '不悟天道法则，以纯粹力量强行证道，最为霸道', source: '洪荒之永恒道主' },
+        ],
+      },
+      {
+        title: '天罚与天劫',
+        emoji: '⚡',
+        color: 'text-yellow-400',
+        bgColor: 'bg-yellow-500/10',
+        borderColor: 'border-yellow-500/30',
+        description: '天道对修仙者的惩罚与考验',
+        items: [
+          { name: '雷劫', emoji: '⚡', description: '最常见的天劫形式，以雷霆之力考验渡劫者' },
+          { name: '心魔劫', emoji: '👹', description: '直击心灵深处的劫难，需斩断心魔方能通过' },
+          { name: '天罚', emoji: '🔥', description: '天道对逆天者的直接惩罚，远比天劫恐怖' },
+          { name: '因果劫', emoji: '🌀', description: '过往因果的清算，欠下越多劫难越重' },
+        ],
+      },
+    ],
     relatedNovels: ['rmjz', 'bi-luo', 'xi-zhen', 'zhu-xian'],
   },
   {
     id: 'dan-yao',
     title: '丹药',
+    titleEmoji: '💊',
     category: '修炼资源',
+    categoryColor: 'text-orange-400',
     summary: '修仙者日常使用的辅助修炼物品，涵盖突破、疗伤、增寿、禁制等各类功效。',
-    content:
-      '丹药是修仙者最常用的辅助修炼物品，由炼丹师以灵药、灵草等材料炼制而成。丹药品质分为下品、中品、上品、极品，品级越高药效越好、杂质越少。以下按功效分类详细罗列各小说中常见丹药：\n\n【境界突破类】\n筑基丹 — 凡人修仙传中炼气期修士突破至筑基期的关键丹药，无筑基丹则突破概率极低，因此极其珍贵，是低阶修士梦寐以求之物。\n结丹丹 — 辅助筑基期修士突破至结丹期，大幅提升结丹成功率，炼制材料极为稀有。\n降尘丹 — 凡人修仙传中用于辅助结丹的极品丹药，比普通结丹丹效果更佳。\n凝元丹 — 辅助修士稳固境界、凝聚元婴之力，为突破元婴期做准备。\n破婴丹 — 辅助结丹期修士突破元婴期，极为稀少，一方势力可能仅存数枚。\n化神丹 — 辅助元婴期修士突破化神期，属于高阶丹药，只有顶级炼丹师方可炼制。\n造化丹 — 大主宰中的突破丹药，帮助强者突破瓶颈，炼制方法近乎失传。\n凝魂丹 — 帮助灵魂受损或修炼魂道的修士凝聚魂力，仙逆中王林曾使用。\n\n【恢复疗伤类】\n回灵丹 — 快速恢复灵力，战斗中必备的续命丹药，低阶修士人手必备。\n疗伤丹 — 治疗外伤与内伤，是最常见的丹药之一，各品级均有。\n续命丹 — 凡人修仙传中可大幅延长寿元，对寿元将尽的修士而言是续命至宝。\n九转回春丹 — 顶级疗伤丹药，几乎可将濒死之人救回，炼制极难。\n还丹 — 诛仙中碧瑶重伤后所求之丹，可起死回生。\n小还丹 — 恢复灵力与伤势的中阶丹药，效果稳定，各大宗门均有储备。\n大还丹 — 高阶恢复丹药，药效远超小还丹，可恢复严重伤势。\n归元丹 — 帮助修士恢复元气，稳固因激战或走火入魔而紊乱的灵力。\n活络丹 — 治疗经脉损伤，修复因修炼不当或战斗造成的经脉堵塞。\n\n【增寿延年类】\n寿元丹 — 直接增加修士寿元，越高级的寿元丹延寿效果越强，高阶寿元丹可延寿千年以上。\n定颜丹 — 凡人修仙传中的特殊丹药，服用后可永葆青春容貌不变，女修趋之若鹜。\n延寿丹 — 较寿元丹低一阶，但延寿效果依然显著，是老年修士的续命之选。\n青元丹 — 遮天中可延寿数千年的古丹，需圣级药引方可炼制。\n\n【禁制控制类】\n噬心丹 — 凡人修仙传中的禁制丹药，服下后若不服解药则万虫噬心而死，常用于控制下属。\n合欢散 — 极为阴毒的春药类丹药，修仙小说中常见的阴谋暗算手段，中者丧失理智沉迷欲念，需以特殊手法或丹药解除。多见于凡人修仙传、仙逆等小说中的阴暗面描写。\n迷心丹 — 服用后精神恍惚、任人摆布，常用于审讯或控制俘虏。\n搜魂丹 — 强行搜索他人记忆的禁术丹药，被搜者往往神识受损甚至变为痴呆。\n毒龙丹 — 以剧毒炼制的控制类丹药，潜伏体内随时可被引爆。\n绝情丹 — 诛仙中鬼王宗的禁药，服下后断绝七情六欲，修炼特定功法所用。\n\n【功法辅助类】\n洗髓丹 — 洗毛伐髓、改善修炼资质，对灵根资质较差者效果显著，是低阶修士改变命运的丹药。\n培元丹 — 培固本元、增强灵根品质，常在修炼初期服用奠定根基。\n凝神丹 — 稳固神识、防止走火入魔，修炼高风险功法时必备。\n通窍丹 — 开启人体窍穴，增强灵力运转效率，剑来中陈平安修炼时曾用。\n悟道丹 — 辅助修士参悟天道法则，服用后可短暂进入顿悟状态，极为珍贵。\n净心丹 — 消除心魔、净化杂念，渡心魔劫时的重要辅助丹药。\n\n【特殊功能类】\n隐灵丹 — 隐匿修为气息，使高阶修士伪装为低阶，凡人修仙传中韩立常用以隐藏实力。\n易容丹 — 改变面貌，配合隐灵丹可完全变换身份，行走修仙界不惧被人识破。\n辟谷丹 — 代替进食，服用一颗可数月不饥，低阶修士闭关必备。\n解毒丹 — 解除各类毒素，修仙界毒术繁多，解毒丹种类也数不胜数。\n化血丹 — 以精血炼制的特殊丹药，可用于追踪或施展血道秘术。\n分神丹 — 辅助修士分化神识、一心多用，修炼分身术或同时操控多件法宝时使用。\n聚灵丹 — 凡人修仙传中常见丹药，辅助聚拢天地灵气加速修炼，是修士日常消耗量最大的丹药之一。\n离殒丹 — 仙逆中的珍稀丹药，用于解除特殊禁制与毒素。\n血玉丹 — 以生灵精血炼制的邪道丹药，药效凶猛但反噬严重，魔道修士常用。\n大道丹 — 一念永恒中的顶级丹药，蕴含大道法则之力，白小纯炼丹的终极目标之一。',
+    overview:
+      '丹药是修仙者最常用的辅助修炼物品，由炼丹师以灵药、灵草等材料炼制而成。丹药品质分为下品、中品、上品、极品，品级越高药效越好、杂质越少。以下按功效分类详细罗列各小说中常见丹药。',
+    sections: [
+      {
+        title: '境界突破类',
+        emoji: '🚀',
+        color: 'text-violet-400',
+        bgColor: 'bg-violet-500/10',
+        borderColor: 'border-violet-500/30',
+        description: '辅助修士突破境界瓶颈的核心丹药',
+        items: [
+          { name: '筑基丹', emoji: '🏗️', description: '炼气期突破筑基期的关键丹药，无此丹则突破概率极低，低阶修士梦寐以求之物', source: '凡人修仙传' },
+          { name: '结丹丹', emoji: '💠', description: '辅助筑基期突破结丹期，大幅提升结丹成功率，炼制材料极为稀有' },
+          { name: '降尘丹', emoji: '⬇️', description: '辅助结丹的极品丹药，比普通结丹丹效果更佳', source: '凡人修仙传' },
+          { name: '凝元丹', emoji: '🔵', description: '稳固境界、凝聚元婴之力，为突破元婴期做准备' },
+          { name: '破婴丹', emoji: '🐣', description: '辅助结丹期突破元婴期，极为稀少，一方势力可能仅存数枚' },
+          { name: '化神丹', emoji: '🌟', description: '辅助元婴期突破化神期，只有顶级炼丹师方可炼制' },
+          { name: '造化丹', emoji: '🌈', description: '帮助强者突破瓶颈，炼制方法近乎失传', source: '大主宰' },
+          { name: '凝魂丹', emoji: '👻', description: '帮助灵魂受损或修炼魂道的修士凝聚魂力', source: '仙逆' },
+        ],
+      },
+      {
+        title: '恢复疗伤类',
+        emoji: '💚',
+        color: 'text-emerald-400',
+        bgColor: 'bg-emerald-500/10',
+        borderColor: 'border-emerald-500/30',
+        description: '治疗伤势、恢复灵力的必备丹药',
+        items: [
+          { name: '回灵丹', emoji: '🔄', description: '快速恢复灵力，战斗中必备的续命丹药' },
+          { name: '疗伤丹', emoji: '🩹', description: '治疗外伤与内伤，最常见的丹药之一，各品级均有' },
+          { name: '续命丹', emoji: '⏳', description: '大幅延长寿元，寿元将尽者的续命至宝', source: '凡人修仙传' },
+          { name: '九转回春丹', emoji: '✨', description: '顶级疗伤丹药，几乎可将濒死之人救回，炼制极难' },
+          { name: '还丹', emoji: '🔮', description: '可起死回生的珍稀丹药', source: '诛仙' },
+          { name: '小还丹', emoji: '💊', description: '恢复灵力与伤势的中阶丹药，各大宗门均有储备' },
+          { name: '大还丹', emoji: '💎', description: '高阶恢复丹药，药效远超小还丹，可恢复严重伤势' },
+          { name: '归元丹', emoji: '☯️', description: '帮助修士恢复元气，稳固因激战或走火入魔而紊乱的灵力' },
+          { name: '活络丹', emoji: '🦴', description: '治疗经脉损伤，修复因修炼不当或战斗造成的经脉堵塞' },
+        ],
+      },
+      {
+        title: '增寿延年类',
+        emoji: '⏰',
+        color: 'text-rose-400',
+        bgColor: 'bg-rose-500/10',
+        borderColor: 'border-rose-500/30',
+        description: '延长寿元、永葆青春的珍贵丹药',
+        items: [
+          { name: '寿元丹', emoji: '🕐', description: '直接增加修士寿元，高阶者可延寿千年以上' },
+          { name: '定颜丹', emoji: '💅', description: '服用后永葆青春容貌不变，女修趋之若鹜', source: '凡人修仙传' },
+          { name: '延寿丹', emoji: '⏳', description: '较寿元丹低一阶，但延寿效果依然显著' },
+          { name: '青元丹', emoji: '🌿', description: '可延寿数千年的古丹，需圣级药引方可炼制', source: '遮天' },
+        ],
+      },
+      {
+        title: '禁制控制类',
+        emoji: '⛓️',
+        color: 'text-red-400',
+        bgColor: 'bg-red-500/10',
+        borderColor: 'border-red-500/30',
+        description: '用于控制、禁制他人的阴暗丹药，修仙界的禁忌之物',
+        items: [
+          { name: '噬心丹', emoji: '💀', description: '不服解药则万虫噬心而死，常用于控制下属', source: '凡人修仙传' },
+          { name: '合欢散', emoji: '💋', description: '极为阴毒的春药类丹药，中者丧失理智沉迷欲念，需特殊手法解除', source: '凡人修仙传' },
+          { name: '迷心丹', emoji: '🌀', description: '服用后精神恍惚、任人摆布，常用于审讯或控制俘虏' },
+          { name: '搜魂丹', emoji: '🧠', description: '强行搜索他人记忆，被搜者往往神识受损甚至变为痴呆' },
+          { name: '毒龙丹', emoji: '🐉', description: '以剧毒炼制，潜伏体内随时可被引爆' },
+          { name: '绝情丹', emoji: '💔', description: '断绝七情六欲，修炼特定功法所用', source: '诛仙' },
+        ],
+      },
+      {
+        title: '功法辅助类',
+        emoji: '📖',
+        color: 'text-sky-400',
+        bgColor: 'bg-sky-500/10',
+        borderColor: 'border-sky-500/30',
+        description: '辅助修炼功法、改善资质的基础丹药',
+        items: [
+          { name: '洗髓丹', emoji: '🛁', description: '洗毛伐髓、改善修炼资质，灵根资质较差者的命运之丹' },
+          { name: '培元丹', emoji: '🌱', description: '培固本元、增强灵根品质，修炼初期服用奠定根基' },
+          { name: '凝神丹', emoji: '🧘', description: '稳固神识、防止走火入魔，修炼高风险功法时必备' },
+          { name: '通窍丹', emoji: '🔓', description: '开启人体窍穴，增强灵力运转效率', source: '剑来' },
+          { name: '悟道丹', emoji: '💡', description: '辅助参悟天道法则，服用后可短暂进入顿悟状态，极为珍贵' },
+          { name: '净心丹', emoji: '🤍', description: '消除心魔、净化杂念，渡心魔劫时的重要辅助丹药' },
+        ],
+      },
+      {
+        title: '特殊功能类',
+        emoji: '🎭',
+        color: 'text-teal-400',
+        bgColor: 'bg-teal-500/10',
+        borderColor: 'border-teal-500/30',
+        description: '具有特殊功效的稀有丹药',
+        items: [
+          { name: '隐灵丹', emoji: '👻', description: '隐匿修为气息，使高阶修士伪装为低阶', source: '凡人修仙传' },
+          { name: '易容丹', emoji: '🎭', description: '改变面貌，配合隐灵丹可完全变换身份' },
+          { name: '辟谷丹', emoji: '🍚', description: '代替进食，服用一颗可数月不饥，闭关必备' },
+          { name: '解毒丹', emoji: '🧪', description: '解除各类毒素，种类数不胜数' },
+          { name: '化血丹', emoji: '🩸', description: '以精血炼制，可用于追踪或施展血道秘术' },
+          { name: '分神丹', emoji: '👥', description: '辅助分化神识、一心多用，修炼分身术时使用' },
+          { name: '聚灵丹', emoji: '✨', description: '辅助聚拢天地灵气加速修炼，日常消耗量最大的丹药之一', source: '凡人修仙传' },
+          { name: '离殒丹', emoji: '🔮', description: '解除特殊禁制与毒素的珍稀丹药', source: '仙逆' },
+          { name: '血玉丹', emoji: '🩸', description: '以生灵精血炼制的邪道丹药，药效凶猛但反噬严重' },
+          { name: '大道丹', emoji: '🌟', description: '蕴含大道法则之力的顶级丹药', source: '一念永恒' },
+        ],
+      },
+    ],
     relatedNovels: ['rmjz', 'zhu-xian', 'xi-zhen', 'bi-luo', 'da-zhu-zai', 'wan-mei', 'jian-lai', 'yi-nian'],
   },
   {
     id: 'faba-o',
     title: '法宝',
+    titleEmoji: '⚔️',
     category: '修炼资源',
+    categoryColor: 'text-orange-400',
     summary: '修仙者战斗和修炼的核心器具，品级从低到高千差万别。',
-    content:
-      '法宝是修仙者战斗和修炼的核心器具，按品级从低到高分为：法器、灵器、法宝、灵宝、通天灵宝、玄天之宝。\n\n法宝通常需要修仙者以神识祭炼后方可使用，品级越高的法宝所需的祭炼时间越长，但对修为的要求也越高。一些顶级法宝甚至拥有自己的器灵，可自主战斗。\n\n法宝的获取方式包括：自行炼制、购买交换、探险获取、前辈遗留、击杀夺取等。',
+    overview:
+      '法宝是修仙者战斗和修炼的核心器具，按品级从低到高分为：法器、灵器、法宝、灵宝、通天灵宝、玄天之宝。法宝通常需要修仙者以神识祭炼后方可使用，品级越高的法宝所需祭炼时间越长，但对修为的要求也越高。',
+    sections: [
+      {
+        title: '法宝品级',
+        emoji: '📊',
+        color: 'text-amber-400',
+        bgColor: 'bg-amber-500/10',
+        borderColor: 'border-amber-500/30',
+        description: '从低到高的法宝等级划分',
+        items: [
+          { name: '法器', emoji: '🗡️', description: '最低阶器具，炼气期修士使用，威力有限' },
+          { name: '灵器', emoji: '⚔️', description: '蕴含灵性，筑基期修士主力装备' },
+          { name: '法宝', emoji: '🔮', description: '结丹期方可祭炼，威力强大，可自主御敌' },
+          { name: '灵宝', emoji: '💎', description: '元婴期法宝，部分拥有器灵，可自主战斗' },
+          { name: '通天灵宝', emoji: '🌟', description: '化神期至宝，威力通天，一方势力镇宗之宝' },
+          { name: '玄天之宝', emoji: '👑', description: '传说级至宝，蕴含天地法则，唯大能者方可驾驭' },
+        ],
+      },
+      {
+        title: '经典法宝',
+        emoji: '🏆',
+        color: 'text-violet-400',
+        bgColor: 'bg-violet-500/10',
+        borderColor: 'border-violet-500/30',
+        description: '各小说中令人印象深刻的标志性法宝',
+        items: [
+          { name: '小绿瓶', emoji: '🧪', description: '可催熟灵药的逆天至宝，韩立崛起的根基', source: '凡人修仙传' },
+          { name: '噬魂幡', emoji: '🏴', description: '以阴魂炼制的魔道法宝，吞噬神魂', source: '仙逆' },
+          { name: '诛仙剑', emoji: '⚔️', description: '天地第一凶器，一剑可诛仙灭神', source: '诛仙' },
+          { name: '荒塔', emoji: '🗼', description: '九层荒塔，蕴含无尽秘境与机缘', source: '遮天' },
+          { name: '草灭剑', emoji: '🌿', description: '以一株草化剑，斩灭天地万物', source: '完美世界' },
+          { name: '吞天罐', emoji: '🏺', description: '可吞噬万物炼化为己用，成长型至宝', source: '遮天' },
+        ],
+      },
+      {
+        title: '法宝类型',
+        emoji: '🔧',
+        color: 'text-cyan-400',
+        bgColor: 'bg-cyan-500/10',
+        borderColor: 'border-cyan-500/30',
+        description: '按功能划分的法宝类别',
+        items: [
+          { name: '攻击型', emoji: '⚔️', description: '飞剑、宝刀、神枪等，以攻伐之力见长' },
+          { name: '防御型', emoji: '🛡️', description: '宝甲、护盾、阵盘等，守护修士安全' },
+          { name: '辅助型', emoji: '🔔', description: '储物袋、传音符、灵兽袋等，辅助日常' },
+          { name: '飞行型', emoji: '🛸', description: '飞舟、灵兽坐骑、遁光法器等' },
+          { name: '阵法型', emoji: '🎯', description: '阵盘、阵旗等，布阵攻防两用' },
+          { name: '特殊型', emoji: '🎭', description: '因果类、时间类、空间类等稀世法宝' },
+        ],
+      },
+    ],
     relatedNovels: ['rmjz', 'bi-luo', 'xi-zhen'],
   },
   {
     id: 'tianjie',
     title: '天劫',
+    titleEmoji: '⚡',
     category: '核心概念',
+    categoryColor: 'text-yellow-400',
     summary: '天道对修仙者的考验，是突破高阶境界的必经之路。',
-    content:
-      '天劫是修仙者在突破高阶境界时，天道降下的考验。天劫的形式多种多样，最常见的为雷劫，此外还有心魔劫、火劫、风劫等。\n\n天劫的威力与修仙者的修为和资质有关。一般而言，天赋越高、修为越强的人，天劫的威力也越大。渡过天劫可获得天道的认可，修为大进；失败则可能重伤甚至身死道消。\n\n在某些小说中，天劫也是天道维持世界平衡的机制，防止修仙者过多消耗天地灵气。',
+    overview:
+      '天劫是修仙者在突破高阶境界时，天道降下的考验。天劫的威力与修仙者的修为和资质有关，天赋越高、修为越强者，天劫威力也越大。渡过天劫可获得天道的认可，修为大进；失败则可能重伤甚至身死道消。',
+    sections: [
+      {
+        title: '天劫类型',
+        emoji: '⛈️',
+        color: 'text-yellow-400',
+        bgColor: 'bg-yellow-500/10',
+        borderColor: 'border-yellow-500/30',
+        description: '修仙者可能遭遇的各类天劫',
+        items: [
+          { name: '雷劫', emoji: '⚡', description: '最常见的天劫，以雷霆之力考验渡劫者，九重雷劫最凶险' },
+          { name: '心魔劫', emoji: '👹', description: '直击心灵深处，需斩断心魔执念方可通过' },
+          { name: '火劫', emoji: '🔥', description: '以天地异火焚烧肉身与神魂，浴火重生者方得超脱' },
+          { name: '风劫', emoji: '🌪️', description: '罡风刮骨削魂，以风之利刃考验修士意志' },
+          { name: '因果劫', emoji: '🔗', description: '过往因果清算，杀业越重劫难越凶' },
+          { name: '天人五衰', emoji: '💀', description: '修仙者最恐怖的劫难，肉身与神魂同时衰败' },
+        ],
+      },
+      {
+        title: '雷劫等阶',
+        emoji: '⚡',
+        color: 'text-blue-400',
+        bgColor: 'bg-blue-500/10',
+        borderColor: 'border-blue-500/30',
+        description: '雷劫按威力从弱到强的等阶划分',
+        items: [
+          { name: '一重雷劫', emoji: '🌧️', description: '最弱的雷劫，筑基或结丹期修士可渡' },
+          { name: '三重雷劫', emoji: '⛈️', description: '中等雷劫，元婴期修士面临的考验' },
+          { name: '六重雷劫', emoji: '🌩️', description: '较强雷劫，化神期修士方能承受' },
+          { name: '九重雷劫', emoji: '⚡', description: '最强雷劫，每道雷劫都足以毁灭一方天地' },
+          { name: '紫霄神雷', emoji: '💜', description: '传说中天道降下的至高神雷，大能者方可渡过', source: '洪荒之永恒道主' },
+          { name: '混沌雷劫', emoji: '🌀', description: '超越常规的灭世雷劫，逆天者专属' },
+        ],
+      },
+      {
+        title: '渡劫方式',
+        emoji: '🛡️',
+        color: 'text-emerald-400',
+        bgColor: 'bg-emerald-500/10',
+        borderColor: 'border-emerald-500/30',
+        description: '修仙者应对天劫的策略与手段',
+        items: [
+          { name: '硬抗', emoji: '💪', description: '以肉身和修为正面承受，最直接也最凶险' },
+          { name: '法宝护身', emoji: '🛡️', description: '以防御型法宝抵挡天劫之力' },
+          { name: '阵法抵御', emoji: '🎯', description: '提前布下防御阵法，以阵法之力消减天劫' },
+          { name: '丹药辅助', emoji: '💊', description: '服用疗伤恢复类丹药，渡劫中持续补充' },
+          { name: '借力突破', emoji: '🔄', description: '将天劫之力转化为修炼之用，以劫炼身' },
+        ],
+      },
+    ],
     relatedNovels: ['rmjz', 'bi-luo', 'xi-zhen', 'zhu-xian'],
   },
   {
     id: 'zongmen',
     title: '宗门',
+    titleEmoji: '🏯',
     category: '修仙社会',
+    categoryColor: 'text-pink-400',
     summary: '修仙者组织的主要形式，是修仙社会的基本结构单位。',
-    content:
-      '宗门是修仙者组织的主要形式，是修仙社会的基本结构单位。宗门按实力分为不同等级，通常有：\n\n1. 顶级宗门：底蕴深厚，拥有元婴期以上的老祖坐镇\n2. 大型宗门：金丹期修士为骨干，结丹期长老\n3. 中型宗门：以结丹期修士为首\n4. 小型宗门：多为筑基期修士组成\n\n宗门为弟子提供修炼资源、功法传承和保护，弟子则需为宗门效力。宗门之间经常因资源、领地等发生争斗。',
+    overview:
+      '宗门是修仙者组织的主要形式，是修仙社会的基本结构单位。宗门按实力分为不同等级，为弟子提供修炼资源、功法传承和保护，弟子则需为宗门效力。宗门之间经常因资源、领地等发生争斗。',
+    sections: [
+      {
+        title: '宗门等级',
+        emoji: '🏛️',
+        color: 'text-amber-400',
+        bgColor: 'bg-amber-500/10',
+        borderColor: 'border-amber-500/30',
+        description: '按实力与底蕴划分的宗门等级',
+        items: [
+          { name: '顶级宗门', emoji: '👑', description: '底蕴深厚，拥有元婴期以上老祖坐镇，掌控一域' },
+          { name: '大型宗门', emoji: '🏯', description: '金丹期修士为骨干，结丹期长老数十人' },
+          { name: '中型宗门', emoji: '🏰', description: '以结丹期修士为首，是修仙界的中坚力量' },
+          { name: '小型宗门', emoji: '🏠', description: '多为筑基期修士组成，附属于大势力' },
+          { name: '修仙家族', emoji: '👨‍👩‍👧‍👦', description: '以血脉为纽带的修仙势力，同气连枝' },
+        ],
+      },
+      {
+        title: '宗门结构',
+        emoji: '📋',
+        color: 'text-blue-400',
+        bgColor: 'bg-blue-500/10',
+        borderColor: 'border-blue-500/30',
+        description: '宗门内部的层级与职能划分',
+        items: [
+          { name: '宗主/掌门', emoji: '👤', description: '一宗之主，通常为宗门最强者' },
+          { name: '太上长老', emoji: '🧓', description: '退位的老祖级人物，闭关修炼，危时出山' },
+          { name: '长老', emoji: '👔', description: '各峰各堂的掌事者，宗门核心决策层' },
+          { name: '内门弟子', emoji: '⭐', description: '天赋出众者，享受核心资源倾斜' },
+          { name: '外门弟子', emoji: '📘', description: '普通弟子，需通过考核方可晋升内门' },
+          { name: '杂役弟子', emoji: '🔧', description: '负责宗门日常劳作，地位最低' },
+        ],
+      },
+      {
+        title: '经典宗门',
+        emoji: '🏆',
+        color: 'text-violet-400',
+        bgColor: 'bg-violet-500/10',
+        borderColor: 'border-violet-500/30',
+        description: '各小说中令人印象深刻的标志性宗门',
+        items: [
+          { name: '黄枫谷', emoji: '🍁', description: '韩立最初的宗门，中等实力但底蕴不俗', source: '凡人修仙传' },
+          { name: '青云门', emoji: '☁️', description: '正道三大派之一，修真界的中流砥柱', source: '诛仙' },
+          { name: '鬼王宗', emoji: '👹', description: '魔道大派，行事狠辣但内部团结', source: '诛仙' },
+          { name: '恒岳派', emoji: '⛰️', description: '王林拜入的宗门，改变了他的命运', source: '仙逆' },
+          { name: '摇光圣地', emoji: '✨', description: '东荒大教，底蕴深不可测', source: '遮天' },
+          { name: '补天教', emoji: '🩹', description: '上界大教，势力横跨诸域', source: '完美世界' },
+        ],
+      },
+    ],
     relatedNovels: ['rmjz', 'zhu-xian', 'xi-zhen'],
   },
   {
     id: 'lingshi',
     title: '灵石',
+    titleEmoji: '💎',
     category: '修炼资源',
+    categoryColor: 'text-cyan-400',
     summary: '修仙世界通用的货币与修炼能源，蕴含天地灵气的结晶矿物。',
-    content:
-      '灵石是修仙世界中蕴含天地灵气的结晶矿物，既是通用货币，也是修炼的核心能源。灵石按品质分为：\n\n1. 下品灵石：灵气稀薄，凡人修仙者日常使用\n2. 中品灵石：灵气充裕，百枚下品灵石兑换一枚\n3. 上品灵石：灵气浓郁，百枚中品灵石兑换一枚\n4. 极品灵石：灵气精纯至极，极为罕见\n\n灵石的用途极为广泛：修炼时吸收其中灵气加速修行、布阵作为阵法能源、炼器炼丹的辅助材料、交易流通的通用货币。部分小说中还有特殊灵石，如仙石（仙界流通）、魔石（魔道专用）等。\n\n灵石矿脉是修仙界各方势力争夺的核心资源，控制灵石矿意味着掌握了修炼经济的命脉。',
+    overview:
+      '灵石是修仙世界中蕴含天地灵气的结晶矿物，既是通用货币，也是修炼的核心能源。灵石矿脉是修仙界各方势力争夺的核心资源，控制灵石矿意味着掌握了修炼经济的命脉。',
+    sections: [
+      {
+        title: '灵石等级',
+        emoji: '📊',
+        color: 'text-cyan-400',
+        bgColor: 'bg-cyan-500/10',
+        borderColor: 'border-cyan-500/30',
+        description: '按灵气浓度划分的灵石品质等级',
+        items: [
+          { name: '下品灵石', emoji: '🪨', description: '灵气稀薄，凡人修仙者日常使用，百枚兑换一枚中品' },
+          { name: '中品灵石', emoji: '💎', description: '灵气充裕，百枚下品兑换一枚，筑基期修士主要流通' },
+          { name: '上品灵石', emoji: '💠', description: '灵气浓郁，百枚中品兑换一枚，高阶修士交易使用' },
+          { name: '极品灵石', emoji: '🌟', description: '灵气精纯至极，极为罕见，一方势力也未必有几枚' },
+        ],
+      },
+      {
+        title: '特殊灵石',
+        emoji: '✨',
+        color: 'text-purple-400',
+        bgColor: 'bg-purple-500/10',
+        borderColor: 'border-purple-500/30',
+        description: '超越常规等级的珍稀灵石',
+        items: [
+          { name: '仙石', emoji: '☁️', description: '仙界流通货币，蕴含仙气，凡界极为罕见', source: '凡人修仙传' },
+          { name: '魔石', emoji: '🌑', description: '魔道专用，蕴含魔气，修炼魔功效率倍增', source: '仙逆' },
+          { name: '源石', emoji: '💠', description: '蕴含大道本源之力，可助人参悟法则', source: '遮天' },
+          { name: '神源', emoji: '👑', description: '封印不死药与古尊的至宝，价值连城', source: '遮天' },
+          { name: '天晶', emoji: '🔮', description: '天地精华凝聚，修炼速度百倍于普通灵石', source: '大主宰' },
+        ],
+      },
+      {
+        title: '灵石用途',
+        emoji: '🔧',
+        color: 'text-emerald-400',
+        bgColor: 'bg-emerald-500/10',
+        borderColor: 'border-emerald-500/30',
+        description: '灵石在修仙界的各种用途',
+        items: [
+          { name: '修炼', emoji: '🧘', description: '吸收其中灵气加速修行，最基础的用途' },
+          { name: '布阵', emoji: '🎯', description: '作为阵法能源，驱动防御或攻击大阵' },
+          { name: '炼器炼丹', emoji: '🔥', description: '辅助材料，提升炼制品级与成功率' },
+          { name: '交易', emoji: '💰', description: '通用货币，购买功法、丹药、法宝等' },
+          { name: '传承', emoji: '📜', description: '某些传承需以灵石开启，灵石为钥' },
+        ],
+      },
+    ],
     relatedNovels: ['rmjz', 'xi-zhen', 'yi-nian', 'zhu-xian'],
   },
   {
     id: 'busiyao',
     title: '不死药',
+    titleEmoji: '🌸',
     category: '修炼资源',
+    categoryColor: 'text-pink-400',
     summary: '传说中可令人长生不老、起死回生的至高灵药，修仙者梦寐以求的禁忌之物。',
-    content:
-      '不死药是修仙世界中传说可令人长生不老、起死回生的至高灵药。不死药极为稀少，往往整部小说中也只出现寥寥数株，每一株都牵动无数修士的疯狂争夺。\n\n不死药的常见类型：\n\n1. 天生不死药：天地自然孕育，如蟠桃、人参果、不死神药等，一个纪元可能只成熟一次\n2. 炼制不死药：由绝世炼丹师以逆天手法炼制，成功率极低\n3. 准不死药：药效接近不死药但略有不足，如延寿万年以上的极品丹药\n\n不死药的功效：\n- 大幅延长寿命，甚至真正长生不死\n- 起死回生，将濒死之人从鬼门关拉回\n- 重塑肉身，断肢重生\n- 洗毛伐髓，提升修炼资质\n\n在遮天中，不死药是大帝续命的关键；在完美世界中，不死药更是仙古遗迹中的至宝。不死药往往伴有凶兽守护，采摘条件极为苛刻。',
+    overview:
+      '不死药是修仙世界中传说可令人长生不老、起死回生的至高灵药。不死药极为稀少，往往整部小说中也只出现寥寥数株，每一株都牵动无数修士的疯狂争夺。不死药往往伴有凶兽守护，采摘条件极为苛刻。',
+    sections: [
+      {
+        title: '不死药类型',
+        emoji: '🌺',
+        color: 'text-pink-400',
+        bgColor: 'bg-pink-500/10',
+        borderColor: 'border-pink-500/30',
+        description: '不死药按来源与炼制方式划分',
+        items: [
+          { name: '天生不死药', emoji: '🌱', description: '天地自然孕育，一个纪元可能只成熟一次，最为珍贵' },
+          { name: '炼制不死药', emoji: '🔥', description: '由绝世炼丹师以逆天手法炼制，成功率极低' },
+          { name: '准不死药', emoji: '💫', description: '药效接近不死药但略有不足，可延寿万年以上' },
+        ],
+      },
+      {
+        title: '经典不死药',
+        emoji: '🏆',
+        color: 'text-amber-400',
+        bgColor: 'bg-amber-500/10',
+        borderColor: 'border-amber-500/30',
+        description: '各小说中出现的著名不死药',
+        items: [
+          { name: '蟠桃', emoji: '🍑', description: '天生不死药之王，食之可长生不老，天庭至宝', source: '洪荒之永恒道主' },
+          { name: '人参果', emoji: '🍎', description: '万年一熟，闻一闻延寿三百六十岁，吃一颗活四万七千年', source: '洪荒之永恒道主' },
+          { name: '不死神药', emoji: '🌿', description: '遮天中大帝续命的关键，一株足以引发血战', source: '遮天' },
+          { name: '九妙不死药', emoji: '🌸', description: '可续命九次，每次皆有不同药效', source: '遮天' },
+          { name: '太初古药', emoji: '💎', description: '诞生于太初时代的至宝，蕴含天地初开之力', source: '完美世界' },
+          { name: '天神果', emoji: '🍎', description: '直接提升修为境界，突破瓶颈的逆天之果', source: '大主宰' },
+        ],
+      },
+      {
+        title: '不死药功效',
+        emoji: '✨',
+        color: 'text-emerald-400',
+        bgColor: 'bg-emerald-500/10',
+        borderColor: 'border-emerald-500/30',
+        description: '不死药可带来的各种功效',
+        items: [
+          { name: '长生不死', emoji: '♾️', description: '大幅延长寿命，甚至真正长生不死' },
+          { name: '起死回生', emoji: '💫', description: '将濒死之人从鬼门关拉回' },
+          { name: '重塑肉身', emoji: '🦴', description: '断肢重生，甚至从一滴血重塑全身' },
+          { name: '洗毛伐髓', emoji: '🛁', description: '提升修炼资质，脱胎换骨' },
+          { name: '突破瓶颈', emoji: '🚀', description: '借助不死药之力强行突破境界' },
+        ],
+      },
+    ],
     relatedNovels: ['bi-luo', 'wan-mei', 'rmjz', 'da-zhu-zai'],
   },
   {
     id: 'tiancaidibao',
     title: '天材地宝',
+    titleEmoji: '🔮',
     category: '修炼资源',
+    categoryColor: 'text-indigo-400',
     summary: '天地自然孕育的珍稀修炼资源，包括灵药、灵矿、神火、圣物等，是修仙者提升实力的关键依托。',
-    content:
-      '天材地宝是天地自然孕育的珍稀修炼资源总称，涵盖灵药、灵矿、神火、圣物、异兽内丹等多种类型。天材地宝按珍稀程度通常分为：\n\n1. 凡品：常见灵草灵矿，低阶修士使用\n2. 灵品：百年千年灵药，中阶修士争夺\n3. 宝品：万年灵药、稀世灵矿，高阶修士 coveted\n4. 圣品：举世罕见，可遇不可求\n5. 神品：传说中的至高之物，足以改变格局\n\n常见天材地宝类型：\n\n- 灵药类：千年灵芝、万年何首乌、九叶仙草等，可直接服用或炼丹\n- 灵矿类：精铁、寒铁、陨星铁等，用于炼器\n- 天火类：天地异火、混沌神火等，炼丹炼器的顶级火源\n- 圣物类：远古遗物、天地圣物等，蕴含大道法则\n- 异兽类：上古神兽内丹、龙血凤髓等\n\n天材地宝往往生长在险地秘境之中，或伴有强大凶兽守护。修仙界中"机缘"一词，很大程度指的就是获得天材地宝的际遇。许多小说中主角的崛起，往往始于一次意外的天材地宝收获。',
+    overview:
+      '天材地宝是天地自然孕育的珍稀修炼资源总称，涵盖灵药、灵矿、神火、圣物、异兽内丹等多种类型。天材地宝往往生长在险地秘境之中，或伴有强大凶兽守护。修仙界中"机缘"一词，很大程度指的就是获得天材地宝的际遇。',
+    sections: [
+      {
+        title: '品级划分',
+        emoji: '📊',
+        color: 'text-indigo-400',
+        bgColor: 'bg-indigo-500/10',
+        borderColor: 'border-indigo-500/30',
+        description: '按珍稀程度从低到高的五级分类',
+        items: [
+          { name: '凡品', emoji: '🪨', description: '常见灵草灵矿，低阶修士使用，市场有售' },
+          { name: '灵品', emoji: '💚', description: '百年千年灵药，中阶修士争夺，价值不菲' },
+          { name: '宝品', emoji: '💎', description: '万年灵药、稀世灵矿，高阶修士梦寐以求' },
+          { name: '圣品', emoji: '🌟', description: '举世罕见，可遇不可求，足以引发宗门大战' },
+          { name: '神品', emoji: '👑', description: '传说中的至高之物，足以改变天地格局' },
+        ],
+      },
+      {
+        title: '灵药类',
+        emoji: '🌿',
+        color: 'text-green-400',
+        bgColor: 'bg-green-500/10',
+        borderColor: 'border-green-500/30',
+        description: '可直接服用或炼丹的天地灵药',
+        items: [
+          { name: '千年灵芝', emoji: '🍄', description: '最经典的灵药，年份越久药效越强' },
+          { name: '万年何首乌', emoji: '🌿', description: '延寿灵药，万年者可增千年寿元' },
+          { name: '九叶仙草', emoji: '🍃', description: '九片叶子各有妙用，炼丹上品' },
+          { name: '血菩提', emoji: '🩸', description: '生于绝地，服之可大幅提升修为', source: '诛仙' },
+          { name: '不死药草', emoji: '🌸', description: '不死药的伴生灵草，药效约为不死药十分之一' },
+        ],
+      },
+      {
+        title: '灵矿类',
+        emoji: '⛏️',
+        color: 'text-orange-400',
+        bgColor: 'bg-orange-500/10',
+        borderColor: 'border-orange-500/30',
+        description: '用于炼器的珍稀矿物',
+        items: [
+          { name: '精铁', emoji: '⚙️', description: '最基础的炼器材料，大量用于低阶法器' },
+          { name: '寒铁', emoji: '❄️', description: '蕴含寒气，炼制冰属法宝的上好材料' },
+          { name: '陨星铁', emoji: '☄️', description: '天外陨铁，炼制顶级法宝的核心材料' },
+          { name: '太乙精金', emoji: '✨', description: '先天灵矿，炼制灵宝的绝佳之选' },
+          { name: '混沌石', emoji: '🌀', description: '诞生于混沌的至宝矿石，蕴含天地法则' },
+        ],
+      },
+      {
+        title: '天火类',
+        emoji: '🔥',
+        color: 'text-red-400',
+        bgColor: 'bg-red-500/10',
+        borderColor: 'border-red-500/30',
+        description: '炼丹炼器的顶级火源，天地异火',
+        items: [
+          { name: '地心火', emoji: '🌋', description: '最常见异火，取自地底熔岩，炼丹入门火源' },
+          { name: '三昧真火', emoji: '🔥', description: '修炼者以自身三昧之力凝聚，温度远超凡火' },
+          { name: '九幽冥火', emoji: '🌑', description: '来自九幽深渊，焚烧神魂最为厉害' },
+          { name: '混沌神火', emoji: '🌀', description: '天地初开时诞生的至高火焰，万物皆可焚' },
+          { name: '太阳真火', emoji: '☀️', description: '太阳星核之火，至阳至刚', source: '洪荒之永恒道主' },
+        ],
+      },
+      {
+        title: '圣物与异宝',
+        emoji: '🏆',
+        color: 'text-violet-400',
+        bgColor: 'bg-violet-500/10',
+        borderColor: 'border-violet-500/30',
+        description: '超越常规分类的绝世珍宝',
+        items: [
+          { name: '远古遗物', emoji: '🗿', description: '上古大战遗留，蕴含远古强者的意志与力量' },
+          { name: '天地圣物', emoji: '🌟', description: '天地法则凝聚而成，触碰即可悟道' },
+          { name: '龙血凤髓', emoji: '🐉', description: '上古神兽精血，淬体至宝' },
+          { name: '世界石', emoji: '🌍', description: '一粒沙含一方世界，空间类至宝', source: '完美世界' },
+          { name: '鸿蒙紫气', emoji: '💜', description: '大道之基，成圣之钥', source: '洪荒之永恒道主' },
+        ],
+      },
+    ],
     relatedNovels: ['rmjz', 'bi-luo', 'wan-mei', 'xi-zhen', 'da-zhu-zai'],
   },
 ];

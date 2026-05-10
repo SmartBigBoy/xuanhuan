@@ -2,12 +2,12 @@ import Link from 'next/link';
 import { Scroll, ChevronRight, BookOpen } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { wikiEntries, getWikiEntryById } from '@/data/realms';
+import { wikiEntries } from '@/data/realms';
 import { novels } from '@/data/novels';
 
 export const metadata = {
   title: '修仙设定百科',
-  description: '灵根、天道、天劫、宗门……通用修仙设定知识库，一网打尽。',
+  description: '灵根、天道、天劫、丹药、法宝、宗门……通用修仙设定知识库，一网打尽。',
 };
 
 export default function WikiPage() {
@@ -48,19 +48,31 @@ export default function WikiPage() {
                     <Link key={entry.id} href={`/wiki/${entry.id}`}>
                       <Card className="xian-card h-full bg-card/80 hover:bg-accent/50 transition-all duration-300 hover:-translate-y-0.5">
                         <CardContent className="p-5">
-                          <h3 className="text-lg font-semibold text-foreground mb-2 font-serif">
-                            {entry.title}
-                          </h3>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="text-xl">{entry.titleEmoji}</span>
+                            <h3 className="text-lg font-semibold text-foreground font-serif">
+                              {entry.title}
+                            </h3>
+                          </div>
                           <p className="text-sm text-muted-foreground line-clamp-3 mb-3">
-                            {entry.content}
+                            {entry.summary}
                           </p>
                           <div className="flex items-center gap-2 flex-wrap">
                             <Badge
                               variant="secondary"
-                              className="text-[11px] bg-xian-purple/10 text-xian-purple border-xian-purple/20"
+                              className={`text-[11px] ${entry.categoryColor} bg-current/10 border-current/20`}
+                              style={{ backgroundColor: undefined }}
                             >
-                              {entry.category}
+                              <span className={entry.categoryColor}>{entry.category}</span>
                             </Badge>
+                            {entry.sections && (
+                              <Badge
+                                variant="outline"
+                                className="text-[10px] border-xian-amber/30 text-xian-amber/70"
+                              >
+                                {entry.sections.length} 个分类
+                              </Badge>
+                            )}
                             {entry.relatedNovels.slice(0, 3).map((novelId) => {
                               const novel = novels.find((n) => n.id === novelId);
                               return novel ? (

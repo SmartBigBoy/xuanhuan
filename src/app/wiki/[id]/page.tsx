@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, Scroll, BookOpen, Info } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { getWikiEntryById } from '@/data/realms';
 import { novels } from '@/data/novels';
 
@@ -31,72 +30,6 @@ export default async function WikiDetailPage({ params }: Props) {
     notFound();
   }
 
-  // 简单的 Markdown 渲染（将内容中的标题、列表、表格等转为 HTML）
-  const renderContent = (text: string) => {
-    const lines = text.split('\n');
-    const htmlParts: string[] = [];
-    let inTable = false;
-    let tableRows: string[] = [];
-
-    const closeTable = () => {
-      if (tableRows.length > 0) {
-        const headerCells = tableRows[0]
-          .split('|')
-          .filter((c) => c.trim())
-          .map((c) => `<th>${c.trim()}</th>`)
-          .join('');
-        const bodyRows = tableRows
-          .slice(1)
-          .filter((r) => !r.match(/^\|[\s-|]+\|$/))
-          .map((row) => {
-            const cells = row
-              .split('|')
-              .filter((c) => c.trim())
-              .map((c) => `<td>${c.trim()}</td>`)
-              .join('');
-            return `<tr>${cells}</tr>`;
-          })
-          .join('');
-        htmlParts.push(
-          `<table class="xian-table"><thead><tr>${headerCells}</tr></thead><tbody>${bodyRows}</tbody></table>`
-        );
-        tableRows = [];
-        inTable = false;
-      }
-    };
-
-    for (const line of lines) {
-      if (line.includes('|') && line.trim().startsWith('|')) {
-        if (!inTable) {
-          closeTable();
-          inTable = true;
-        }
-        tableRows.push(line);
-        continue;
-      } else if (inTable) {
-        closeTable();
-      }
-
-      if (line.startsWith('### ')) {
-        htmlParts.push(`<h3 class="text-lg font-semibold font-serif text-xian-gold mt-6 mb-3">${line.slice(4)}</h3>`);
-      } else if (line.startsWith('## ')) {
-        htmlParts.push(`<h2 class="text-xl font-bold font-serif text-xian-gold mt-8 mb-4 pb-2 border-b border-xian-gold/20">${line.slice(3)}</h2>`);
-      } else if (line.startsWith('- ')) {
-        htmlParts.push(`<li class="text-sm text-muted-foreground ml-4 mb-1">${line.slice(2)}</li>`);
-      } else if (line.match(/^\d+\.\s/)) {
-        const content = line.replace(/^\d+\.\s/, '');
-        htmlParts.push(`<li class="text-sm text-muted-foreground ml-4 mb-1 list-decimal">${content}</li>`);
-      } else if (line.trim() === '') {
-        htmlParts.push('<div class="h-2"></div>');
-      } else {
-        htmlParts.push(`<p class="text-sm text-muted-foreground leading-relaxed mb-2">${line}</p>`);
-      }
-    }
-    closeTable();
-
-    return htmlParts.join('\n');
-  };
-
   return (
     <div className="xian-bg-pattern">
       {/* 页头 */}
@@ -110,12 +43,18 @@ export default async function WikiDetailPage({ params }: Props) {
         </Link>
 
         <div className="flex items-center gap-3 mb-4">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-xian-purple/20">
-            <Scroll className="h-5 w-5 text-xian-purple" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-xian-purple/20 text-2xl">
+            {entry.titleEmoji}
           </div>
           <div>
-            <Badge variant="secondary" className="text-xs bg-xian-purple/10 text-xian-purple border-xian-purple/20 mb-1">
-              {entry.category}
+            <Badge
+              variant="secondary"
+              className={`text-xs ${entry.categoryColor} bg-current/10 border-current/20 mb-1`}
+              style={{
+                backgroundColor: undefined,
+              }}
+            >
+              <span className={entry.categoryColor}>{entry.category}</span>
             </Badge>
             <h1 className="text-3xl font-bold font-serif text-xian-gold xian-text-glow">
               {entry.title}
@@ -129,17 +68,71 @@ export default async function WikiDetailPage({ params }: Props) {
         <div className="xian-divider" />
       </div>
 
-      {/* 正文 */}
-      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
+      {/* 概述 */}
+      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-6">
         <Card className="xian-card bg-card/80">
-          <CardContent className="p-6 sm:p-8 prose-xian">
-            <div dangerouslySetInnerHTML={{ __html: renderContent(entry.content) }} />
+          <CardContent className="p-6">
+            <div className="flex items-center gap-2 mb-3">
+              <Scroll className="h-5 w-5 text-xian-gold" />
+              <h2 className="text-lg font-bold font-serif text-xian-gold">概述</h2>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">{entry.overview}</p>
           </CardContent>
         </Card>
       </section>
 
+      {/* 分类内容 */}
+      {entry.sections.map((section, sIdx) => (
+        <section key={sIdx} className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pb-6">
+          <Card className={`border ${section.borderColor} ${section.bgColor} bg-card/60`}>
+            <CardContent className="p-6">
+              {/* 分类标题 */}
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xl">{section.emoji}</span>
+                <h2 className={`text-lg font-bold font-serif ${section.color}`}>
+                  {section.title}
+                </h2>
+              </div>
+              {section.description && (
+                <p className="text-xs text-muted-foreground mb-4 pl-8">{section.description}</p>
+              )}
+
+              {/* 条目列表 */}
+              <div className="space-y-3">
+                {section.items.map((item, iIdx) => (
+                  <div
+                    key={iIdx}
+                    className={`rounded-lg border ${section.borderColor} bg-card/40 p-3 sm:p-4 hover:bg-card/70 transition-colors`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <span className="text-lg flex-shrink-0 mt-0.5">{item.emoji}</span>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className={`font-bold text-sm ${section.color}`}>{item.name}</span>
+                          {item.source && (
+                            <Badge
+                              variant="outline"
+                              className="text-[10px] px-1.5 py-0 border-xian-gold/30 text-xian-gold/70"
+                            >
+                              {item.source}
+                            </Badge>
+                          )}
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed mt-1">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+      ))}
+
       {/* 关联小说 */}
-      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pb-8">
+      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pb-8 pt-2">
         <h3 className="text-lg font-semibold font-serif text-xian-gold mb-4">
           相关小说
         </h3>
