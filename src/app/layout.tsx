@@ -7,11 +7,11 @@ import { XianThemeProvider } from '@/components/xian-theme-provider';
 
 export const metadata: Metadata = {
   title: {
-    default: '修仙阁 — 修仙玄幻小说境界体系与地图资料站',
-    template: '%s | 修仙阁',
+    default: '诸天图鉴阁 — 修仙玄幻小说境界体系与地图资料站',
+    template: '%s | 诸天图鉴阁',
   },
   description:
-    '修仙阁是专注于修仙玄幻小说境界体系与世界地图资料的纯公益网文资料站，提供凡人修仙传、遮天、诛仙等顶流小说的境界详解、世界地图下载与修仙设定百科。',
+    '诸天图鉴阁是专注于修仙玄幻小说境界体系与世界地图资料的纯公益网文资料站，提供凡人修仙传、遮天、诛仙等顶流小说的境界详解、世界地图下载与修仙设定百科。',
   keywords: [
     '修仙',
     '玄幻小说',
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     '修仙设定',
     '网文资料',
   ],
-  authors: [{ name: '修仙阁编辑部' }],
+  authors: [{ name: '诸天图鉴阁编辑部' }],
   openGraph: {
-    title: '修仙阁 — 万卷天书，一阁尽览',
+    title: '诸天图鉴阁 — 诸天万界，一阁尽览',
     description:
       '专注于修仙玄幻小说境界体系与世界地图资料的纯公益网文资料站',
     locale: 'zh_CN',

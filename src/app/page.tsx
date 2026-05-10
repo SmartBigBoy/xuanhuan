@@ -358,11 +358,11 @@ export default function HomePage() {
         <Card className="xian-card bg-card/60 xian-glow">
           <CardContent className="p-8 sm:p-10 text-center">
             <h2 className="text-2xl font-bold font-serif text-xian-gold mb-4">
-              关于修仙阁
+              关于诸天图鉴阁
             </h2>
             <div className="xian-divider mb-6 max-w-xs mx-auto" />
             <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-6">
-              修仙阁是一个纯公益性质的网文资料站，致力于为修仙小说爱好者提供最全面、最准确的境界体系解析、世界地图资源与修仙设定百科。
+              诸天图鉴阁是一个纯公益性质的网文资料站，致力于为修仙小说爱好者提供最全面、最准确的境界体系解析、世界地图资源与修仙设定百科。
               所有内容均为原创整理或合规同人素材，明确标注来源，严格遵守版权规范。
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-xl mx-auto">
