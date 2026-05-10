@@ -17,6 +17,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { getNovelById } from '@/data/novels';
 import { getRealmSystemByNovelId } from '@/data/realms';
+import { RealmDetailJsonLd, BreadcrumbJsonLd } from '@/components/json-ld';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -28,7 +29,12 @@ export async function generateMetadata({ params }: Props) {
   if (!novel) return { title: '未找到' };
   return {
     title: `${novel.title} 境界体系详解`,
-    description: `${novel.title}修炼境界体系完整解析，含层级表、特色解析与跨体系对比。`,
+    description: `${novel.title}修炼境界体系完整解析，含${novel.realmCount}大境界层级表、特色解析与跨体系对比。${novel.author}著。`,
+    keywords: [novel.title, `${novel.title}境界`, `${novel.title}修炼等级`, novel.author, '修仙境界'],
+    openGraph: {
+      title: `${novel.title} 境界体系详解 | 诸天图鉴阁`,
+      description: `${novel.title}修炼境界体系完整解析，含层级表与特色解析`,
+    },
   };
 }
 
@@ -140,6 +146,8 @@ export default async function RealmDetailPage({ params }: Props) {
 
   return (
     <div className="xian-bg-pattern">
+      <RealmDetailJsonLd novelId={id} />
+      <BreadcrumbJsonLd items={[{ name: '首页', href: '/' }, { name: '修仙境界', href: '/realms' }, { name: novel.title, href: `/realms/${id}` }]} />
       {/* 页头 */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-xian-purple/10 via-transparent to-transparent" />

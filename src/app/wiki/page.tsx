@@ -7,7 +7,22 @@ import { novels } from '@/data/novels';
 
 export const metadata = {
   title: '修仙设定百科',
-  description: '灵根、天道、天劫、丹药、法宝、宗门……通用修仙设定知识库，一网打尽。',
+  description:
+    '灵根、天道、天劫、丹药、法宝、宗门……通用修仙设定知识库，深入浅出，一网打尽。',
+  keywords: [
+    '修仙设定',
+    '灵根',
+    '天道',
+    '天劫',
+    '丹药',
+    '法宝',
+    '宗门',
+    '修仙常识',
+  ],
+  openGraph: {
+    title: '修仙设定百科 | 诸天图鉴阁',
+    description: '灵根、天道、天劫、丹药、法宝、宗门……修仙小说通用设定知识库',
+  },
 };
 
 export default function WikiPage() {

@@ -4,15 +4,33 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { novels, categories } from '@/data/novels';
 import { realmSystems } from '@/data/realms';
+import { BreadcrumbJsonLd } from '@/components/json-ld';
 
 export const metadata = {
   title: '修仙境界大全',
-  description: '按小说分类展示各部修仙玄幻小说的境界体系详解，含层级表、特色解析与跨体系对比。',
+  description:
+    '按小说分类展示各部修仙玄幻小说的境界体系详解，含层级表、特色解析与跨体系对比。涵盖凡人修仙传、遮天、仙逆、诛仙等139部作品。',
+  keywords: [
+    '修仙境界',
+    '修炼等级',
+    '凡人修仙传境界',
+    '遮天境界',
+    '仙逆境界',
+    '诛仙境界',
+    '境界体系',
+    '修仙等级划分',
+  ],
+  openGraph: {
+    title: '修仙境界大全 | 诸天图鉴阁',
+    description:
+      '139部修仙玄幻小说境界体系完整解析，含层级表、特色解析与跨体系对比',
+  },
 };
 
 export default function RealmsPage() {
   return (
     <div className="xian-bg-pattern">
+      <BreadcrumbJsonLd items={[{ name: '首页', href: '/' }, { name: '修仙境界', href: '/realms' }]} />
       {/* 页头 */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-xian-purple/10 via-transparent to-transparent" />

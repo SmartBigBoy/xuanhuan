@@ -19,6 +19,7 @@ import { Separator } from '@/components/ui/separator';
 import { getMapById } from '@/data/maps';
 import { MapPreviewImage } from '@/components/map-preview-image';
 import { MapDownloadButton } from '@/components/map-download-button';
+import { MapDetailJsonLd, BreadcrumbJsonLd } from '@/components/json-ld';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -33,6 +34,11 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: mapData.title,
     description: mapData.description,
+    keywords: [mapData.novelTitle, `${mapData.novelTitle}地图`, mapData.type, '修仙地图'],
+    openGraph: {
+      title: `${mapData.title} | 诸天图鉴阁`,
+      description: mapData.description,
+    },
   };
 }
 
@@ -46,6 +52,8 @@ export default async function MapDetailPage({ params }: Props) {
 
   return (
     <div className="xian-bg-pattern">
+      <MapDetailJsonLd mapId={id} />
+      <BreadcrumbJsonLd items={[{ name: '首页', href: '/' }, { name: '世界地图', href: '/maps' }, { name: mapData.title, href: `/maps/${id}` }]} />
       {/* 页头 */}
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-10">
         <Link

@@ -23,6 +23,7 @@ import { worldMaps } from '@/data/maps';
 import { articles } from '@/data/articles';
 import { announcements, siteConfig } from '@/data/site';
 import { MapCardImage } from '@/components/map-card-image';
+import { HomePageJsonLd } from '@/components/json-ld';
 
 export default function HomePage() {
   const popularNovels = getPopularNovels(6);
@@ -35,6 +36,7 @@ export default function HomePage() {
 
   return (
     <div className="xian-bg-pattern">
+      <HomePageJsonLd />
       {/* ========== Hero Banner with celestial animation ========== */}
       <section className="hero-section">
         {/* 旋转光环 */}

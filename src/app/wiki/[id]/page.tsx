@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { getWikiEntryById } from '@/data/realms';
 import { novels } from '@/data/novels';
+import { WikiDetailJsonLd, BreadcrumbJsonLd } from '@/components/json-ld';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -19,6 +20,11 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: entry.title,
     description: entry.summary,
+    keywords: [entry.title, entry.category, '修仙设定', '修仙百科'],
+    openGraph: {
+      title: `${entry.title} | 诸天图鉴阁`,
+      description: entry.summary,
+    },
   };
 }
 
@@ -32,6 +38,8 @@ export default async function WikiDetailPage({ params }: Props) {
 
   return (
     <div className="xian-bg-pattern">
+      <WikiDetailJsonLd entryId={id} />
+      <BreadcrumbJsonLd items={[{ name: '首页', href: '/' }, { name: '设定百科', href: '/wiki' }, { name: entry.title, href: `/wiki/${id}` }]} />
       {/* 页头 */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-10">
         <Link

@@ -13,6 +13,7 @@ import {
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { getArticleById } from '@/data/articles';
+import { BreadcrumbJsonLd } from '@/components/json-ld';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -27,6 +28,11 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: article.title,
     description: article.summary,
+    keywords: [article.title, article.category, '修仙杂谈', '网文分析'],
+    openGraph: {
+      title: `${article.title} | 诸天图鉴阁`,
+      description: article.summary,
+    },
   };
 }
 
@@ -118,6 +124,7 @@ export default async function ArticleDetailPage({ params }: Props) {
 
   return (
     <div className="xian-bg-pattern">
+      <BreadcrumbJsonLd items={[{ name: '首页', href: '/' }, { name: '资料杂谈', href: '/community' }, { name: article.title, href: `/community/${id}` }]} />
       {/* 页头 */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-10">
         <Link

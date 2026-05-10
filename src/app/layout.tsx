@@ -34,11 +34,30 @@ export const metadata: Metadata = {
       '专注于修仙玄幻小说境界体系与世界地图资料的纯公益网文资料站',
     locale: 'zh_CN',
     type: 'website',
+    siteName: '诸天图鉴阁',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '诸天图鉴阁 — 修仙玄幻小说境界体系与地图资料站',
+    description:
+      '专注于修仙玄幻小说境界体系与世界地图资料的纯公益网文资料站',
+  },
+  alternates: {
+    canonical: '/',
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
+  category: '文学',
+  classification: '修仙玄幻小说资料站',
 };
 
 export default function RootLayout({
