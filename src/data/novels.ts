@@ -198,7 +198,7 @@ export const novels: Novel[] = [
     id: 'lingyu-xiuxian',
     title: '灵域',
     author: '逆苍天',
-    cover: "/novels/lingyu-xiuxian.png",
+    cover: "/novels/lingyu-xiuxian.jpg",
     category: '经典修仙',
     description:
       '凌尘自小被逐出家族，带着神秘血脉踏上修炼之路，在灵域大陆上寻找身世真相，最终重振家族荣光。',
