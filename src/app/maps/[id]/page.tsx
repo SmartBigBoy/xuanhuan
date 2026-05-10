@@ -119,7 +119,7 @@ export default async function MapDetailPage({ params }: Props) {
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <User className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">来源：</span>
+                  <span className="text-muted-foreground">绘制：</span>
                   <span className="text-foreground">{mapData.author}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
@@ -152,12 +152,10 @@ export default async function MapDetailPage({ params }: Props) {
 
               <Separator className="bg-border/50" />
 
-              {/* 免责声明 */}
-              <div className="rounded-lg border border-xian-amber/30 bg-xian-amber/5 p-3">
-                <div className="text-xs text-amber-200 font-semibold mb-1">⚠️ {mapData.author}</div>
-                <div className="text-xs text-muted-foreground leading-relaxed">
-                  {mapData.source}
-                </div>
+              {/* 来源 */}
+              <div className="text-xs text-muted-foreground">
+                <span className="font-semibold text-xian-amber">来源：</span>
+                {mapData.source}
               </div>
             </CardContent>
           </Card>
