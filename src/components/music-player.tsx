@@ -1,14 +1,13 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Music, X } from 'lucide-react';
+import { Music, X, GripVertical } from 'lucide-react';
 import {
   initAudioEvents,
   subscribe,
   togglePlay,
   isPlaying,
   getCurrentTime,
-  getDuration,
   seekTo,
 } from '@/lib/audio-manager';
 import { lyrics, songInfo } from '@/data/lyrics';
@@ -23,7 +22,6 @@ function findCurrentLine(time: number): number {
   return idx;
 }
 
-/* 只展示当前行附近若干行 */
 const VISIBLE_BEFORE = 2;
 const VISIBLE_AFTER = 4;
 
@@ -35,6 +33,13 @@ export function MusicPlayer() {
   const [currentLine, setCurrentLine] = useState(0);
   const currentLineRef = useRef<HTMLDivElement>(null);
   const lyricsBoxRef = useRef<HTMLDivElement>(null);
+
+  /* 拖拽位置（默认右侧导航栏下方） */
+  const [pos, setPos] = useState({ x: window.innerWidth - 220, y: 88 });
+
+  /* 拖拽状态 */
+  const dragging = useRef(false);
+  const dragStart = useRef({ mx: 0, my: 0, px: 0, py: 0 });
 
   /* 初始化 audio 事件 */
   useEffect(() => {
@@ -62,29 +67,82 @@ export function MusicPlayer() {
     if (!container || !lineEl) return;
     const containerRect = container.getBoundingClientRect();
     const lineRect = lineEl.getBoundingClientRect();
-    const offset = lineRect.top - containerRect.top + container.scrollTop - container.clientHeight / 2 + lineEl.clientHeight / 2;
+    const offset =
+      lineRect.top -
+      containerRect.top +
+      container.scrollTop -
+      container.clientHeight / 2 +
+      lineEl.clientHeight / 2;
     container.scrollTo({ top: offset, behavior: 'smooth' });
   }, [currentLine]);
 
   /* 阻止歌词区域滚动穿透到页面 */
-  const preventScrollPropagation = useCallback((e: React.WheelEvent<HTMLDivElement>) => {
-    const el = e.currentTarget;
-    const { scrollTop, scrollHeight, clientHeight } = el;
-    const { deltaY } = e;
-
-    // 向下滚动到底部时阻止继续
-    if (deltaY > 0 && scrollTop + clientHeight >= scrollHeight) {
-      e.preventDefault();
-    }
-    // 向上滚动到顶部时阻止继续
-    if (deltaY < 0 && scrollTop <= 0) {
-      e.preventDefault();
-    }
-  }, []);
+  const preventScrollPropagation = useCallback(
+    (e: React.WheelEvent<HTMLDivElement>) => {
+      const el = e.currentTarget;
+      const { scrollTop, scrollHeight, clientHeight } = el;
+      const { deltaY } = e;
+      if (deltaY > 0 && scrollTop + clientHeight >= scrollHeight) {
+        e.preventDefault();
+      }
+      if (deltaY < 0 && scrollTop <= 0) {
+        e.preventDefault();
+      }
+    },
+    [],
+  );
 
   /* 点击歌词行跳转 */
   const handleLineClick = useCallback((time: number) => {
     seekTo(time);
+  }, []);
+
+  /* ===== 拖拽逻辑 ===== */
+  const handleDragStart = useCallback(
+    (e: React.MouseEvent | React.TouchEvent) => {
+      e.preventDefault();
+      dragging.current = true;
+
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+
+      dragStart.current = {
+        mx: clientX,
+        my: clientY,
+        px: pos.x,
+        py: pos.y,
+      };
+    },
+    [pos],
+  );
+
+  useEffect(() => {
+    const onMove = (e: MouseEvent | TouchEvent) => {
+      if (!dragging.current) return;
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      const dx = clientX - dragStart.current.mx;
+      const dy = clientY - dragStart.current.my;
+      const newX = Math.max(0, Math.min(window.innerWidth - 60, dragStart.current.px + dx));
+      const newY = Math.max(0, Math.min(window.innerHeight - 60, dragStart.current.py + dy));
+      setPos({ x: newX, y: newY });
+    };
+
+    const onUp = () => {
+      dragging.current = false;
+    };
+
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+    document.addEventListener('touchmove', onMove, { passive: false });
+    document.addEventListener('touchend', onUp);
+
+    return () => {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+      document.removeEventListener('touchmove', onMove);
+      document.removeEventListener('touchend', onUp);
+    };
   }, []);
 
   /* 可见歌词行范围 */
@@ -114,38 +172,46 @@ export function MusicPlayer() {
         )}
       </button>
 
-      {/* ================== 右侧浮动透明歌词（仅播放时显示） ================== */}
+      {/* ================== 可拖拽浮动歌词（仅播放时显示） ================== */}
       {playing && lyricsVisible && (
         <div
           ref={lyricsBoxRef}
           onWheel={preventScrollPropagation}
-          className="fixed right-5 top-[88px] z-40 w-52 max-h-[60vh] overflow-y-auto select-none group"
+          className="fixed z-40 w-52 max-h-[60vh] overflow-y-auto select-none group"
           style={{
-            maskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 88%, transparent 100%)',
+            left: pos.x,
+            top: pos.y,
+            maskImage:
+              'linear-gradient(to bottom, transparent 0%, black 8%, black 88%, transparent 100%)',
             scrollbarWidth: 'none',
           }}
         >
-          {/* 折叠按钮 — 仅 hover 歌词区域时显示 */}
-          <button
-            onClick={() => setLyricsVisible(false)}
-            className="absolute top-0 right-0 z-10 flex h-6 w-6 items-center justify-center rounded-md text-muted-foreground/0 hover:text-muted-foreground/60 hover:bg-background/40 transition-all opacity-0 group-hover:opacity-100"
-            aria-label="折叠歌词"
+          {/* 拖拽手柄 + 折叠按钮 */}
+          <div
+            onMouseDown={handleDragStart}
+            onTouchStart={handleDragStart}
+            className="flex items-center justify-between mb-1.5 cursor-grab active:cursor-grabbing"
           >
-            <X className="h-3.5 w-3.5" />
-          </button>
-
-          {/* 歌曲标题 */}
-          <div className="mb-2.5 flex items-center gap-1.5">
-            <Music className="h-3 w-3 text-xian-gold/40 shrink-0" />
-            <span className="text-[11px] text-xian-gold/35 font-medium truncate">
-              {songInfo.title} · {songInfo.artist}
-            </span>
+            <div className="flex items-center gap-1">
+              <GripVertical className="h-3 w-3 text-muted-foreground/20 group-hover:text-muted-foreground/40 transition-colors" />
+              <Music className="h-3 w-3 text-xian-gold/40 shrink-0" />
+              <span className="text-[11px] text-xian-gold/35 font-medium truncate">
+                {songInfo.title} · {songInfo.artist}
+              </span>
+            </div>
+            <button
+              onClick={() => setLyricsVisible(false)}
+              className="flex h-5 w-5 items-center justify-center rounded text-muted-foreground/0 hover:text-muted-foreground/50 transition-all opacity-0 group-hover:opacity-100"
+              aria-label="折叠歌词"
+            >
+              <X className="h-3 w-3" />
+            </button>
           </div>
 
           {/* 歌词区域 */}
           <div className="space-y-0.5">
-            {visibleLyrics.map((line) => {
-              const globalIdx = startLine + visibleLyrics.indexOf(line);
+            {visibleLyrics.map((line, i) => {
+              const globalIdx = startLine + i;
               const isActive = globalIdx === currentLine;
               const dist = Math.abs(globalIdx - currentLine);
               return (
@@ -169,12 +235,15 @@ export function MusicPlayer() {
         </div>
       )}
 
-      {/* ================== 歌词隐藏时的迷你恢复按钮 ================== */}
+      {/* ================== 歌词折叠后的迷你恢复按钮（同样可拖拽） ================== */}
       {playing && !lyricsVisible && (
-        <div className="fixed right-5 top-[88px] z-40 pointer-events-auto">
+        <div
+          className="fixed z-40"
+          style={{ left: pos.x, top: pos.y }}
+        >
           <button
             onClick={() => setLyricsVisible(true)}
-            className="flex items-center gap-1.5 px-2 py-1 rounded-md text-xian-gold/30 hover:text-xian-gold/60 hover:bg-xian-gold/5 transition-all text-[11px]"
+            className="flex items-center gap-1.5 px-2 py-1 rounded-md text-xian-gold/30 hover:text-xian-gold/60 hover:bg-xian-gold/5 transition-all text-[11px] cursor-pointer"
             aria-label="显示歌词"
           >
             <Music className="h-3 w-3 animate-spin-slow" />
