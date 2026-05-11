@@ -55,9 +55,15 @@ export function MusicPlayer() {
     setCurrentLine(findCurrentLine(currentTime));
   }, [currentTime]);
 
-  /* 自动滚动当前行到可视区 — 只滚动歌词容器，阻止穿透到页面 */
+  /* 仅在歌词容器内滚动到当前行，不影响页面 */
   useEffect(() => {
-    currentLineRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const container = lyricsBoxRef.current;
+    const lineEl = currentLineRef.current;
+    if (!container || !lineEl) return;
+    const containerRect = container.getBoundingClientRect();
+    const lineRect = lineEl.getBoundingClientRect();
+    const offset = lineRect.top - containerRect.top + container.scrollTop - container.clientHeight / 2 + lineEl.clientHeight / 2;
+    container.scrollTo({ top: offset, behavior: 'smooth' });
   }, [currentLine]);
 
   /* 阻止歌词区域滚动穿透到页面 */
