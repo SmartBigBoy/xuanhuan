@@ -1,0 +1,61 @@
+/**
+ * 天龙八部之宿敌 — 许嵩
+ * LRC 时间轴歌词
+ */
+import type { LyricLine } from '@/lib/audio-manager';
+
+export const songInfo = {
+  title: '天龙八部之宿敌',
+  artist: '许嵩',
+  album: '梦游计',
+};
+
+export const lyrics: LyricLine[] = [
+  { time: 0, text: '天龙八部之宿敌' },
+  { time: 4.5, text: '许嵩' },
+  { time: 25.0, text: '会在何处见到你' },
+  { time: 29.0, text: '莫非前尘已注定' },
+  { time: 33.5, text: '哪怕结局还是迷' },
+  { time: 37.5, text: '也会抱紧你' },
+  { time: 43.0, text: '只为那一刻的相遇' },
+  { time: 47.0, text: '哪怕转眼又分离' },
+  { time: 51.5, text: '风吹花落泪如雨' },
+  { time: 55.5, text: '因为不想分离' },
+  { time: 61.0, text: '你说宿命已写好' },
+  { time: 65.0, text: '谁都无法去逃避' },
+  { time: 69.5, text: '可是情字怎可说弃' },
+  { time: 73.5, text: '就在一瞬间' },
+  { time: 78.0, text: '命运的轨迹' },
+  { time: 82.0, text: '改变你我距离' },
+  { time: 87.0, text: '爱若让你似火灼伤' },
+  { time: 91.5, text: '我愿做你宿敌一场' },
+  { time: 96.0, text: '守护你的远方' },
+  { time: 100.0, text: '哪怕要我飞翔' },
+  { time: 104.5, text: '穿越时空也亦无妨' },
+  { time: 109.5, text: '会在何处见到你' },
+  { time: 113.5, text: '莫非前尘已注定' },
+  { time: 118.0, text: '哪怕结局还是迷' },
+  { time: 122.0, text: '也会抱紧你' },
+  { time: 127.5, text: '只为那一刻的相遇' },
+  { time: 131.5, text: '哪怕转眼又分离' },
+  { time: 136.0, text: '风吹花落泪如雨' },
+  { time: 140.0, text: '因为不想分离' },
+  { time: 146.0, text: '你说宿命已写好' },
+  { time: 150.0, text: '谁都无法去逃避' },
+  { time: 154.5, text: '可是情字怎可说弃' },
+  { time: 158.5, text: '就在一瞬间' },
+  { time: 163.0, text: '命运的轨迹' },
+  { time: 167.0, text: '改变你我距离' },
+  { time: 172.0, text: '爱若让你似火灼伤' },
+  { time: 176.5, text: '我愿做你宿敌一场' },
+  { time: 181.0, text: '守护你的远方' },
+  { time: 185.0, text: '哪怕要我飞翔' },
+  { time: 189.5, text: '穿越时空也亦无妨' },
+  { time: 195.0, text: '爱若让你似火灼伤' },
+  { time: 199.5, text: '我愿做你宿敌一场' },
+  { time: 204.0, text: '守护你的远方' },
+  { time: 208.0, text: '哪怕要我飞翔' },
+  { time: 212.5, text: '穿越时空也亦无妨' },
+  { time: 218.0, text: '会在何处见到你' },
+  { time: 222.0, text: '莫非前尘已注定' },
+];

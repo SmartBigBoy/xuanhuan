@@ -17,6 +17,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { MusicPlayer } from '@/components/music-player';
 import { useXianTheme, type XianTheme } from '@/components/xian-theme-provider';
 import { novels } from '@/data/novels';
 import { realmSystems } from '@/data/realms';
@@ -236,6 +237,9 @@ export function SiteHeader() {
             >
               <Search className="h-5 w-5" />
             </Button>
+
+            {/* Music player */}
+            <MusicPlayer />
 
             {/* Theme toggle */}
             <Button
