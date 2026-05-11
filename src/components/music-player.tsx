@@ -1,28 +1,19 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Music, Pause, Play, Volume2, VolumeX } from 'lucide-react';
+import { Music, X } from 'lucide-react';
 import {
   initAudioEvents,
   subscribe,
   togglePlay,
-  setVolume,
   isPlaying,
   getCurrentTime,
   getDuration,
-  getVolume,
   seekTo,
 } from '@/lib/audio-manager';
 import { lyrics, songInfo } from '@/data/lyrics';
 
 /* ===================== 工具函数 ===================== */
-function formatTime(s: number): string {
-  if (!s || !isFinite(s)) return '0:00';
-  const m = Math.floor(s / 60);
-  const sec = Math.floor(s % 60);
-  return `${m}:${sec.toString().padStart(2, '0')}`;
-}
-
 function findCurrentLine(time: number): number {
   let idx = 0;
   for (let i = 0; i < lyrics.length; i++) {
@@ -32,7 +23,7 @@ function findCurrentLine(time: number): number {
   return idx;
 }
 
-/* 只展示当前行附近若干行（上2 + 当前行 + 下4） */
+/* 只展示当前行附近若干行 */
 const VISIBLE_BEFORE = 2;
 const VISIBLE_AFTER = 4;
 
@@ -40,11 +31,10 @@ const VISIBLE_AFTER = 4;
 export function MusicPlayer() {
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [volume, setVol] = useState(1);
   const [lyricsVisible, setLyricsVisible] = useState(true);
   const [currentLine, setCurrentLine] = useState(0);
   const currentLineRef = useRef<HTMLDivElement>(null);
+  const lyricsBoxRef = useRef<HTMLDivElement>(null);
 
   /* 初始化 audio 事件 */
   useEffect(() => {
@@ -56,8 +46,6 @@ export function MusicPlayer() {
     const unsubscribe = subscribe(() => {
       setPlaying(isPlaying());
       setCurrentTime(getCurrentTime());
-      setDuration(getDuration());
-      setVol(getVolume());
     });
     return unsubscribe;
   }, []);
@@ -67,22 +55,31 @@ export function MusicPlayer() {
     setCurrentLine(findCurrentLine(currentTime));
   }, [currentTime]);
 
-  /* 自动滚动当前行到可视区 */
+  /* 自动滚动当前行到可视区 — 只滚动歌词容器，阻止穿透到页面 */
   useEffect(() => {
     currentLineRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, [currentLine]);
 
-  /* 音量切换 */
-  const toggleMute = useCallback(() => {
-    setVolume(volume > 0 ? 0 : 1);
-  }, [volume]);
+  /* 阻止歌词区域滚动穿透到页面 */
+  const preventScrollPropagation = useCallback((e: React.WheelEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const { scrollTop, scrollHeight, clientHeight } = el;
+    const { deltaY } = e;
+
+    // 向下滚动到底部时阻止继续
+    if (deltaY > 0 && scrollTop + clientHeight >= scrollHeight) {
+      e.preventDefault();
+    }
+    // 向上滚动到顶部时阻止继续
+    if (deltaY < 0 && scrollTop <= 0) {
+      e.preventDefault();
+    }
+  }, []);
 
   /* 点击歌词行跳转 */
   const handleLineClick = useCallback((time: number) => {
     seekTo(time);
   }, []);
-
-  const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   /* 可见歌词行范围 */
   const startLine = Math.max(0, currentLine - VISIBLE_BEFORE);
@@ -111,33 +108,51 @@ export function MusicPlayer() {
         )}
       </button>
 
-      {/* ================== 右侧浮动歌词（仅播放时显示） ================== */}
+      {/* ================== 右侧浮动透明歌词（仅播放时显示） ================== */}
       {playing && lyricsVisible && (
-        <div className="fixed right-4 top-[88px] z-40 w-56 select-none pointer-events-none">
+        <div
+          ref={lyricsBoxRef}
+          onWheel={preventScrollPropagation}
+          className="fixed right-5 top-[88px] z-40 w-52 max-h-[60vh] overflow-y-auto select-none group"
+          style={{
+            maskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 88%, transparent 100%)',
+            scrollbarWidth: 'none',
+          }}
+        >
+          {/* 折叠按钮 — 仅 hover 歌词区域时显示 */}
+          <button
+            onClick={() => setLyricsVisible(false)}
+            className="absolute top-0 right-0 z-10 flex h-6 w-6 items-center justify-center rounded-md text-muted-foreground/0 hover:text-muted-foreground/60 hover:bg-background/40 transition-all opacity-0 group-hover:opacity-100"
+            aria-label="折叠歌词"
+          >
+            <X className="h-3.5 w-3.5" />
+          </button>
+
           {/* 歌曲标题 */}
-          <div className="mb-3 flex items-center gap-2 pointer-events-auto">
-            <Music className="h-3.5 w-3.5 text-xian-gold/60 shrink-0" />
-            <span className="text-xs text-xian-gold/50 font-medium truncate">
+          <div className="mb-2.5 flex items-center gap-1.5">
+            <Music className="h-3 w-3 text-xian-gold/40 shrink-0" />
+            <span className="text-[11px] text-xian-gold/35 font-medium truncate">
               {songInfo.title} · {songInfo.artist}
             </span>
           </div>
 
           {/* 歌词区域 */}
-          <div className="space-y-1">
+          <div className="space-y-0.5">
             {visibleLyrics.map((line) => {
-              const isActive = line.time === lyrics[currentLine]?.time;
-              const distFromActive = Math.abs(lyrics.indexOf(line) - currentLine);
+              const globalIdx = startLine + visibleLyrics.indexOf(line);
+              const isActive = globalIdx === currentLine;
+              const dist = Math.abs(globalIdx - currentLine);
               return (
                 <div
                   key={`${line.time}-${line.text}`}
                   ref={isActive ? currentLineRef : undefined}
                   onClick={() => handleLineClick(line.time)}
-                  className={`cursor-pointer transition-all duration-500 pointer-events-auto rounded-md px-2 py-1 ${
+                  className={`cursor-pointer transition-all duration-500 rounded-md px-1.5 py-0.5 ${
                     isActive
-                      ? 'text-xian-gold text-base font-semibold'
-                      : distFromActive <= 1
-                        ? 'text-muted-foreground/50 text-sm hover:text-muted-foreground/70'
-                        : 'text-muted-foreground/25 text-xs hover:text-muted-foreground/50'
+                      ? 'text-xian-gold text-sm font-semibold'
+                      : dist <= 1
+                        ? 'text-muted-foreground/40 text-xs hover:text-muted-foreground/60'
+                        : 'text-muted-foreground/20 text-[11px] hover:text-muted-foreground/40'
                   }`}
                 >
                   {line.text}
@@ -145,47 +160,19 @@ export function MusicPlayer() {
               );
             })}
           </div>
-
-          {/* 迷你控制条 */}
-          <div className="mt-3 flex items-center gap-1.5 pointer-events-auto">
-            {/* 进度条 */}
-            <div className="flex-1 h-0.5 bg-xian-gold/10 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-xian-gold/40 rounded-full transition-[width] duration-200 ease-linear"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-            <span className="text-[10px] text-muted-foreground/30 tabular-nums whitespace-nowrap">
-              {formatTime(currentTime)}
-            </span>
-            <button
-              onClick={toggleMute}
-              className="flex h-5 w-5 items-center justify-center text-muted-foreground/30 hover:text-muted-foreground/60 transition-colors"
-              aria-label={volume > 0 ? '静音' : '取消静音'}
-            >
-              {volume > 0 ? <Volume2 className="h-3 w-3" /> : <VolumeX className="h-3 w-3" />}
-            </button>
-            <button
-              onClick={() => setLyricsVisible(false)}
-              className="flex h-5 w-5 items-center justify-center text-muted-foreground/30 hover:text-muted-foreground/60 transition-colors"
-              aria-label="隐藏歌词"
-            >
-              <Pause className="h-3 w-3" />
-            </button>
-          </div>
         </div>
       )}
 
       {/* ================== 歌词隐藏时的迷你恢复按钮 ================== */}
       {playing && !lyricsVisible && (
-        <div className="fixed right-4 top-[88px] z-40 pointer-events-auto">
+        <div className="fixed right-5 top-[88px] z-40 pointer-events-auto">
           <button
             onClick={() => setLyricsVisible(true)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xian-gold/40 hover:text-xian-gold/70 hover:bg-xian-gold/5 transition-all text-xs"
+            className="flex items-center gap-1.5 px-2 py-1 rounded-md text-xian-gold/30 hover:text-xian-gold/60 hover:bg-xian-gold/5 transition-all text-[11px]"
             aria-label="显示歌词"
           >
-            <Music className="h-3.5 w-3.5 animate-spin-slow" />
-            <span className="truncate">{songInfo.title}</span>
+            <Music className="h-3 w-3 animate-spin-slow" />
+            <span className="truncate max-w-24">{songInfo.title}</span>
           </button>
         </div>
       )}
