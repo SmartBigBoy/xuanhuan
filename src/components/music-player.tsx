@@ -201,7 +201,7 @@ export function MusicPlayer() {
             </div>
             <button
               onClick={() => setLyricsVisible(false)}
-              className="flex h-5 w-5 items-center justify-center rounded text-muted-foreground/0 hover:text-muted-foreground/50 transition-all opacity-0 group-hover:opacity-100"
+              className="flex h-5 w-5 items-center justify-center rounded text-muted-foreground/50 hover:text-muted-foreground transition-all opacity-0 group-hover:opacity-100"
               aria-label="折叠歌词"
             >
               <X className="h-3 w-3" />
