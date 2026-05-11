@@ -22,7 +22,7 @@ function findCurrentLine(time: number): number {
   return idx;
 }
 
-const VISIBLE_BEFORE = 0;
+const VISIBLE_BEFORE = 1;
 const VISIBLE_AFTER = 1;
 
 /* ===================== 组件 ===================== */
@@ -177,7 +177,7 @@ export function MusicPlayer() {
         <div
           ref={lyricsBoxRef}
           onWheel={preventScrollPropagation}
-          className="fixed z-40 w-52 max-h-[70px] overflow-hidden select-none group"
+          className="fixed z-40 w-52 max-h-[96px] overflow-hidden select-none group"
           style={{
             left: pos.x,
             top: pos.y,
