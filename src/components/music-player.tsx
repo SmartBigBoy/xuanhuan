@@ -177,12 +177,10 @@ export function MusicPlayer() {
         <div
           ref={lyricsBoxRef}
           onWheel={preventScrollPropagation}
-          className="fixed z-40 w-52 max-h-14 overflow-y-auto select-none group"
+          className="fixed z-40 w-52 max-h-[70px] overflow-hidden select-none group"
           style={{
             left: pos.x,
             top: pos.y,
-            maskImage:
-              'linear-gradient(to bottom, transparent 0%, black 8%, black 88%, transparent 100%)',
             scrollbarWidth: 'none',
           }}
         >
@@ -190,21 +188,20 @@ export function MusicPlayer() {
           <div
             onMouseDown={handleDragStart}
             onTouchStart={handleDragStart}
-            className="flex items-center justify-between mb-1.5 cursor-grab active:cursor-grabbing"
+            className="flex items-center justify-between mb-0.5 cursor-grab active:cursor-grabbing"
           >
             <div className="flex items-center gap-1">
               <GripVertical className="h-3 w-3 text-muted-foreground/20 group-hover:text-muted-foreground/40 transition-colors" />
-              <Music className="h-3 w-3 text-xian-gold/40 shrink-0" />
-              <span className="text-[11px] text-xian-gold/35 font-medium truncate">
+              <span className="text-[10px] text-xian-gold/30 font-medium truncate">
                 {songInfo.title} · {songInfo.artist}
               </span>
             </div>
             <button
               onClick={() => setLyricsVisible(false)}
-              className="flex h-5 w-5 items-center justify-center rounded text-muted-foreground/50 hover:text-muted-foreground transition-all opacity-0 group-hover:opacity-100"
+              className="flex h-4 w-4 items-center justify-center rounded text-muted-foreground/50 hover:text-muted-foreground transition-all opacity-0 group-hover:opacity-100"
               aria-label="折叠歌词"
             >
-              <X className="h-3 w-3" />
+              <X className="h-2.5 w-2.5" />
             </button>
           </div>
 
