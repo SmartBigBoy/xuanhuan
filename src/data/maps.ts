@@ -243,7 +243,7 @@ export const worldMaps: WorldMap[] = [
     detail: '浩然天下乃剑来世界的人间所在，分宝瓶洲、俱卢洲、神清洲等大洲。本地图完整呈现了浩然天下的地理格局，标注了各大洲域的山川走势、诸侯列国疆域、仙家宗门府邸位置以及重要秘境入口。地图风格古雅写意，与原著浩然天下的文化底蕴相契合。',
     uploadDate: '2025-05-11',
     downloads: 980,
-    images: ['/maps/jianlai-haoran1.jpg', '/maps/jianlai-haoran2.jpg'],
+    images: ['/maps/jianlai-haoran1.jpg', '/maps/jianlai-haoran2.jpg', '/maps/jianlai-haoran3.jpg'],
   },
 ];
 
