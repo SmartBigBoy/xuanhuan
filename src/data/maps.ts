@@ -18,6 +18,7 @@ export interface WorldMap {
   detail: string; // 补充解析
   uploadDate: string;
   downloads: number;
+  images?: string[]; // 多图轮播（同一地图多页）
 }
 
 export type MapType = '全景地图' | '势力分布' | '城市详图' | '秘境地图' | '星域图' | '路线图';
@@ -223,6 +224,26 @@ export const worldMaps: WorldMap[] = [
     detail: '大千世界位面交汇、万族林立，本地图完整呈现了大千世界的地理格局。标注了北灵境、西天大陆、南域等主要区域的位置，以及各大势力的控制范围。地图风格融合了东方玄幻与西方魔幻元素，呈现出独特的视觉体验。',
     uploadDate: '2024-10-18',
     downloads: 1650,
+  },
+  {
+    id: 'jianlai-haoran',
+    title: '剑来 - 浩然天下地图',
+    novelId: 'jianlai',
+    novelTitle: '剑来',
+    type: '全景地图',
+    description: '浩然天下全景地图，详绘浩然天下山川地理、诸侯列国与仙家府邸分布，涵盖宝瓶洲、俱卢洲、神清洲等各大洲域，标注重要城池、宗门与秘境位置。',
+    previewUrl: '/maps/jianlai-haoran1.jpg',
+    downloadUrl: '/maps/jianlai-haoran1.jpg',
+    fileSize: '1.0 MB',
+    resolution: '高清拼接',
+    format: 'JPG',
+    author: '网络获取',
+    source: '免责声明！本文所展示的所有小说相关地图，均来源于网络公开渠道，非本人原创。若地图涉及版权侵权，请版权方及时联系 tanggao@coze.email，本人将在第一时间核实并删除相关内容，不承担任何侵权责任。',
+    tags: ['浩然天下', '宝瓶洲', '俱卢洲', '剑修', '全景地图'],
+    detail: '浩然天下乃剑来世界的人间所在，分宝瓶洲、俱卢洲、神清洲等大洲。本地图完整呈现了浩然天下的地理格局，标注了各大洲域的山川走势、诸侯列国疆域、仙家宗门府邸位置以及重要秘境入口。地图风格古雅写意，与原著浩然天下的文化底蕴相契合。',
+    uploadDate: '2025-05-11',
+    downloads: 980,
+    images: ['/maps/jianlai-haoran1.jpg', '/maps/jianlai-haoran2.jpg'],
   },
 ];
 

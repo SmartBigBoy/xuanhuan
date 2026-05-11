@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { getMapById } from '@/data/maps';
 import { MapPreviewImage } from '@/components/map-preview-image';
+import { MapImageCarousel } from '@/components/map-image-carousel';
 import { MapDownloadButton } from '@/components/map-download-button';
 import { MapDetailJsonLd, BreadcrumbJsonLd } from '@/components/json-ld';
 
@@ -86,13 +87,21 @@ export default async function MapDetailPage({ params }: Props) {
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
         <Card className="xian-card bg-card/80 overflow-hidden">
           <CardContent className="p-4">
-            <MapPreviewImage
-              src={mapData.previewUrl}
-              alt={mapData.title}
-              resolution={mapData.resolution}
-              downloadUrl={mapData.downloadUrl}
-              fileName={`${mapData.title}.${mapData.format.toLowerCase()}`}
-            />
+            {mapData.images && mapData.images.length > 1 ? (
+              <MapImageCarousel
+                images={mapData.images}
+                alt={mapData.title}
+                resolution={mapData.resolution}
+              />
+            ) : (
+              <MapPreviewImage
+                src={mapData.previewUrl}
+                alt={mapData.title}
+                resolution={mapData.resolution}
+                downloadUrl={mapData.downloadUrl}
+                fileName={`${mapData.title}.${mapData.format.toLowerCase()}`}
+              />
+            )}
           </CardContent>
         </Card>
       </section>
