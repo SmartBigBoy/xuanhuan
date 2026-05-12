@@ -15,12 +15,16 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { getNovelById } from '@/data/novels';
+import { getNovelById, novels } from '@/data/novels';
 import { getRealmSystemByNovelId } from '@/data/realms';
 import { RealmDetailJsonLd, BreadcrumbJsonLd } from '@/components/json-ld';
 
 interface Props {
   params: Promise<{ id: string }>;
+}
+
+export function generateStaticParams() {
+  return novels.map((n) => ({ id: n.id }));
 }
 
 export async function generateMetadata({ params }: Props) {

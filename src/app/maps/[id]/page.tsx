@@ -22,11 +22,15 @@ import { MapImageCarousel } from '@/components/map-image-carousel';
 import { MapDownloadButton } from '@/components/map-download-button';
 import { MapDetailJsonLd, BreadcrumbJsonLd } from '@/components/json-ld';
 
+import { worldMaps } from '@/data/maps';
+
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-export const dynamic = 'force-dynamic';
+export function generateStaticParams() {
+  return worldMaps.map((m: { id: string }) => ({ id: m.id }));
+}
 
 export async function generateMetadata({ params }: Props) {
   const { id } = await params;

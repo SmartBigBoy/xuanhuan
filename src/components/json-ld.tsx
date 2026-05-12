@@ -3,11 +3,7 @@ import { realmSystems, wikiEntries } from '@/data/realms';
 import { worldMaps } from '@/data/maps';
 import { siteConfig } from '@/data/site';
 
-const BASE_URL = process.env.COZE_PROJECT_ENV === 'PROD'
-  ? 'https://xuanhuan.skin'
-  : process.env.COZE_PROJECT_DOMAIN_DEFAULT
-    ? `https://${process.env.COZE_PROJECT_DOMAIN_DEFAULT}`
-    : 'http://localhost:5000';
+const BASE_URL = 'https://xuanhuan.skin';
 
 /**
  * 首页 JSON-LD：WebSite + Organization

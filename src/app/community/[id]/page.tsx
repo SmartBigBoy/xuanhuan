@@ -15,11 +15,15 @@ import { Badge } from '@/components/ui/badge';
 import { getArticleById } from '@/data/articles';
 import { BreadcrumbJsonLd } from '@/components/json-ld';
 
+import { articles } from '@/data/articles';
+
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-export const dynamic = 'force-dynamic';
+export function generateStaticParams() {
+  return articles.map((a) => ({ id: a.id }));
+}
 
 export async function generateMetadata({ params }: Props) {
   const { id } = await params;

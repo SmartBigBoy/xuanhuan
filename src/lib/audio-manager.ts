@@ -16,6 +16,9 @@ const AUDIO_SRC = '/assets/许嵩-天龙八部之宿敌.mp3';
 let audioInstance: HTMLAudioElement | null = null;
 
 function getAudio(): HTMLAudioElement {
+  if (typeof window === 'undefined') {
+    throw new Error('Audio is not available in server environment');
+  }
   if (!audioInstance) {
     audioInstance = new Audio(AUDIO_SRC);
     audioInstance.preload = 'auto';
