@@ -101,6 +101,8 @@ export function MapImageCarousel({ images, alt, resolution }: MapImageCarouselPr
               src={currentSrc}
               alt={`${alt} 第${currentIndex + 1}页`}
               className="absolute inset-0 w-full h-full object-contain rounded-md transition-all duration-500 ease-in-out group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
               onError={() => setImgErrors((prev) => ({ ...prev, [currentIndex]: true }))}
             />
           )}
@@ -238,6 +240,7 @@ export function MapImageCarousel({ images, alt, resolution }: MapImageCarouselPr
               src={currentSrc}
               alt={`${alt} 第${currentIndex + 1}页`}
               className="max-w-full max-h-full object-contain transition-transform duration-200"
+              decoding="async"
               style={{ transform: `scale(${zoom}) rotate(${rotation}deg)` }}
               draggable={false}
             />

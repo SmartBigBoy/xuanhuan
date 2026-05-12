@@ -64,7 +64,7 @@ export default async function RealmDetailPage({ params }: Props) {
             <div className="flex flex-col md:flex-row gap-6 items-start">
               <div className="flex-shrink-0">
                 {novel.cover ? (
-                  <img src={novel.cover} alt={novel.title} className="w-36 h-48 rounded-lg object-cover border-2 border-xian-gold/20 shadow-lg" />
+                  <img src={novel.cover} alt={novel.title} className="w-36 h-48 rounded-lg object-cover border-2 border-xian-gold/20 shadow-lg" loading="lazy" decoding="async" />
                 ) : (
                   <div className="w-36 h-48 rounded-lg bg-gradient-to-br from-xian-gold/20 to-xian-purple/20 border-2 border-xian-gold/20 flex items-center justify-center">
                     <BookOpen className="h-12 w-12 text-xian-gold/50" />
@@ -167,7 +167,7 @@ export default async function RealmDetailPage({ params }: Props) {
             {/* 封面 */}
             <div className="hidden sm:flex h-32 w-20 rounded-lg overflow-hidden flex-shrink-0 bg-gradient-to-br from-xian-purple/30 to-xian-gold/20">
               {novel.cover ? (
-                <img src={novel.cover} alt={novel.title} className="h-full w-full object-cover" />
+                <img src={novel.cover} alt={novel.title} className="h-full w-full object-cover" loading="lazy" decoding="async" />
               ) : (
                 <div className="h-full w-full flex items-center justify-center">
                   <BookOpen className="h-10 w-10 text-xian-gold/40" />

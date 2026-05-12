@@ -18,6 +18,8 @@ echo "Copying sitemap and robots to out/..."
 cp -f public/robots.txt out/robots.txt 2>/dev/null || true
 
 echo "Deploying static files to project root..."
+# 先清理根目录的旧静态文件
+rm -rf novels maps realms wiki community _next assets index.html 404.html sitemap.xml robots.txt
 # 将 out/ 下的所有静态文件复制到项目根目录（与 out 平级）
 cp -rf out/* .
 # 复制 .nojekyll（让 GitHub Pages 不使用 Jekyll，避免忽略 _next/ 目录）

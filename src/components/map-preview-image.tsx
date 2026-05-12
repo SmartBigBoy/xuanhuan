@@ -104,6 +104,8 @@ export function MapPreviewImage({ src, alt, resolution, downloadUrl, fileName }:
             src={src}
             alt={alt}
             className="absolute inset-0 w-full h-full object-contain rounded-md transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
             onError={() => setImgError(true)}
           />
         )}
@@ -208,6 +210,7 @@ export function MapPreviewImage({ src, alt, resolution, downloadUrl, fileName }:
               src={src}
               alt={alt}
               className="max-w-full max-h-full object-contain transition-transform duration-200"
+              decoding="async"
               style={{
                 transform: `scale(${zoom}) rotate(${rotation}deg)`,
               }}

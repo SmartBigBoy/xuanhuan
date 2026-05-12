@@ -23,6 +23,8 @@ export function MapCardImage({ src, alt, variant = 'card' }: MapCardImageProps) 
           src={src}
           alt={alt}
           className="absolute inset-0 w-full h-full object-cover rounded-md"
+          loading="lazy"
+          decoding="async"
           onError={() => setImgError(true)}
         />
       )}

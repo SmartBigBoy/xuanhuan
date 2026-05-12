@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Inspector } from 'react-dev-inspector';
 import './globals.css';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
@@ -65,13 +64,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isDev = process.env.COZE_PROJECT_ENV === 'DEV';
-
   return (
     <html lang="zh-CN" suppressHydrationWarning>
       <body className="antialiased min-h-screen flex flex-col">
         <XianThemeProvider>
-          {isDev && <Inspector />}
           <SiteHeader />
           <main className="flex-1">{children}</main>
           <SiteFooter />
