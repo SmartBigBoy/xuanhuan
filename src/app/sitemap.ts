@@ -4,9 +4,11 @@ import { worldMaps } from '@/data/maps';
 import { wikiEntries } from '@/data/realms';
 import { articles } from '@/data/articles';
 
-const BASE_URL = process.env.COZE_PROJECT_DOMAIN_DEFAULT
-  ? `https://${process.env.COZE_PROJECT_DOMAIN_DEFAULT}`
-  : 'https://localhost:5000';
+const BASE_URL = process.env.COZE_PROJECT_ENV === 'PROD'
+  ? 'https://xuanhuan.skin'
+  : process.env.COZE_PROJECT_DOMAIN_DEFAULT
+    ? `https://${process.env.COZE_PROJECT_DOMAIN_DEFAULT}`
+    : 'http://localhost:5000';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();

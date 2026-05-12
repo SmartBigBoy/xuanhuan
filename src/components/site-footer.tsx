@@ -64,7 +64,7 @@ export function SiteFooter() {
         {/* 底部 */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
           <p>{siteConfig.footerText}</p>
-          <p>所有内容仅供学习交流，禁止商业用途</p>
+          <p>域名：<a href={siteConfig.siteUrl} className="text-xian-cyan hover:underline">{siteConfig.siteUrl.replace('https://', '')}</a> · 所有内容仅供学习交流，禁止商业用途</p>
         </div>
       </div>
     </footer>

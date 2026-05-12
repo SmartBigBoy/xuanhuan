@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     title: '诸天图鉴阁 — 诸天万界，一阁尽览',
     description:
       '专注于修仙玄幻小说境界体系与世界地图资料的纯公益网文资料站',
+    url: 'https://xuanhuan.skin',
     locale: 'zh_CN',
     type: 'website',
     siteName: '诸天图鉴阁',
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
       '专注于修仙玄幻小说境界体系与世界地图资料的纯公益网文资料站',
   },
   alternates: {
-    canonical: '/',
+    canonical: 'https://xuanhuan.skin',
   },
   robots: {
     index: true,
