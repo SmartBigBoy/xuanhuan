@@ -1,8 +1,13 @@
+'use client';
+
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Home, ArrowLeft, Scroll, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function NotFound() {
+  const router = useRouter();
+
   return (
     <div className="xian-bg-pattern min-h-[60vh] flex items-center justify-center">
       <div className="text-center px-4">
@@ -47,11 +52,9 @@ export default function NotFound() {
               浏览境界体系
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="lg" className="text-muted-foreground">
-            <button onClick={() => typeof window !== 'undefined' && window.history.back()}>
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              返回上页
-            </button>
+          <Button variant="ghost" size="lg" className="text-muted-foreground" onClick={() => router.back()}>
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            返回上页
           </Button>
         </div>
 

@@ -12,14 +12,16 @@ import {
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { getArticleById } from '@/data/articles';
+import { getArticleById, articles } from '@/data/articles';
 import { BreadcrumbJsonLd } from '@/components/json-ld';
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-export const dynamic = 'force-dynamic';
+export function generateStaticParams() {
+  return articles.map((article) => ({ id: article.id }));
+}
 
 export async function generateMetadata({ params }: Props) {
   const { id } = await params;

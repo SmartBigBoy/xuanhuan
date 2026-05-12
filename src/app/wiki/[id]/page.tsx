@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, Scroll, BookOpen, Info } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { getWikiEntryById } from '@/data/realms';
+import { getWikiEntryById, wikiEntries } from '@/data/realms';
 import { novels } from '@/data/novels';
 import { WikiDetailJsonLd, BreadcrumbJsonLd } from '@/components/json-ld';
 
@@ -11,7 +11,9 @@ interface Props {
   params: Promise<{ id: string }>;
 }
 
-export const dynamic = 'force-dynamic';
+export function generateStaticParams() {
+  return wikiEntries.map((entry) => ({ id: entry.id }));
+}
 
 export async function generateMetadata({ params }: Props) {
   const { id } = await params;

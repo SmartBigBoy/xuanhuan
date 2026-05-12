@@ -14,9 +14,8 @@ import {
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { getMapById } from '@/data/maps';
+import { getMapById, worldMaps } from '@/data/maps';
 import { MapPreviewImage } from '@/components/map-preview-image';
 import { MapImageCarousel } from '@/components/map-image-carousel';
 import { MapDownloadButton } from '@/components/map-download-button';
@@ -26,7 +25,9 @@ interface Props {
   params: Promise<{ id: string }>;
 }
 
-export const dynamic = 'force-dynamic';
+export function generateStaticParams() {
+  return worldMaps.map((map) => ({ id: map.id }));
+}
 
 export async function generateMetadata({ params }: Props) {
   const { id } = await params;
