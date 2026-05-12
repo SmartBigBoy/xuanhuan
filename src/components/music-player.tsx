@@ -34,8 +34,13 @@ export function MusicPlayer() {
   const currentLineRef = useRef<HTMLDivElement>(null);
   const lyricsBoxRef = useRef<HTMLDivElement>(null);
 
-  /* 拖拽位置（默认右侧导航栏下方） */
-  const [pos, setPos] = useState({ x: window.innerWidth - 220, y: 88 });
+  /* 拖拽位置（默认右侧导航栏下方，SSR 安全） */
+  const [pos, setPos] = useState({ x: 0, y: 88 });
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setPos({ x: window.innerWidth - 220, y: 88 });
+    setMounted(true);
+  }, []);
 
   /* 拖拽状态 */
   const dragging = useRef(false);
