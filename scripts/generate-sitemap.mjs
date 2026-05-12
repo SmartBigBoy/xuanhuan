@@ -24,7 +24,7 @@ const wikiIds = extractIds(`${dataDir}realms.ts`).filter(id =>
 // Read articles IDs
 const articleIds = extractIds(`${dataDir}articles.ts`);
 
-const baseUrl = 'https://zhutiantujian.site';
+const baseUrl = 'https://smartbigboy.github.io';
 const now = new Date().toISOString();
 
 function urlEntry(path, priority, changefreq) {
@@ -37,15 +37,15 @@ function urlEntry(path, priority, changefreq) {
 }
 
 const urls = [
-  urlEntry('/', '1.0', 'weekly'),
-  urlEntry('/realms', '0.9', 'weekly'),
-  urlEntry('/maps', '0.8', 'weekly'),
-  urlEntry('/wiki', '0.7', 'monthly'),
-  urlEntry('/community', '0.6', 'weekly'),
-  ...novelIds.map(id => urlEntry(`/realms/${id}`, '0.7', 'monthly')),
-  ...mapIds.map(id => urlEntry(`/maps/${id}`, '0.7', 'monthly')),
-  ...wikiIds.map(id => urlEntry(`/wiki/${id}`, '0.6', 'monthly')),
-  ...articleIds.map(id => urlEntry(`/community/${id}`, '0.5', 'monthly')),
+  urlEntry('/xuanhuan/', '1.0', 'weekly'),
+  urlEntry('/xuanhuan/realms/', '0.9', 'weekly'),
+  urlEntry('/xuanhuan/maps/', '0.8', 'weekly'),
+  urlEntry('/xuanhuan/wiki/', '0.7', 'monthly'),
+  urlEntry('/xuanhuan/community/', '0.6', 'weekly'),
+  ...novelIds.map(id => urlEntry(`/xuanhuan/realms/${id}/`, '0.7', 'monthly')),
+  ...mapIds.map(id => urlEntry(`/xuanhuan/maps/${id}/`, '0.7', 'monthly')),
+  ...wikiIds.map(id => urlEntry(`/xuanhuan/wiki/${id}/`, '0.6', 'monthly')),
+  ...articleIds.map(id => urlEntry(`/xuanhuan/community/${id}/`, '0.5', 'monthly')),
 ];
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
