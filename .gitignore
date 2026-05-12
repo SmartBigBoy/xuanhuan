@@ -12,17 +12,7 @@ out/
 .next/
 .rsbuild/
 
-# Static export files deployed to project root (from out/)
-/_next/
-/sitemap.xml
-/robots.txt
-/index.html
-/404.html
-/realms/
-/maps/
-/wiki/
-/community/
-/assets/
+
 
 # Testing
 coverage/
