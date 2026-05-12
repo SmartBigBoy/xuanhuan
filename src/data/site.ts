@@ -56,7 +56,6 @@ export interface SiteConfig {
   name: string;
   slogan: string;
   description: string;
-  siteUrl: string;
   footerText: string;
   disclaimer: string;
   contactEmail: string;
@@ -67,7 +66,6 @@ export const siteConfig: SiteConfig = {
   slogan: '诸天万界，一阁尽览',
   description:
     '诸天图鉴阁是专注于修仙玄幻小说境界体系与世界地图资料的纯公益网文资料站，致力于为修仙小说爱好者提供最全面、最准确的设定资料与可视化资源。',
-  siteUrl: 'https://xuanhuan.skin',
   footerText:
     '诸天图鉴阁 — 修仙玄幻小说资料站 | 纯公益 | 非商业',
   disclaimer:

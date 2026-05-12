@@ -1,9 +1,8 @@
 import type { MetadataRoute } from 'next';
 
-export const dynamic = 'force-static';
-export const revalidate = false;
-
-const BASE_URL = 'https://xuanhuan.skin';
+const BASE_URL = process.env.COZE_PROJECT_DOMAIN_DEFAULT
+  ? `https://${process.env.COZE_PROJECT_DOMAIN_DEFAULT}`
+  : 'https://localhost:5000';
 
 export default function robots(): MetadataRoute.Robots {
   return {

@@ -35,16 +35,7 @@ export function MusicPlayer() {
   const lyricsBoxRef = useRef<HTMLDivElement>(null);
 
   /* 拖拽位置（默认右侧导航栏下方） */
-  const [pos, setPos] = useState({ x: 0, y: 88 });
-  const posInited = useRef(false);
-
-  /* 客户端初始化默认位置 */
-  useEffect(() => {
-    if (!posInited.current) {
-      posInited.current = true;
-      setPos({ x: window.innerWidth - 220, y: 88 });
-    }
-  }, []);
+  const [pos, setPos] = useState({ x: window.innerWidth - 220, y: 88 });
 
   /* 拖拽状态 */
   const dragging = useRef(false);

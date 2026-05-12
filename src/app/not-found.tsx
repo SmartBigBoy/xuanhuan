@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { Home, ArrowLeft, Scroll, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -50,7 +48,7 @@ export default function NotFound() {
             </Link>
           </Button>
           <Button asChild variant="ghost" size="lg" className="text-muted-foreground">
-            <button onClick={() => window.history.back()}>
+            <button onClick={() => typeof window !== 'undefined' && window.history.back()}>
               <ArrowLeft className="w-4 h-4 mr-2" />
               返回上页
             </button>

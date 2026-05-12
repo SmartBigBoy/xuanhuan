@@ -4,10 +4,9 @@ import { worldMaps } from '@/data/maps';
 import { wikiEntries } from '@/data/realms';
 import { articles } from '@/data/articles';
 
-export const dynamic = 'force-static';
-export const revalidate = false;
-
-const BASE_URL = 'https://xuanhuan.skin';
+const BASE_URL = process.env.COZE_PROJECT_DOMAIN_DEFAULT
+  ? `https://${process.env.COZE_PROJECT_DOMAIN_DEFAULT}`
+  : 'https://localhost:5000';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();

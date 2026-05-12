@@ -7,15 +7,11 @@ import { getWikiEntryById } from '@/data/realms';
 import { novels } from '@/data/novels';
 import { WikiDetailJsonLd, BreadcrumbJsonLd } from '@/components/json-ld';
 
-import { wikiEntries } from '@/data/realms';
-
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-export function generateStaticParams() {
-  return wikiEntries.map((e) => ({ id: e.id }));
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: Props) {
   const { id } = await params;
