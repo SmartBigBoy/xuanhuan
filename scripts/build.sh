@@ -20,8 +20,8 @@ cp -f public/robots.txt out/robots.txt 2>/dev/null || true
 echo "Deploying static files to project root..."
 # 将 out/ 下的所有静态文件复制到项目根目录（与 out 平级）
 cp -rf out/* .
-# 复制隐藏文件（如有）
-cp -rf out/.* . 2>/dev/null || true
+# 复制 .nojekyll（让 GitHub Pages 不使用 Jekyll，避免忽略 _next/ 目录）
+cp -f out/.nojekyll . 2>/dev/null || true
 
 echo "Static site deployed! index.html is at project root."
 echo "Build completed successfully!"

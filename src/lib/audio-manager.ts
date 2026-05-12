@@ -10,8 +10,8 @@ export interface LyricLine {
   text: string;
 }
 
-// Next.js basePath 配置，需与 next.config.ts 中的 basePath 保持一致
-const BASE_PATH = '/xuanhuan';
+// basePath 与 next.config.ts 保持一致，自定义域名为空，项目站点为 '/xuanhuan'
+const BASE_PATH = process.env.NEXT_BASE_PATH || '';
 const AUDIO_SRC = `${BASE_PATH}/assets/许嵩-天龙八部之宿敌.mp3`;
 
 /* ===================== 单例 Audio ===================== */

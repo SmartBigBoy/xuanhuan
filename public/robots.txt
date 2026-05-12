@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://zhutiantujian.site/sitemap.xml
+Sitemap: https://xuanhuan.skin/sitemap.xml
