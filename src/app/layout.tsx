@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import './globals.css';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
@@ -66,6 +67,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
+      <head>
+        <Script
+          id="baidu-tongji"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9bdd82045f476f7f02179faa4b54941b";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+`,
+          }}
+        />
+      </head>
       <body className="antialiased min-h-screen flex flex-col">
         <XianThemeProvider>
           <SiteHeader />
