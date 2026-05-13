@@ -76,7 +76,7 @@ export default function RootLayout({
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?9bdd82045f476f7f02179faa4b54941b";
+  hm.src = "https://hm.baidu.com/hm.js?0dc4af64ee29d92bd9a4714a29999b6f";
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
