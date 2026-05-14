@@ -83,6 +83,12 @@ var _hmt = _hmt || [];
 `,
           }}
         />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6560822080596473"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body className="antialiased min-h-screen flex flex-col">
         <XianThemeProvider>
