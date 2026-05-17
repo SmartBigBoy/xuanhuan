@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { novels, categories } from '@/data/novels';
 import { realmSystems } from '@/data/realms';
 
-const INITIAL_COUNT = 6;
+const INITIAL_COUNT = 3;
 
 export function RealmsCategoryList() {
   const [expandedCats, setExpandedCats] = useState<Set<string>>(new Set());
