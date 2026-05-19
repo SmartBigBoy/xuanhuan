@@ -38,6 +38,13 @@ find out/ -name "*.html" -type f | while read f; do
 done
 echo "Google Analytics code injected."
 
+echo "Injecting Baidu Analytics code into HTML files..."
+BAIDU_SCRIPT='<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?0dc4af64ee29d92bd9a4714a29999b6f";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();<\/script>'
+find out/ -name "*.html" -type f | while read f; do
+  sed -i "s#</head>#${BAIDU_SCRIPT}</head>#" "$f"
+done
+echo "Baidu Analytics code injected."
+
 echo "Deploying static files to project root..."
 # 清理根目录的旧页面文件（不含 _next，保留旧版本hash文件避免CDN缓存404）
 rm -rf novels maps realms wiki community assets index.html 404.html sitemap.xml robots.txt
