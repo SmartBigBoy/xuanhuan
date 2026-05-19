@@ -31,6 +31,13 @@ find out/ -name "*.html" -type f | while read f; do
 done
 echo "AdSense code injected."
 
+echo "Injecting Google Analytics (gtag.js) code into HTML files..."
+GTAG_SCRIPT='<script async src="https://www.googletagmanager.com/gtag/js?id=G-RM1N1CPJ9W"><\/script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-RM1N1CPJ9W");<\/script>'
+find out/ -name "*.html" -type f | while read f; do
+  sed -i "s#</head>#${GTAG_SCRIPT}</head>#" "$f"
+done
+echo "Google Analytics code injected."
+
 echo "Deploying static files to project root..."
 # 清理根目录的旧页面文件（不含 _next，保留旧版本hash文件避免CDN缓存404）
 rm -rf novels maps realms wiki community assets index.html 404.html sitemap.xml robots.txt
