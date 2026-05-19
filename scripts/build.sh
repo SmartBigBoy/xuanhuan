@@ -38,6 +38,13 @@ find out/ -name "*.html" -type f | while read f; do
 done
 echo "Google Analytics code injected."
 
+echo "Injecting Baidu site verification meta tag into HTML files..."
+BAIDU_VERIFY='<meta name="baidu-site-verification" content="codeva-55qOAu5ch2" />'
+find out/ -name "*.html" -type f | while read f; do
+  sed -i "s|</head>|${BAIDU_VERIFY}</head>|" "$f"
+done
+echo "Baidu site verification meta injected."
+
 echo "Injecting Baidu Analytics code into HTML files..."
 BAIDU_SCRIPT='<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?0dc4af64ee29d92bd9a4714a29999b6f";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();<\/script>'
 find out/ -name "*.html" -type f | while read f; do
