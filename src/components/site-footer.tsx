@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Sparkles, Mail } from 'lucide-react';
 import { siteConfig } from '@/data/site';
+import { DonateButton } from '@/components/donate-button';
 
 export function SiteFooter() {
   return (
@@ -55,6 +56,7 @@ export function SiteFooter() {
                 {siteConfig.contactEmail}
               </a>
             </div>
+            <DonateButton variant="link" />
           </div>
         </div>
 
